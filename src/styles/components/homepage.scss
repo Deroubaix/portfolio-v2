@@ -31,17 +31,17 @@
 
     h1 {
       margin: 0.5em;
-    } 
+    }
     p {
-margin: 2em 0 2.5em;
+      margin: 2em 0 2.5em;
     }
     .content {
-        max-width: 1000px; 
-        width: 100%;
-        padding: 0 $page_padding-horizontal;
-        box-sizing: border-box;
-      }
-    
+      max-width: 1000px;
+      width: 100%;
+      padding: 0 $page_padding-horizontal;
+      box-sizing: border-box;
+    }
+
     .button-container {
       display: flex;
       gap: 3rem;
@@ -163,9 +163,6 @@ margin: 2em 0 2.5em;
       }
     }
 
-  
-    
-
     @include responsive($page-break_desktop) {
       display: block;
       overflow-x: hidden;
@@ -209,20 +206,6 @@ margin: 2em 0 2.5em;
       .image {
         display: none;
       }
-    }
-  }
-
-  .testimonial-section {
-    @include responsive($breakpoint-tablet) {
-      min-height: unset;
-    }
-    h2,
-    .testimonial-container {
-      position: relative;
-    }
-
-    h2 {
-      margin-bottom: 3em;
     }
   }
 }

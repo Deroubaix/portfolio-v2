@@ -3,6 +3,7 @@
 @import "./abstracts/responsiveness.scss";
 @import "./abstracts/spacing.scss";
 @import "./abstracts/colors.scss";
+@import "./abstracts/mixins.scss";
 @import "./elements/headings.scss";
 @import "./elements/buttons.scss";
 @import "./utilities/colors.scss";
@@ -18,10 +19,6 @@ html {
   font-family: $font-body-normal-family;
 }
 
-a {
-  text-decoration: none;
-}
-
 .switch-link-underline-direction {
   &:after,
   a:after {
@@ -30,6 +27,45 @@ a {
   }
 }
 
+a {
+  position: relative;
+  word-break: normal;
+  text-decoration: none;
+  font-family: $font-fira-mono-normal;
+  color: $color-brand-1;
+
+  &:not(.email-link)::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    left: 0;
+    bottom: -0.5rem;
+    border-bottom: 1.5px solid $color-accent-1;
+    @include transition(width);
+  }
+  
+  &:hover {
+    color: $color-accent-1;
+  }
+
+  @include active-state {
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &.button {
+    &::after {
+      content: unset;
+    }
+  }
+}
+
+.emphasised-text {
+  color: $color-accent-1;
+  font-family: $font-display-normal-family;
+}
 * {
   box-sizing: border-box;
 }
@@ -50,8 +86,6 @@ $page-break_desktop: 65rem;
   // $page_padding-vertical + 3rem
 }
 
-$racgp-color: #2b3f54;
-
 // ------------------------------------------------------------------
 // Backgrounds
 // ------------------------------------------------------------------
@@ -59,13 +93,6 @@ $racgp-color: #2b3f54;
 .dark-bg {
   background-color: $color-primary;
   color: $color-brand-2;
-  a {
-    font-family: $font-fira-mono-normal;
-    color: $color-brand-1;
-    &:hover {
-      color: $color-accent-1;
-    }
-  }
 }
 
 .content-body {
@@ -90,11 +117,6 @@ $racgp-color: #2b3f54;
   }
   p {
     margin: 0 0 2em;
-  }
-  .emphasised-text {
-    color: $color-accent-1;
-    font-family: $font-display-normal-family;
- 
   }
   .color-slate {
     color: $color-brand-1;
@@ -126,3 +148,4 @@ $racgp-color: #2b3f54;
 
 @import "./components/header.scss";
 @import "./components/homepage.scss";
+@import "./components/LeftRightBar.scss";

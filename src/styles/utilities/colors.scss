@@ -1,12 +1,14 @@
-@use 'sass:color';
+@use "sass:color";
 
 $color-white: #ffffff;
 $color-black: #13202a;
 
-$color-blue-dark: #0F103F;
-$color-grey: #8892b0;;
-$color-grey-light:rgb(204, 214, 246);
-$color-pink:  rgb(245, 125, 255) ;
+$color-blue-dark: #0f103f;
+$color-mid-blue: #2954a3;
+$color-grey: #8892b0;
+$color-grey-light: rgb(204, 214, 246);
+$color-pink: rgb(245, 125, 255);
+
 $color-scarlet: #f52d00;
 $color-gamboge: #f0a202;
 $color-caribbean-current: #006d77;
@@ -14,7 +16,7 @@ $color-caribbean-current: #006d77;
 $color-primary: $color-blue-dark;
 $color-secondary: $color-white;
 $color-accent-1: $color-pink;
-$color-accent-2: $color-pink;
+$color-accent-2: $color-mid-blue;
 $color-brand-1: $color-grey-light;
 $color-brand-2: $color-grey;
 $color-warning: $color-gamboge;
@@ -24,42 +26,42 @@ $color-text-light: $color-white;
 $color-text-dark: $color-blue-dark;
 
 .color-primary {
-	--color: #{$color-primary};
-	color: var(--color);
+  --color: #{$color-primary};
+  color: var(--color);
 }
 .color-secondary {
-	--color: #{$color-secondary};
-	color: var(--color);
+  --color: #{$color-secondary};
+  color: var(--color);
 }
 .color-accent-1 {
-	--color: #{$color-accent-1};
-	color: var(--color);
+  --color: #{$color-accent-1};
+  color: var(--color);
 }
 .color-accent-2 {
-	--color: #{$color-accent-2};
-	color: var(--color);
+  --color: #{$color-accent-2};
+  color: var(--color);
 }
 .color-brand-1 {
-	--color: #{$color-brand-1};
-	color: var(--color);
+  --color: #{$color-brand-1};
+  color: var(--color);
 }
 .color-brand-2 {
-	--color: #{$color-brand-2};
-	color: var(--color);
+  --color: #{$color-brand-2};
+  color: var(--color);
 }
 .color-warning {
-	--color: #{$color-warning};
-	color: var(--color);
+  --color: #{$color-warning};
+  color: var(--color);
 }
 .color-error {
-	--color: #{$color-error};
-	color: var(--color);
+  --color: #{$color-error};
+  color: var(--color);
 }
 .color-success {
-	--color: #{$color-success};
-	color: var(--color);
+  --color: #{$color-success};
+  color: var(--color);
 }
 .color-success-darker {
-	--color: #{darken($color-success, 30%)};
-	color: var(--color);
+  --color: #{darken($color-success, 30%)};
+  color: var(--color);
 }

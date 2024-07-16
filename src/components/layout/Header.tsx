@@ -5,12 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import PhotoIcon from "../../../public/images/Marisha.jpg";
 
-export type HeaderProps = {
-
-};
+export type HeaderProps = {};
 
 export default function Header(props: HeaderProps) {
-  const {  } = props;
+  const {} = props;
 
   const [navEl, setNavEl] = useState<HTMLElement | null>(null);
   const [menuEl, setMenuEl] = useState<HTMLElement | null>(null);
@@ -23,7 +21,7 @@ export default function Header(props: HeaderProps) {
     setIsMenuOpen(!isMenuOpen);
   };
 
- /*  useClickOutside(() => setIsMenuOpen(false), null, [navEl, menuEl]); */
+  /*  useClickOutside(() => setIsMenuOpen(false), null, [navEl, menuEl]); */
 
   return (
     <>
@@ -38,10 +36,16 @@ export default function Header(props: HeaderProps) {
           }`}
           onClick={handleMenuClicked}
         >
-          <Link href="#about-me">about</Link>
-          <Link href="#projects">projects</Link>
-          <Link href="#contact">contact</Link>
-       
+          <Link href="#about-me">
+            {" "}
+            <span className="emphasised-text">01. </span>about
+          </Link>
+          <Link href="#projects">
+            <span className="emphasised-text">02. </span>projects
+          </Link>
+          <Link href="#contact">
+            <span className="emphasised-text">03. </span>contact
+          </Link>
         </nav>
         <Link
           ref={setMenuEl}
@@ -49,7 +53,7 @@ export default function Header(props: HeaderProps) {
           className="menu-toggle"
           onClick={handleMenuClicked}
         >
-        {/*   <IconMenu2 /> */}
+          {/*   <IconMenu2 /> */}
         </Link>
       </header>
     </>

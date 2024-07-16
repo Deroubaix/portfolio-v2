@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import LeftRightBar from "@/components/home/LeftRightBar";
 
 export default function Home() {
   return (
@@ -91,6 +92,7 @@ export default function Home() {
           </p>
         </div>
       </section>
+      <LeftRightBar />
     </div>
   );
 }

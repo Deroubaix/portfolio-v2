@@ -1,0 +1,50 @@
+@mixin active-state {
+	&:hover,
+	&:focus,
+	&:active {
+		@content;
+	}
+}
+
+@mixin transition($element, $duration: 0.5s, $style: ease-in-out) {
+	-webkit-transition: $element $duration $style;
+	-moz-transition: $element $duration $style;
+	-o-transition: $element $duration $style;
+	transition: $element $duration $style;
+}
+
+@mixin transform($content) {
+	-webkit-transform: $content;
+	-ms-transform: $content;
+	transform: $content;
+}
+
+@function get-transparent-color($color, $opacity) {
+	@return color-mix(in srgb, $color $opacity, transparent);
+}
+
+@mixin scrollbar($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
+	// For Google Chrome
+	&::-webkit-scrollbar {
+		width: $size;
+		height: $size;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $background-color;
+	}
+
+	// For Internet Explorer
+	& {
+		scrollbar-face-color: $foreground-color;
+		scrollbar-track-color: $background-color;
+	}
+}
+
+
+
+
