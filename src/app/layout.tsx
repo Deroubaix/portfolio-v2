@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+/* import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -17,6 +17,43 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
+    </html>
+  );
+}
+ */
+
+/* eslint-disable @next/next/no-sync-scripts */
+import '../styles/main.scss';
+import React, { ReactNode } from "react";
+import type { Metadata } from "next";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+
+export const metadata: Metadata = {
+  title: "Marishas Portfolio",
+};
+
+export type RootLayoutProps = {
+  children: ReactNode;
+};
+
+export default function RootLayout(props: RootLayoutProps) {
+  const { children } = props;
+
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <link rel="icon" href="/ndc.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="description" content="Marisha Portfolio" />
+      </head>
+      <body>
+        <Header />
+        <div className="content-body icon-bg_light-bg">{children}</div>
+        <Footer />
+      </body>
     </html>
   );
 }

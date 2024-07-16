@@ -1,0 +1,64 @@
+h1,
+h2 {
+	font-family: $font-display-bold-family;
+	font-weight: $font-display-bold-weight;
+	letter-spacing: $font-body-bold-spacing;
+}
+
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font-display-normal-family;
+	font-weight: $font-display-normal-weight;
+}
+
+h1 {
+	font-size: $font-size-xxxl;
+}
+
+h2 {
+	font-size: $font-size-xxl;
+}
+
+h3 {
+	font-size: $font-size-xl;
+}
+
+h4 {
+	font-size: $font-size-lg;
+}
+
+h5 {
+	font-size: $font-size-lg;
+}
+
+h6 {
+	font-size: $font-size-md;
+}
+
+@include responsive($breakpoint-mobile, max) {
+	h1 {
+		font-size: $font-size-xxl;
+	}
+
+	h2 {
+		font-size: $font-size-xl;
+	}
+
+	h3 {
+		font-size: $font-size-lg;
+	}
+
+	h4 {
+		font-size: $font-size-lg;
+	}
+
+	h5 {
+		font-size: $font-size-md;
+	}
+
+	h6 {
+		font-size: $font-size-md;
+	}
+}

@@ -1,0 +1,105 @@
+$font-path: "/fonts";
+
+$font-inter-normal: "Inter", sans-serif;
+$font-inter-bold: "Inter", sans-serif;
+
+$font-fira-mono-normal: "Fira Mono", monospace;
+$font-fira-mono-bold: "Fira Mono", monospace;
+
+/* inter-100 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100;
+  src: url("#{$font-path}/Inter/Inter-100.woff2") format("woff2");
+}
+/* inter-200 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 200;
+  src: url("#{$font-path}/Inter/Inter-200.woff2") format("woff2");
+}
+/* inter-300 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  src: url("#{$font-path}/Inter/Inter-300.woff2") format("woff2");
+}
+/* inter-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url("#{$font-path}/Inter/Inter-regular.woff2") format("woff2");
+}
+/* inter-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: url("#{$font-path}/Inter/Inter-500.woff2") format("woff2");
+}
+/* inter-600 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  src: url("#{$font-path}/Inter/Inter-600.woff2") format("woff2");
+}
+/* inter-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  src: url("#{$font-path}/Inter/Inter-700.woff2") format("woff2");
+}
+/* inter-800 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  src: url("#{$font-path}/Inter/Inter-800.woff2") format("woff2");
+}
+/* inter-900 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  src: url("#{$font-path}/Inter/Inter-900.woff2") format("woff2");
+}
+
+/* fira-mono-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Fira Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("#{$font-path}/Fira-Mono/Fira-Mono-Regular.woff2") format("woff2");
+}
+/* fira-mono-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Fira Mono";
+  font-style: normal;
+  font-weight: 500;
+  src: url("#{$font-path}/Fira-Mono/Fira-Mono-500.woff2") format("woff2");
+}
+/* fira-mono-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Fira Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: url("#{$font-path}/Fira-Mono/Fira-Mono-700.woff2") format("woff2");
+}

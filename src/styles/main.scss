@@ -1,0 +1,128 @@
+@import "./fonts/fonts.scss";
+@import "./abstracts/typography.scss";
+@import "./abstracts/responsiveness.scss";
+@import "./abstracts/spacing.scss";
+@import "./abstracts/colors.scss";
+@import "./elements/headings.scss";
+@import "./elements/buttons.scss";
+@import "./utilities/colors.scss";
+@import "./utilities/text.scss";
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 15px;
+  font-family: $font-body-normal-family;
+}
+
+a {
+  text-decoration: none;
+}
+
+.switch-link-underline-direction {
+  &:after,
+  a:after {
+    right: 0;
+    left: unset;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// ------------------------------------------------------------------
+// Variables
+// ------------------------------------------------------------------
+
+$page_padding-horizontal: $spacing-xxl;
+$page_padding-vertical: calc($spacing-xxl * 1.5);
+
+// Mobile responsiveness
+$page-break_tablet: 38rem;
+$page-break_desktop: 65rem;
+
+* {
+  --approx-menu-height: 6rem;
+  // $page_padding-vertical + 3rem
+}
+
+$racgp-color: #2b3f54;
+
+// ------------------------------------------------------------------
+// Backgrounds
+// ------------------------------------------------------------------
+
+.dark-bg {
+  background-color: $color-primary;
+  color: $color-brand-2;
+  a {
+    font-family: $font-fira-mono-normal;
+    color: $color-brand-1;
+    &:hover {
+      color: $color-accent-1;
+    }
+  }
+}
+
+.content-body {
+  color: $color-primary;
+
+  section {
+    padding: $page_padding-vertical * 2 $page_padding-horizontal * 3;
+    // Used in a variable in homepage.scss
+    @include responsive(45rem) {
+      padding: $page_padding-vertical * 1.5 $page_padding-horizontal * 1.5;
+    }
+
+    @include responsive(25rem) {
+      padding: $page_padding-vertical $page_padding-horizontal;
+    }
+  }
+
+  p,
+  li {
+    line-height: 1.8rem;
+    font-weight: 500;
+  }
+  p {
+    margin: 0 0 2em;
+  }
+  .emphasised-text {
+    color: $color-accent-1;
+    font-family: $font-display-normal-family;
+ 
+  }
+  .color-slate {
+    color: $color-brand-1;
+  }
+
+  .no-list-style {
+    list-style: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    letter-spacing: $font-body-bold-spacing;
+    margin: 2em 0 1em;
+  }
+
+  h2 {
+    border-top: 2px solid $color-primary;
+    padding-top: 1.5em;
+    color: $color-brand-1;
+  }
+}
+
+// ------------------------------------------------------------------
+// Imports
+// ------------------------------------------------------------------
+
+@import "./components/header.scss";
+@import "./components/homepage.scss";

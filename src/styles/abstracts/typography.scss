@@ -1,0 +1,29 @@
+@use 'sass:math';
+
+@import '../fonts/fonts.scss';
+
+$text-base-size: 14px;
+$text-scale-ratio: 1.333;
+
+$font-size-xxs: math.div($text-base-size, math.pow($text-scale-ratio, 3));
+$font-size-xs: math.div($text-base-size, math.pow($text-scale-ratio, 2));
+$font-size-sm: math.div($text-base-size, math.pow($text-scale-ratio, 1));
+$font-size-md: $text-base-size;
+$font-size-lg: $text-base-size * math.pow($text-scale-ratio, 1);
+$font-size-xl: $text-base-size * math.pow($text-scale-ratio, 2);
+$font-size-xxl: $text-base-size * math.pow($text-scale-ratio, 3);
+$font-size-xxxl: $text-base-size * math.pow($text-scale-ratio, 4);
+$font-size-xxxxl: $text-base-size * math.pow($text-scale-ratio, 5);
+
+$font-body-normal-family: $font-inter-normal;
+$font-body-normal-weight: 500;
+
+$font-body-bold-family: $font-inter-bold;
+$font-body-bold-spacing: 0.03em;
+$font-body-bold-weight: 700;
+
+$font-display-normal-family: $font-fira-mono-normal;
+$font-display-normal-weight: 400;
+
+$font-display-bold-family: $font-fira-mono-bold;
+$font-display-bold-weight: 700;
