@@ -5,6 +5,9 @@
   flex-direction: column;
   align-items: center;
   z-index: 1000;
+  @include responsive($page-break_tablet, max) {
+    display: none;
+  }
 }
 
 .left-stick {

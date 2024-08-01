@@ -1,50 +1,78 @@
 @mixin active-state {
-	&:hover,
-	&:focus,
-	&:active {
-		@content;
-	}
+  &:hover,
+  &:focus,
+  &:active {
+    @content;
+  }
 }
 
 @mixin transition($element, $duration: 0.5s, $style: ease-in-out) {
-	-webkit-transition: $element $duration $style;
-	-moz-transition: $element $duration $style;
-	-o-transition: $element $duration $style;
-	transition: $element $duration $style;
+  -webkit-transition: $element $duration $style;
+  -moz-transition: $element $duration $style;
+  -o-transition: $element $duration $style;
+  transition: $element $duration $style;
 }
 
 @mixin transform($content) {
-	-webkit-transform: $content;
-	-ms-transform: $content;
-	transform: $content;
+  -webkit-transform: $content;
+  -ms-transform: $content;
+  transform: $content;
 }
 
 @function get-transparent-color($color, $opacity) {
-	@return color-mix(in srgb, $color $opacity, transparent);
+  @return color-mix(in srgb, $color $opacity, transparent);
 }
 
-@mixin scrollbar($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
-	// For Google Chrome
-	&::-webkit-scrollbar {
-		width: $size;
-		height: $size;
-	}
+@mixin scrollbar(
+  $size,
+  $foreground-color,
+  $background-color: mix($foreground-color, white, 50%)
+) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
 
-	&::-webkit-scrollbar-thumb {
-		background: $foreground-color;
-	}
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
 
-	&::-webkit-scrollbar-track {
-		background: $background-color;
-	}
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
 
-	// For Internet Explorer
-	& {
-		scrollbar-face-color: $foreground-color;
-		scrollbar-track-color: $background-color;
-	}
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
 }
 
+@mixin hover-effect {
+  --color: #fd7dff;
+  --border: 5px;
+  --offset: 20px;
+  --gap: 5px;
+  --_c: var(--color) var(--border), #0000 0 calc(100% - var(--border)),
+    var(--color) 0;
+  --_o: calc(3 * var(--offset));
+  padding: calc(var(--gap) + var(--border))
+    calc(var(--gap) + var(--border) + var(--offset))
+    calc(var(--gap) + var(--border) + var(--offset))
+    calc(var(--gap) + var(--border));
+  background: linear-gradient(var(--_c)) var(--_o) var(--_o),
+    linear-gradient(90deg, var(--_c)) var(--_o) var(--_o);
+  background-size: calc(100% - var(--_o)) calc(100% - var(--_o));
+  background-repeat: no-repeat;
+  filter: grayscale(0.2);
+  cursor: pointer;
+  @include transition(all, 0.5s);
 
-
+  &:hover {
+    background-position: 0px 0px;
+    background-size: calc(100% - var(--offset)) calc(100% - var(--offset));
+    filter: grayscale(0);
+  }
+}
 

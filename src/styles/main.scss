@@ -118,6 +118,9 @@ $page-break_desktop: 65rem;
   p {
     margin: 0 0 2em;
   }
+  li {
+    font-family: $font-fira-mono-normal;
+  }
   .color-slate {
     color: $color-brand-1;
   }

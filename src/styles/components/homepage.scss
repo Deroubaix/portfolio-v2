@@ -5,7 +5,6 @@
 
   section {
     min-height: calc(100dvh - var(--approx-menu-height));
-    &.image-left,
     &.image-right {
       .image {
         max-height: calc(100dvh - var(--approx-menu-height));
@@ -53,16 +52,29 @@
 
     // Desktop size
     @include responsive($page-break_tablet, min) {
-      display: grid;
+      padding: 0 $page_padding-horizontal * 1.5;
     }
 
     // Tablet / large phone width
     @include responsive($page-break_tablet, max) {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: $page_padding-vertical * 1.5;
+      padding: $page_padding-vertical $page_padding-horizontal * 1;
+      padding-top: var(--section-vertical-padding);
+      text-align: left;
+
+      .content {
+        padding: $page_padding-vertical 0;
+
+        h1,
+        p {
+          margin: 0.5em 0;
+        }
+      }
+      .button-container {
+        margin: 2em 0 2.5em;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   }
 
@@ -75,7 +87,7 @@
       var(--approx-menu-height) + var(--section-vertical-padding)
     );
     min-height: 100dvh;
-    &.image-left,
+
     &.image-right {
       .image {
         max-height: calc(
@@ -85,7 +97,6 @@
     }
 
     @include responsive($page-break_desktop) {
-      &.image-left,
       &.image-right {
         .image {
           max-height: calc(100dvh - var(--section-vertical-padding));
@@ -102,7 +113,7 @@
 
   .about-section {
     $image-width: 30dvw;
-    --content-padding: 8dvw;
+    --content-padding: 10dvw;
     min-height: 100dvh;
     display: grid;
     column-gap: 10dvw;
@@ -114,74 +125,74 @@
       margin-top: 0;
     }
 
-    // Setting up the layouts
-    &.image-right {
-      grid-template-columns: 1fr $image-width;
-      grid-template-areas: "content image";
-      padding-right: 0;
-      padding-left: var(--content-padding);
-      .image {
-        mask-position: left center;
-        overflow: hidden;
-        .position-object {
-          aspect-ratio: 1/1;
-          object-fit: cover;
-          object-position: 80% center;
+    ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      list-style: none;
+      padding: 0;
+      gap: 1rem;
+
+      li {
+        align-items: center;
+        position: relative;
+        padding-left: 1.5rem;
+
+        font-size: $font-size-sm;
+
+        &:before {
+          content: "▹";
+          position: absolute;
+          left: 0;
+          color: $color-accent-1;
+          font-size: $font-size-md;
         }
       }
     }
-    &.image-left {
-      grid-template-columns: $image-width 1fr;
-      grid-template-areas: "image content";
-      padding-left: 0;
+
+    &.image-right {
+      grid-template-columns: 1fr $image-width;
+      grid-template-areas: "content image";
       padding-right: var(--content-padding);
+      padding-left: var(--content-padding);
+
       .image {
-        mask-position: right center;
-      }
-    }
+        position: relative;
+        grid-area: image;
+        align-self: center;
+        overflow: hidden;
 
-    .image {
-      grid-area: image;
-      align-self: stretch;
-      position: relative;
-      overflow: hidden;
-      mask-image: url();
-      mask-repeat: no-repeat;
-      mask-size: cover;
-      img {
-        width: auto;
-        height: 100%;
-      }
-    }
-
-    .content {
-      grid-area: content;
-      align-self: center;
-
-      p {
-        max-width: 800px;
+        img {
+          width: auto;
+          height: auto;
+          max-width: 400px;
+          max-height: 400px;
+          @include hover-effect;
+        }
       }
     }
 
     @include responsive($page-break_desktop) {
       display: block;
       overflow-x: hidden;
-      --content-padding: 5rem;
-      &.image-left,
+      --content-padding: 8rem;
+
       &.image-right {
         padding-left: var(--content-padding);
         padding-right: var(--content-padding);
       }
+
       .image {
         position: absolute;
         height: 65%;
         right: -20%;
         top: 15%;
-        opacity: 10%;
+       
       }
+
       .content {
         z-index: 2;
         position: relative;
+
         h2 {
           margin-bottom: 1.5em;
         }
@@ -189,6 +200,7 @@
 
       &#about-3 {
         min-height: unset;
+
         .image {
           right: -10vw;
         }
@@ -196,15 +208,12 @@
     }
 
     @include responsive($page-break_tablet) {
-      --content-padding: 3rem;
+      --content-padding: 2rem;
       min-height: unset;
       border-top: 2px solid $color-white;
+
       h2 {
         margin-top: 0;
-      }
-
-      .image {
-        display: none;
       }
     }
   }

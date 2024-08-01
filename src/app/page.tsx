@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import LeftRightBar from "@/components/home/LeftRightBar";
+import PhotoIcon from "../../public/images/Marisha.jpg";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
             <span>I&apos;m a full stack web developer.</span>
           </h1>
           <p>
-            I specialize in building exceptional websites. Currently, I&apos;m
+            I specialize in building websites. Currently, I&apos;m
             focused on building all sorts of accessible, user friendly websites
             that lead to the overall success of your project.
           </p>
@@ -23,10 +24,14 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="about-me" className="about-section image-left dark-bg">
-        {/* 				<div className="image">
-					<Image src={about1} alt="Image of a mother lifting her child"></Image>
-				</div> */}
+      <section id="about-me" className="about-section image-right dark-bg">
+        <div className="image">
+          <Image
+            src={PhotoIcon}
+            alt="Image of Marisha"
+            className="hover-effect"
+          ></Image>
+        </div>
         <div className="content">
           <h2>About me</h2>
           <p>
@@ -47,15 +52,24 @@ export default function Home() {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          <ul>
+            <li>JavaScript (ES6+)</li>
+            <li>
+              React
+            </li>
+            <li>
+              Node.js
+            </li>
+            <li>
+              MongoDB
+            </li>
+            <li>
+             HTML
+            </li>
+            <li>
+              CSS
+            </li>
+          </ul>
         </div>
       </section>
       <section id="projects" className="about-section image-right dark-bg">
@@ -73,11 +87,10 @@ export default function Home() {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          <ul className="projects-list">
-          </ul>
+          <ul className="projects-list"></ul>
         </div>
       </section>
-      <section id="contact" className="about-section image-left dark-bg">
+      <section id="contact" className="about-section image-right dark-bg">
         <div className="image"></div>
         <div className="content">
           <h2>Contatc</h2>
