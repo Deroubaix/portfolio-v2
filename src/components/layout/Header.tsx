@@ -1,59 +1,83 @@
 "use client";
 
-import React, { MouseEventHandler, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import PhotoIcon from "../../../public/images/Marisha.jpg";
+import { IconMenu2, IconX, IconHexagonLetterM } from "@tabler/icons-react";
 
 export type HeaderProps = {};
 
 export default function Header(props: HeaderProps) {
   const {} = props;
 
-  const [navEl, setNavEl] = useState<HTMLElement | null>(null);
-  const [menuEl, setMenuEl] = useState<HTMLElement | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  function useClickOutside(
+    callback: () => void,
+    ref: React.RefObject<HTMLElement>
+  ) {
+    const savedCallback = useRef(callback);
 
-  const handleMenuClicked: MouseEventHandler<HTMLAnchorElement> = (e) => {
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+      function handleClickOutside(event: MouseEvent) {
+        if (ref.current && !ref.current.contains(event.target as Node)) {
+          savedCallback.current();
+        }
+      }
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  useClickOutside(() => setIsMenuOpen(false), navRef);
+
+  const handleMenuClicked = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev) => !prev);
   };
-
-  /*  useClickOutside(() => setIsMenuOpen(false), null, [navEl, menuEl]); */
 
   return (
     <>
       <header className="dark-bg">
-        <Link href="/" className="header-logo ndc-logo">
-          <Image src={PhotoIcon} alt=""></Image>
+        <Link href="/" className="header-logo">
+          <IconHexagonLetterM />
         </Link>
         <nav
-          ref={setNavEl}
+          ref={navRef}
           className={`switch-link-underline-direction ${
             isMenuOpen ? "menu-open" : ""
           }`}
-          onClick={handleMenuClicked}
         >
           <Link href="#about-me">
-            {" "}
             <span className="emphasised-text">01. </span>about
           </Link>
+          <Link href="#experience">
+            <span className="emphasised-text">02. </span>experience
+          </Link>
+          <Link href="#work">
+            <span className="emphasised-text">03. </span>work
+          </Link>
           <Link href="#projects">
-            <span className="emphasised-text">02. </span>projects
+            <span className="emphasised-text">04. </span>projects
           </Link>
           <Link href="#contact">
-            <span className="emphasised-text">03. </span>contact
+            <span className="emphasised-text">05. </span>contact
           </Link>
         </nav>
         <Link
-          ref={setMenuEl}
           href="#"
-          className="menu-toggle"
+          className="menu-toggle no-underline"
           onClick={handleMenuClicked}
         >
-          {/*   <IconMenu2 /> */}
+          {isMenuOpen ? <IconX /> : <IconMenu2 />}
         </Link>
       </header>
     </>

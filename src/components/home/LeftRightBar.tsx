@@ -12,14 +12,14 @@ export default function LeftRightBar() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <IconBrandLinkedin size={30}  />
+            <IconBrandLinkedin size={25}  />
           </Link>
           <Link
-            href="https://github.com/your-profile"
+            href="https://github.com/Deroubaix"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <IconBrandGithub size={30}  />
+            <IconBrandGithub size={25}  />
           </Link>
         </div>
         <div className="vertical-line"></div>

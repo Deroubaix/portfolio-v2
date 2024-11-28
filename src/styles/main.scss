@@ -11,12 +11,17 @@
 
 body,
 html {
+  color: $color-primary;
   padding: 0;
   margin: 0;
   height: 100%;
   width: 100%;
   font-size: 15px;
   font-family: $font-body-normal-family;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .switch-link-underline-direction {
@@ -44,7 +49,7 @@ a {
     border-bottom: 1.5px solid $color-accent-1;
     @include transition(width);
   }
-  
+
   &:hover {
     color: $color-accent-1;
   }
@@ -66,6 +71,16 @@ a {
   color: $color-accent-1;
   font-family: $font-display-normal-family;
 }
+.emphasised-number {
+  color: $color-accent-1;
+  font-family: $font-display-normal-family;
+  font-size: $font-size-lg;
+}
+.emphasised-text-normal {
+  color: $color-brand-2;
+  font-family: $font-fira-mono-normal;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -76,10 +91,6 @@ a {
 
 $page_padding-horizontal: $spacing-xxl;
 $page_padding-vertical: calc($spacing-xxl * 1.5);
-
-// Mobile responsiveness
-$page-break_tablet: 38rem;
-$page-break_desktop: 65rem;
 
 * {
   --approx-menu-height: 6rem;
@@ -99,14 +110,23 @@ $page-break_desktop: 65rem;
   color: $color-primary;
 
   section {
-    padding: $page_padding-vertical * 2 $page_padding-horizontal * 3;
-    // Used in a variable in homepage.scss
-    @include responsive(45rem) {
-      padding: $page_padding-vertical * 1.5 $page_padding-horizontal * 1.5;
+    padding: $page_padding-vertical * 1 $page_padding-horizontal * 4
+      $page_padding-vertical * 2;
+
+    @include responsive($breakpoint-tablet) {
+      padding: $page_padding-vertical * 1 $page_padding-horizontal * 3;
     }
 
-    @include responsive(25rem) {
-      padding: $page_padding-vertical $page_padding-horizontal;
+    @include responsive($breakpoint-mobile) {
+      padding: $page_padding-vertical * 1 $page_padding-horizontal * 1;
+    }
+  }
+
+  .image-box {
+    --image-width: 50px;
+    img {
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 
@@ -116,10 +136,11 @@ $page-break_desktop: 65rem;
     font-weight: 500;
   }
   p {
-    margin: 0 0 2em;
+    color: $color-brand-2;
   }
   li {
-    font-family: $font-fira-mono-normal;
+    list-style: none;
+    padding-bottom: 1em;
   }
   .color-slate {
     color: $color-brand-1;
@@ -131,7 +152,6 @@ $page-break_desktop: 65rem;
 
   h1,
   h2,
-  h3,
   h4 {
     font-weight: 600;
     letter-spacing: $font-body-bold-spacing;
@@ -141,7 +161,14 @@ $page-break_desktop: 65rem;
   h2 {
     border-top: 2px solid $color-primary;
     padding-top: 1.5em;
+    padding-bottom: 1em;
     color: $color-brand-1;
+  }
+
+  h3 {
+    font-weight: 600;
+    color: $color-brand-1;
+    margin: 0 0 1em;
   }
 }
 
@@ -151,4 +178,6 @@ $page-break_desktop: 65rem;
 
 @import "./components/header.scss";
 @import "./components/homepage.scss";
-@import "./components/LeftRightBar.scss";
+@import "./components/left-right-bar.scss";
+@import "./components/footer.scss";
+@import "./components/circle-pointer.scss";
