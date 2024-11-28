@@ -200,7 +200,7 @@ export default function Home() {
                     href={project.projectLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-btn"
+                    className="link-btn no-underline"
                   >
                     View website
                   </Link>
