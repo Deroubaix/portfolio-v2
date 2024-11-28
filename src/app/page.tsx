@@ -92,7 +92,7 @@ export default function Home() {
         <div className="image">
           <Image
             src={PhotoIcon}
-            alt="Image of Marisha"
+            alt="Image of Marisha Deroubaix"
             className="hover-effect"
           ></Image>
         </div>
@@ -314,7 +314,7 @@ const workProjects = [
     id: 1,
     alignment: "left",
     imageUrl: PspWebsiteImage,
-    imageAlt: "Image of Possums Sleep Program website",
+    imageAlt: "Image of Possums Sleep Program website built by Marisha Deroubaix",
     projectLink: "https://possumssleepprogram.com/",
     title: "Possums Sleep Program",
     description: `The Possums Sleep Program is a platform designed to help parents and their children achieve better sleep using evidence-based methods. This program empowers families by aligning with a child's natural biology, fostering secure attachment, and supporting mental and emotional wellbeing.`,
@@ -332,7 +332,7 @@ const workProjects = [
     id: 2,
     alignment: "right",
     imageUrl: NdcWebsiteImage,
-    imageAlt: "Image of NDC Institute website",
+    imageAlt: "Image of NDC Institute website built by Marisha Deroubaix",
     projectLink: "https://ndcinstitute.au/",
     title: "NDC Institute",
     description: `The NDC Institute is an innovative platform offering online education and resources in Neuroprotective Developmental Care (NDC), an evidence-based approach to early life care. The website supports health professionals, providers, and educators by delivering cutting-edge knowledge in breastfeeding, sleep, infant development, and perinatal mental health.`,
@@ -350,7 +350,7 @@ const workProjects = [
     id: 3,
     alignment: "left",
     imageUrl: DrPamWebsiteImage,
-    imageAlt: "Image of Dr Pam website",
+    imageAlt: "Image of Dr Pam website built by Marisha Deroubaix",
     projectLink: "https://drpam.au/",
     title: "Possums by Dr Pam",
     description: `Possums by Dr Pam is a comprehensive online platform introducing Neuroprotective Developmental Care (NDC), a groundbreaking, evidence-based approach to supporting parents and their infants. The website provides parents with accessible resources and tools to navigate the challenges of infant care, fostering healthier outcomes for families worldwide.`,
