@@ -44,6 +44,11 @@ export default function Header(props: HeaderProps) {
     setIsMenuOpen((prev) => !prev);
   };
 
+  // Handle link clicks for mobile menu
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
       <header className="dark-bg">
@@ -56,19 +61,19 @@ export default function Header(props: HeaderProps) {
             isMenuOpen ? "menu-open" : ""
           }`}
         >
-          <Link href="#about-me">
+          <Link href="#about-me" onClick={handleLinkClick}>
             <span className="emphasised-text">01. </span>about
           </Link>
-          <Link href="#experience">
+          <Link href="#experience" onClick={handleLinkClick}>
             <span className="emphasised-text">02. </span>experience
           </Link>
-          <Link href="#work">
+          <Link href="#work" onClick={handleLinkClick}>
             <span className="emphasised-text">03. </span>work
           </Link>
-          <Link href="#projects">
+          <Link href="#projects" onClick={handleLinkClick}>
             <span className="emphasised-text">04. </span>projects
           </Link>
-          <Link href="#contact">
+          <Link href="#contact" onClick={handleLinkClick}>
             <span className="emphasised-text">05. </span>contact
           </Link>
         </nav>

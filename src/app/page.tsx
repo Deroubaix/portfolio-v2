@@ -33,10 +33,10 @@ export default function Home() {
             to the overall success of your project.
           </p>
           <div className="button-container">
-            <a href="#contact" className="button secondary medium">
+            <a href="#contact" className="button secondary small">
               Let&apos;s talk
             </a>
-            <a className="button primary medium">Resume</a>
+            <a className="button primary small">Resume</a>
           </div>
         </div>
       </section>
@@ -291,7 +291,6 @@ const experiences = [
       "Collaborated closely with the design and product teams to translate requirements into scalable and maintainable code.",
       "Optimized website performance and SEO to improve user experience and engagement.",
       "Gained experience in building responsive layouts and creating reusable components.",
-      "Transitioned from SQL to PostgreSQL to enhance database scalability, maintainability, and performance.",
     ],
   },
   {

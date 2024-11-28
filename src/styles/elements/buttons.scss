@@ -21,8 +21,7 @@
 @mixin set-button-size($size) {
   @if $size == small {
     font-size: 0.8em;
-    padding: 0.5em 1.25em;
-    height: 40px;
+    padding: 1em 0.5em;
   } @else if $size == medium {
     font-size: 1em;
     padding: 0.8em 1.5em;

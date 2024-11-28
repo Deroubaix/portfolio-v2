@@ -1,7 +1,7 @@
 $breakpoint-mobile: 35rem; // 560px
 $breakpoint-desktop: 80rem; // 1280px
 $breakpoint-tablet: 62rem; // 1000px
-$breakpoint-smaller: 25rem;
+$breakpoint-smaller: 22rem;
 $breakpoint-large-desktop: 90rem;
 
 @mixin responsive($size, $basis: max, $type: width) {

@@ -75,7 +75,7 @@
       .button-container {
         margin: 2em 0 2.5em;
         flex-direction: row;
-        gap: 1rem;
+        gap: 2rem;
         justify-content: space-between;
       }
     }
@@ -438,7 +438,7 @@ $padding-project-description: 1rem;
             position: relative;
             padding: $page_padding-vertical $page_padding-horizontal;
             background: $color-accent-2;
-            justify-items: flex-start;
+            justify-items: flex-start !important;
 
             > * {
               position: relative;
@@ -471,6 +471,7 @@ $padding-project-description: 1rem;
             svg {
               display: none;
             }
+
             .link-btn {
               display: inline-flex;
               margin-top: 1.5rem;
@@ -478,6 +479,7 @@ $padding-project-description: 1rem;
               background: transparent;
               color: $color-accent-1;
               font-family: $font-fira-mono-normal;
+              font-size: 0.8em;
               padding: 0.5rem 1rem;
               border-radius: 4px;
 
@@ -491,8 +493,6 @@ $padding-project-description: 1rem;
               }
             }
           }
-        }
-        @include responsive(35rem) {
         }
       }
     }
@@ -620,7 +620,10 @@ $max-width: 1200px;
       font-family: $font-fira-mono-normal;
       padding: 1rem 2rem;
       border-radius: 4px;
-      font-size: 1rem;
+      @include responsive($breakpoint-mobile) {
+       font-size: 0.8rem;
+      }
+     
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
 
