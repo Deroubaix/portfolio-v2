@@ -286,8 +286,9 @@ const experiences = [
     role: "Fullstack Developer",
     period: "August 2023 - Present",
     responsibilities: [
-      "Developed and maintained key websites, focusing on implementing user-friendly interfaces and ensuring accessibility for both parents and health professionals.",
+      "Developed and maintained key websites, focusing on implementing user-friendly interfaces and ensuring accessibility for users.",
       "Implemented full-stack features, ensuring seamless functionality and integration with APIs and databases.",
+      "Transitioned from SQL to PostgreSQL, learning how to design and manage relational databases for the project needs.",
       "Collaborated closely with the design and product teams to translate requirements into scalable and maintainable code.",
       "Optimized website performance and SEO to improve user experience and engagement.",
       "Gained experience in building responsive layouts and creating reusable components.",
@@ -316,7 +317,7 @@ const workProjects = [
     imageAlt: "Image of Possums Sleep Program website",
     projectLink: "https://possumssleepprogram.com/",
     title: "Possums Sleep Program",
-    description: `The Possums Sleep Program is a transformative platform designed to help parents and their children achieve better sleep using evidence-based methods. This program empowers families by aligning with a child's natural biology, fostering secure attachment, and supporting mental and emotional wellbeing.`,
+    description: `The Possums Sleep Program is a platform designed to help parents and their children achieve better sleep using evidence-based methods. This program empowers families by aligning with a child's natural biology, fostering secure attachment, and supporting mental and emotional wellbeing.`,
     techStack: [
       "Next.js",
       "Sass",
@@ -353,14 +354,7 @@ const workProjects = [
     projectLink: "https://drpam.au/",
     title: "Possums by Dr Pam",
     description: `Possums by Dr Pam is a comprehensive online platform introducing Neuroprotective Developmental Care (NDC), a groundbreaking, evidence-based approach to supporting parents and their infants. The website provides parents with accessible resources and tools to navigate the challenges of infant care, fostering healthier outcomes for families worldwide.`,
-    techStack: [
-      "Next.js",
-      "React",
-      "Prisma",
-      "NestJS",
-      "Sass",
-      "PostgreSQL",
-    ],
+    techStack: ["Next.js", "React", "Prisma", "NestJS", "Sass", "PostgreSQL"],
   },
 ];
 
