@@ -36,7 +36,14 @@ export default function Home() {
             <a href="#contact" className="button secondary small">
               Let&apos;s talk
             </a>
-            <a className="button primary small">Resume</a>
+            <a
+              href="/Marisha-Deroubaix_Resume.pdf"
+              className="button primary small"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </a>
           </div>
         </div>
       </section>
@@ -281,7 +288,7 @@ export default function Home() {
 const experiences = [
   {
     id: 0,
-    companyName: "Dr Pam",
+    companyName: "Possums by Dr Pam",
     companyLink: "https://drpam.au/",
     role: "Fullstack Developer",
     period: "August 2023 - Present",
@@ -314,7 +321,8 @@ const workProjects = [
     id: 1,
     alignment: "left",
     imageUrl: PspWebsiteImage,
-    imageAlt: "Image of Possums Sleep Program website built by Marisha Deroubaix",
+    imageAlt:
+      "Image of Possums Sleep Program website built by Marisha Deroubaix",
     projectLink: "https://possumssleepprogram.com/",
     title: "Possums Sleep Program",
     description: `The Possums Sleep Program is a platform designed to help parents and their children achieve better sleep using evidence-based methods. This program empowers families by aligning with a child's natural biology, fostering secure attachment, and supporting mental and emotional wellbeing.`,

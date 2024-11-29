@@ -178,7 +178,7 @@
   .content-experience {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
 
     .inner {
@@ -417,6 +417,9 @@ $padding-project-description: 1rem;
           flex-direction: column;
           align-items: stretch;
           align-items: flex-start;
+          justify-content: flex-start;
+          align-content: flex-start;
+
           .project-image {
             display: none;
           }
@@ -426,6 +429,10 @@ $padding-project-description: 1rem;
             padding: $page_padding-vertical $page_padding-horizontal;
             background: $color-accent-2;
             justify-items: flex-start;
+            align-items: flex-start;
+            justify-content: flex-start;
+            align-content: flex-start;
+
             > * {
               position: relative;
               z-index: 2;

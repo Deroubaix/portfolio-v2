@@ -25,7 +25,7 @@ export default function Footer() {
           </a>
         </div>
         <Link
-          href="https://github.com/Deroubaix"
+          href="https://github.com/Deroubaix/portfolio-v2"
           target="_blank"
           rel="noopener noreferrer"
         >
