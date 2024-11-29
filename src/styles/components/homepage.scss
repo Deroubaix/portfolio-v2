@@ -416,9 +416,11 @@ $padding-project-description: 1rem;
         @include responsive(75rem) {
           flex-direction: column;
           align-items: stretch;
+          justify-items: flex-start !important;
           align-items: flex-start !important;
           justify-content: flex-start !important;
           align-content: flex-start !important;
+          text-align: left !important;
 
           .project-image {
             display: none;
@@ -432,7 +434,8 @@ $padding-project-description: 1rem;
             align-items: flex-start !important;
             justify-content: flex-start !important;
             align-content: flex-start !important;
-
+            text-align: left !important;
+            
             > * {
               position: relative;
               z-index: 2;

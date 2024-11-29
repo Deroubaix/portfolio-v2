@@ -28,6 +28,10 @@ export default function RootLayout(props: RootLayoutProps) {
         <meta name="description" content="Marisha Portfolio" />
         <meta name="author" content="Marisha Deroubaix" />
         <meta
+          name="google-site-verification"
+          content="HLwoV-gkypaVRCudRCBpKo5AiZdGlw53IeRihZsv4sE"
+        />
+        <meta
           name="keywords"
           content="Full-Stack Developer, Portfolio, Marisha Deroubaix, Web Development, Responsive Design"
         />
@@ -40,7 +44,6 @@ export default function RootLayout(props: RootLayoutProps) {
           content="Explore the portfolio of Marisha Deroubaix, a full-stack developer specializing in building modern, responsive websites."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://marishaderoubaix.vercel.app/" />
         <meta
           property="og:image"
           content="https://marishaderoubaix.vercel.app/Marisha-Deroubaix.jpg"
