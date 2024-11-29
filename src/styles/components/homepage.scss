@@ -416,9 +416,9 @@ $padding-project-description: 1rem;
         @include responsive(75rem) {
           flex-direction: column;
           align-items: stretch;
-          align-items: flex-start;
-          justify-content: flex-start;
-          align-content: flex-start;
+          align-items: flex-start !important;
+          justify-content: flex-start !important;
+          align-content: flex-start !important;
 
           .project-image {
             display: none;
@@ -428,10 +428,10 @@ $padding-project-description: 1rem;
             position: relative;
             padding: $page_padding-vertical $page_padding-horizontal;
             background: $color-accent-2;
-            justify-items: flex-start;
-            align-items: flex-start;
-            justify-content: flex-start;
-            align-content: flex-start;
+            justify-items: flex-start !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
+            align-content: flex-start !important;
 
             > * {
               position: relative;
