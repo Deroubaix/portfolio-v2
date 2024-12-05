@@ -376,17 +376,17 @@ const personalProjects = [
     githubLink: "https://github.com/Deroubaix/clicked-client/",
   },
   {
-    title: "Baixa",
+    title: "Escape Baixa",
     description:
-      "A simple web game. Jump and save yourself from all the obstacles that come your way. If you make contact with an obstacle you will lose a life... and get side effects.",
+      "A simple web game inspired by one of the busiest streets in Lisbon. Jump and save yourself from all the obstacles that come your way. If you make contact with an obstacle, you will lose a life and experience side effects.",
     technologies: ["JavaScript (ES6+)", "HTML", "CSS", "Canvas"],
-    liveLink: "https://gbrlcsgn.github.io/Project-One/",
+    liveLink: "https://escape-baixa.vercel.app/",
     githubLink: "https://github.com/Deroubaix/Project-One/",
   },
   {
     title: "Rick and Morty API",
     description:
-      "The Rick and Morty API renders a responsive website with all the characters and episodes from the show Rick and Morty. Explore, see, and search your favorite characters, episodes, and cast members.",
+      "The Rick and Morty API renders a website with all the characters and episodes from the show Rick and Morty. Explore, see, and search your favorite characters, episodes, and cast members.",
     technologies: ["JavaScript (ES6+)", "React", "API", "Bootstrap"],
     liveLink: "https://rickandmortyproject-api.netlify.app/",
     githubLink: "https://github.com/Deroubaix/project-rick/",
