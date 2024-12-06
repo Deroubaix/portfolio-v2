@@ -37,7 +37,7 @@ export default function Home() {
               Let&apos;s talk
             </a>
             <a
-              href="/Marisha-Deroubaix_Resume.pdf"
+              href="/CV_Marisha-Deroubaix.pdf"
               className="button primary small"
               target="_blank"
               rel="noopener noreferrer"
@@ -77,7 +77,7 @@ export default function Home() {
             start-up. My main focus these days is building accessible websites
             for parents and health professionals at{" "}
             <Link
-              href={"https://drpam.au/"}
+              href={"https://possumsndc.com/"}
               target="_blank"
               rel="noopener noreferrer"
               className="emphasised-text"
@@ -289,7 +289,7 @@ const experiences = [
   {
     id: 0,
     companyName: "Possums by Dr Pam",
-    companyLink: "https://drpam.au/",
+    companyLink: "https://possumsndc.com/",
     role: "Fullstack Developer",
     period: "August 2023 - Present",
     responsibilities: [
@@ -359,7 +359,7 @@ const workProjects = [
     alignment: "left",
     imageUrl: DrPamWebsiteImage,
     imageAlt: "Image of Dr Pam website built by Marisha Deroubaix",
-    projectLink: "https://drpam.au/",
+    projectLink: "https://possumsndc.com/",
     title: "Possums by Dr Pam",
     description: `Possums by Dr Pam is a comprehensive online platform introducing Neuroprotective Developmental Care (NDC), a groundbreaking, evidence-based approach to supporting parents and their infants. The website provides parents with accessible resources and tools to navigate the challenges of infant care, fostering healthier outcomes for families worldwide.`,
     techStack: ["Next.js", "React", "Prisma", "NestJS", "Sass", "PostgreSQL"],
@@ -380,7 +380,7 @@ const personalProjects = [
     description:
       "A simple web game inspired by one of the busiest streets in Lisbon. Jump and save yourself from all the obstacles that come your way. If you make contact with an obstacle, you will lose a life and experience side effects.",
     technologies: ["JavaScript (ES6+)", "HTML", "CSS", "Canvas"],
-    liveLink: "https://escape-baixa.vercel.app/",
+    liveLink: "https://escapebaixa.vercel.app/",
     githubLink: "https://github.com/Deroubaix/Project-One/",
   },
   {
