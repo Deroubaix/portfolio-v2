@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LeftRightBar from "@/components/home/LeftRightBar";
@@ -7,6 +7,7 @@ import {
   IconExternalLink,
   IconBrandGithub,
   IconFolder,
+  IconChevronRight,
 } from "@tabler/icons-react";
 import PhotoIcon from "../../public/images/Marisha.jpg";
 import PspWebsiteImage from "../../public/images/possums-sleep-program-website.png";
@@ -15,6 +16,19 @@ import DrPamWebsiteImage from "../../public/images/drpam-website.png";
 
 export default function Home() {
   const [activePanel, setActivePanel] = useState(0);
+  const highlightRef = useRef(null);
+
+  useEffect(() => {
+    const activeButton = document.querySelector(
+      ".tablist .active"
+    ) as HTMLElement | null;
+    const highlight = highlightRef.current as HTMLElement | null;
+
+    if (activeButton && highlight) {
+      highlight.style.width = `${activeButton.offsetWidth}px`;
+      highlight.style.transform = `translateX(${activeButton.offsetLeft}px)`;
+    }
+  }, [activePanel]);
 
   return (
     <div className="home-page">
@@ -109,6 +123,9 @@ export default function Home() {
           <h2>
             <span className="emphasised-number">02. </span>Experience
           </h2>
+          <span className="scroll-indicator">
+            Scroll to view more <IconChevronRight />
+          </span>
           <div className="inner">
             <div className="tablist">
               {experiences.map((exp) => (
@@ -120,6 +137,7 @@ export default function Home() {
                   <span>{exp.companyName}</span>
                 </button>
               ))}
+              <div className="tab-highlight" ref={highlightRef}></div>
             </div>
             <div className="panel-container">
               {experiences.map((exp) =>
@@ -303,6 +321,19 @@ const experiences = [
   },
   {
     id: 1,
+    companyName: "Delância",
+    companyLink: "https://delancia.com/",
+    role: "Freelance Developer",
+    period: "December 2024 - March 2025",
+    responsibilities: [
+      "Designed and developed a fully responsive website tailored to the client’s needs.",
+      "Implemented a modern UI/UX with optimized performance and accessibility.",
+      "Integrated dynamic features and ensured seamless functionality across devices.",
+      "Worked independently to deliver the project while managing client expectations.",
+    ],
+  },
+  {
+    id: 2,
     companyName: "Ironhack",
     companyLink: "https://www.ironhack.com/pt-en/lisbon",
     role: "Fullstack Developer",
@@ -363,6 +394,16 @@ const workProjects = [
     title: "Possums by Dr Pam",
     description: `Possums by Dr Pam is a comprehensive online platform introducing Neuroprotective Developmental Care (NDC), a groundbreaking, evidence-based approach to supporting parents and their infants. The website provides parents with accessible resources and tools to navigate the challenges of infant care, fostering healthier outcomes for families worldwide.`,
     techStack: ["Next.js", "React", "Prisma", "NestJS", "Sass", "PostgreSQL"],
+  },
+  {
+    id: 4,
+    alignment: "right", 
+    imageUrl: "/images/delancia.avif",
+    imageAlt: "Image of Delância website built by Marisha Deroubaix",
+    projectLink: "https://delancia.com/",
+    title: "Delância",
+    description: `Delância is a modern, high-performance eCommerce website built with Next.js, featuring dynamic content powered by Shopify’s backend. I developed a fully customized frontend, integrating Shopify’s GraphQL API to fetch and display real-time product data, ensuring a smooth and engaging shopping experience.`,
+    techStack: ["Next.js", "Sass", "Shopify", "GraphQL", "Framer Motion"],
   },
 ];
 

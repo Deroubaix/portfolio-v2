@@ -175,11 +175,16 @@
 }
 
 #experience {
+  min-height: 100vh;
   .content-experience {
     display: flex;
     flex-direction: column;
     width: 80%;
     margin: 0 auto;
+
+    .scroll-indicator {
+      display: none;
+    }
 
     .inner {
       display: grid;
@@ -187,6 +192,10 @@
       gap: 3rem;
       width: 100%;
       position: relative;
+
+      .tab-highlight {
+        display: none;
+      }
 
       .tablist {
         display: flex;
@@ -200,7 +209,7 @@
           position: absolute;
           left: 0;
           top: 0;
-          height: calc(3 * 2rem);
+          height: calc(3 * 3rem);
           width: 2px;
           background-color: $color-brand-2;
         }
@@ -220,7 +229,6 @@
 
           &.active {
             color: $color-accent-1;
-            background-color: $color-accent-2;
 
             &::before {
               content: "";
@@ -273,29 +281,84 @@
     }
 
     @include responsive(45rem) {
+      .scroll-indicator {
+        display: flex;
+        align-items: center;
+        font-size: 0.8rem;
+        color: rgba($color-brand-2, 0.4);
+        justify-content: flex-start;
+        width: 100%;
+        padding-bottom: $page_padding-vertical * 0.2;
+        svg {
+          height: 16px;
+          width: 16px;
+        }
+      }
       .inner {
         grid-template-columns: 1fr;
 
         .tablist {
+          display: flex;
           flex-direction: row;
           overflow-x: auto;
-          gap: 3.5rem;
+          gap: 3rem;
+          padding-bottom: 5px;
+          position: relative;
+          white-space: nowrap;
+          scroll-behavior: smooth;
 
           &::before {
-            content: none;
+            content: "";
+            display: none;
+          }
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: calc(100% + 80px);
+            height: 3px;
+            background-color: rgba($color-accent-1, 0.3);
           }
 
           button {
             width: auto;
-            white-space: nowrap;
-            padding: 0;
+            padding: 0.8em 0;
+            font-size: $font-size-md;
+            background: none;
+            border: none;
+            color: $color-brand-2;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.25s ease-in-out;
+
+            &::before {
+              content: "";
+              display: none;
+            }
 
             &.active {
-              &::before {
-                content: none;
-              }
+              color: $color-accent-1;
+              font-weight: 600;
+            }
+
+            &:hover {
+              color: $color-accent-1;
             }
           }
+        }
+        .tab-highlight {
+          position: absolute;
+          bottom: 0;
+          height: 3px;
+          background-color: $color-accent-1;
+          transition: transform 0.25s ease-in-out, width 0.25s ease-in-out;
+          display: block;
         }
       }
     }
@@ -324,7 +387,9 @@ $padding-project-description: 1rem;
           .project-content {
             text-align: right;
             order: 2;
-
+            .project-description {
+              border-right: 1px solid $color-grey;
+            }
             .tech-list {
               justify-content: flex-end;
 
@@ -343,6 +408,9 @@ $padding-project-description: 1rem;
           .project-content {
             text-align: left;
             order: 1;
+            .project-description {
+              border-left: 1px solid $color-grey;
+            }
           }
 
           .project-image {
@@ -362,10 +430,9 @@ $padding-project-description: 1rem;
           }
 
           .project-description {
-            padding: $padding-project-description;
-            background: $color-accent-2;
+            padding: $padding-project-description $padding-project-description *
+              2;
             z-index: 1;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
           }
 
           .tech-list {
@@ -395,7 +462,7 @@ $padding-project-description: 1rem;
           a {
             display: block;
             position: relative;
-            @include overlay($opacity: 0.7);
+            @include overlay($opacity: 0.6);
 
             &:hover {
               @include overlay($opacity: 0);
@@ -406,6 +473,7 @@ $padding-project-description: 1rem;
             width: 100%;
             height: auto;
             display: block;
+            border: 1px solid $color-accent-1;
           }
         }
 
@@ -425,17 +493,26 @@ $padding-project-description: 1rem;
           .project-image {
             display: none;
           }
+          &.project-right,
+          &.project-left {
+            .project-content {
+              .project-description {
+                border-left: none;
+                border-right: none;
+              }
+            }
+          }
 
           .project-content {
             position: relative;
             padding: $page_padding-vertical $page_padding-horizontal;
-            background: $color-accent-2;
+            border: 2px solid $color-accent-1;
             justify-items: flex-start !important;
             align-items: flex-start !important;
             justify-content: flex-start !important;
             align-content: flex-start !important;
             text-align: left !important;
-            
+
             > * {
               position: relative;
               z-index: 2;
@@ -449,6 +526,7 @@ $padding-project-description: 1rem;
             .project-description {
               background: none;
               box-shadow: none;
+              border-left: none;
               padding: 0;
 
               p {
@@ -502,7 +580,11 @@ $max-width: 1200px;
     max-width: $max-width;
     margin: 0 auto;
     text-align: center;
-
+    @include responsive(48rem) {
+      h2 {
+        text-align: left;
+      }
+    }
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -524,7 +606,7 @@ $max-width: 1200px;
       flex-direction: column;
       justify-content: space-between;
       padding: $page_padding-vertical $page_padding-horizontal;
-      background-color: $color-accent-2;
+      border: 2px solid $color-accent-1;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       text-align: left;

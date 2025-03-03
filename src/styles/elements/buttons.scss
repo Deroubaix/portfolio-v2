@@ -45,9 +45,9 @@
 
   &.primary {
     @include set-button-color(
-      linear-gradient(107.21deg, #f57dff 24.43%, #2954a3 68.95%),
+      linear-gradient(107.21deg, #78c091 24.43%, #424242 68.95%),
       linear-gradient(94.92deg, rgba(255, 255, 255, 0.6) 4.31%, #000000 88.77%),
-      linear-gradient(107.21deg, #e573ff 24.43%, #1c3a69 68.95%)
+      linear-gradient(107.21deg, #6fae8c 24.43%, #373737 68.95%)
     );
   }
 
