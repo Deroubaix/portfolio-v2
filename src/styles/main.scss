@@ -117,15 +117,15 @@ $page_padding-vertical: calc($spacing-xxl * 1.5);
   color: $color-primary;
 
   section {
-    padding: $page_padding-vertical * 1 $page_padding-horizontal * 4
+    padding: $page_padding-vertical * 0.5 $page_padding-horizontal * 4
       $page_padding-vertical * 2;
 
     @include responsive($breakpoint-tablet) {
-      padding: $page_padding-vertical * 1 $page_padding-horizontal * 3;
+      padding: $page_padding-vertical  * 0.5 $page_padding-horizontal * 3;
     }
 
     @include responsive($breakpoint-mobile) {
-      padding: $page_padding-vertical * 1 $page_padding-horizontal * 1;
+      padding: $page_padding-vertical  * 0.2 $page_padding-horizontal $page_padding-vertical  * 0.5;
     }
   }
 

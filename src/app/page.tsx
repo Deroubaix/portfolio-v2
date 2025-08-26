@@ -10,7 +10,7 @@ import {
   IconChevronRight,
 } from "@tabler/icons-react";
 import PhotoIcon from "../../public/images/Marisha.jpg";
-import PspWebsiteImage from "../../public/images/possums-sleep-program-website.png";
+import PspWebsiteImage from "../../public/images/possums-sleep-program-website.webp";
 import NdcWebsiteImage from "../../public/images/ndc-institute-website.png";
 import DrPamWebsiteImage from "../../public/images/drpam-website.png";
 
@@ -397,7 +397,7 @@ const workProjects = [
   },
   {
     id: 4,
-    alignment: "right", 
+    alignment: "right",
     imageUrl: "/images/delancia.avif",
     imageAlt: "Image of Delância website built by Marisha Deroubaix",
     projectLink: "https://delancia.com/",

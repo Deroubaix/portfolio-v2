@@ -94,7 +94,7 @@
   // ------------------------------------------------------------------
 
   #landing-section + section {
-    min-height: 100dvh;
+    min-height: unset;
   }
 }
 
@@ -175,7 +175,7 @@
 }
 
 #experience {
-  min-height: 100vh;
+  min-height: unset;
   .content-experience {
     display: flex;
     flex-direction: column;
@@ -473,7 +473,6 @@ $padding-project-description: 1rem;
             width: 100%;
             height: auto;
             display: block;
-            border: 1px solid $color-accent-1;
           }
         }
 
