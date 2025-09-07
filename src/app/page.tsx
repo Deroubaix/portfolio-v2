@@ -9,7 +9,7 @@ import {
   IconFolder,
   IconChevronRight,
 } from "@tabler/icons-react";
-import PhotoIcon from "../../public/images/Marisha.jpg";
+import PhotoIcon from "../../public/images/marisha-photo.jpeg";
 import PspWebsiteImage from "../../public/images/possums-sleep-program-website.webp";
 import NdcWebsiteImage from "../../public/images/ndc-institute-website.png";
 import DrPamWebsiteImage from "../../public/images/drpam-website.png";
@@ -34,25 +34,27 @@ export default function Home() {
     <div className="home-page">
       <section id="landing-section" className="dark-bg icon-bg">
         <div className="content">
-          <p>
+          <p className="intro">
             <span className="emphasised-text">Hi, my name is</span>
           </p>
-          <h1 className="color-slate">Marisha Deroubaix.</h1>
-          <h1>
-            <span>I&apos;m a full stack web developer.</span>
+          <h1 className="color-slate">
+            Marisha Deroubaix. <br />{" "}
+            <span className="second-heading">
+              I&apos;m a full stack web developer.
+            </span>{" "}
           </h1>
-          <p>
+          <p className="large-paragraph">
             I specialize in building websites. Currently, I&apos;m focused on
             building all sorts of accessible, user friendly websites that lead
             to the overall success of your project.
           </p>
           <div className="button-container">
-            <a href="#contact" className="button secondary small">
-              Let&apos;s talk
+            <a href="#contact" className="button secondary medium">
+              <span>Let&apos;s talk</span>
             </a>
             <a
               href="/CV_Marisha-Deroubaix.pdf"
-              className="button primary small"
+              className="button primary medium outline reverse"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -291,7 +293,7 @@ export default function Home() {
 
           <Link
             href="mailto:deroubaix.marisha@gmail.com"
-            className="contact-button no-underline"
+            className="button primary dark solid reverse outline medium"
           >
             Say Hello
           </Link>

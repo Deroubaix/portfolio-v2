@@ -1,0 +1,126 @@
+@use "sass:color";
+
+@mixin set-button-color(
+  $background-gradient,
+  $border-gradient,
+  $hover-gradient
+) {
+  background: $background-gradient;
+  border-radius: 30px;
+  border: 1.53px solid transparent;
+  border-image-source: $border-gradient 1;
+  color: $color-text-light;
+
+  &:hover {
+    background: $hover-gradient;
+    border-image-source: $border-gradient 1;
+    color: $color-text-light;
+  }
+}
+
+@mixin set-button-size($size) {
+  @if $size == small {
+    font-size: 0.8em;
+    padding: 1em 0.5em;
+  } @else if $size == medium {
+    font-size: 1em;
+    padding: 1em 1.5em;
+    height: 50px;
+  } @else if $size == large {
+    font-size: 1.2em;
+    padding: 1em 3em;
+    height: 60px;
+  } @else {
+    @error "Unknown size '#{$size}'. Expecting 'small', 'medium', or 'large'.";
+  }
+}
+
+.button {
+  font-family: $font-body-normal-family;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 0.5rem;
+  position: relative;
+  isolation: isolate;
+  color: $color-text-light;
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.primary {
+    background-color: $color-accent-1;
+    color: $color-text-dark;
+  }
+
+  &.reverse:hover {
+    color: $color-accent-1;
+    background-color: transparent;
+    box-shadow: none;
+    transform: none;
+  }
+
+  &.outline {
+    border: 1px solid $color-accent-1;
+  }
+
+  &.outline:hover {
+    border: 1px solid $color-accent-1;
+  }
+
+  &.secondary {
+    overflow: hidden;
+    --bg-color-1: rgba(124, 101, 161, 0);
+    --bg-color-2: rgba(124, 101, 161, 0.38);
+    --bg-stop-1: 70%;
+    --bg-stop-2: 120%;
+    background: radial-gradient(5rem 60% at 100% 50%, #ffffff80, #292931 90%);
+    transition-duration: 0.45s;
+    transition-property: --bg-color-1, --bg-color-2, --bg-stop-1, --bg-stop-2;
+    color: $color-text-light;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      background: $color-primary;
+      border-radius: 0.5rem;
+      pointer-events: none;
+      z-index: 0;
+    }
+  }
+
+  &.small {
+    @include set-button-size(small);
+  }
+
+  &.medium {
+    @include set-button-size(medium);
+  }
+
+  &.large {
+    @include set-button-size(large);
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+.button.secondary:hover,
+.button.secondary:focus-visible {
+z-index: 2;
+  background: radial-gradient(
+    5rem 60% at 100% 50%,
+    rgba(255,255,255,.65),
+    color.scale(#292931, $lightness: 8%) 90%
+  );
+  box-shadow: 0 8px 20px rgba(0,0,0,.18);
+  outline: none;
+}

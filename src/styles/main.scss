@@ -5,7 +5,6 @@
 @import "./abstracts/colors.scss";
 @import "./abstracts/mixins.scss";
 @import "./elements/headings.scss";
-@import "./elements/buttons.scss";
 @import "./utilities/colors.scss";
 @import "./utilities/text.scss";
 
@@ -84,8 +83,14 @@ a {
   font-size: $font-size-lg;
 }
 .emphasised-text-normal {
-  color: $color-brand-2;
+  color: $color-brand-1;
   font-family: $font-fira-mono-normal;
+}
+
+.large-paragraph {
+  font-size: 18px;
+  max-width: 36rem;
+  margin-top: 0;
 }
 
 * {
@@ -140,10 +145,10 @@ $page_padding-vertical: calc($spacing-xxl * 1.5);
   p,
   li {
     line-height: 1.8rem;
-    font-weight: 500;
+    font-weight: 300;
   }
   p {
-    color: $color-brand-2;
+    color: $color-white;
   }
   li {
     list-style: none;
@@ -188,3 +193,5 @@ $page_padding-vertical: calc($spacing-xxl * 1.5);
 @import "./components/left-right-bar.scss";
 @import "./components/footer.scss";
 @import "./components/circle-pointer.scss";
+@import "./components/general.scss";
+@import "./components/buttons.scss";

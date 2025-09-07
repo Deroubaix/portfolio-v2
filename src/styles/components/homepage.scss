@@ -28,17 +28,35 @@
 
     margin-top: calc(($page_padding-vertical + 3rem) * -1);
 
-    h1 {
-      margin: 0.5em;
-    }
-    p {
-      margin: 2em 3.5em 2.5em;
-    }
     .content {
       max-width: 1000px;
       width: 100%;
       padding: 0 $page_padding-horizontal;
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      @include responsive($breakpoint-mobile) {
+        align-items: flex-start;
+      }
+
+      .intro {
+        margin-bottom: 0;
+      }
+
+      h1 {
+        margin: 0.5em;
+        line-height: 1.5;
+
+        @include responsive($breakpoint-mobile) {
+          line-height: 1.2;
+        }
+      }
+
+      .second-heading {
+        color: $color-brand-2;
+      }
     }
 
     .button-container {
@@ -46,6 +64,7 @@
       gap: 3rem;
       align-items: center;
       justify-content: center;
+      margin: 2rem 0;
       a {
         font-family: $font-fira-mono-normal;
       }
@@ -255,6 +274,10 @@
           display: block;
         }
 
+        > p {
+          color: $color-brand-2;
+        }
+
         ul {
           width: 100%;
           font-family: $font-body-normal-family;
@@ -263,6 +286,7 @@
           li {
             position: relative;
             padding-left: 2rem;
+            color: $color-white;
             &:before {
               content: "▹";
               position: absolute;
@@ -462,7 +486,7 @@ $padding-project-description: 1rem;
           a {
             display: block;
             position: relative;
-            @include overlay($opacity: 0.6);
+            @include overlay($opacity: 0.5);
 
             &:hover {
               @include overlay($opacity: 0);
@@ -689,25 +713,6 @@ $max-width: 1200px;
     p {
       max-width: 750px;
       margin-bottom: 5rem;
-    }
-    a {
-      border: 2px solid $color-accent-1;
-      background: transparent;
-      color: $color-accent-1;
-      font-family: $font-fira-mono-normal;
-      padding: 1rem 2rem;
-      border-radius: 4px;
-      @include responsive($breakpoint-mobile) {
-        font-size: 0.8rem;
-      }
-
-      cursor: pointer;
-      transition: background 0.3s ease, color 0.3s ease;
-
-      &:hover {
-        background: $color-accent-1;
-        color: $color-primary;
-      }
     }
   }
 }
