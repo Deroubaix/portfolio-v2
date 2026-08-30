@@ -50,7 +50,7 @@
 }
 
 @mixin hover-effect {
-  --color: #ff9b26;
+  --color: #64ffda;
   --border: 4px;
   --offset: 15px;
   --gap: 5px;
@@ -76,7 +76,7 @@
   }
 }
 
-@mixin overlay($color: rgba(255, 155, 38), $opacity: 0.6) {
+@mixin overlay($color: rgba(100, 255, 218), $opacity: 0.6) {
 	&::before {
 		content: '';
 		position: absolute;
