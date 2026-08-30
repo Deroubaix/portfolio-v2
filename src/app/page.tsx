@@ -10,9 +10,8 @@ import {
   IconChevronRight,
 } from "@tabler/icons-react";
 import PhotoIcon from "../../public/images/marisha-photo.jpeg";
-import PspWebsiteImage from "../../public/images/possums-sleep-program-website.webp";
+import PossumsWebsiteImage from "../../public/images/possums-website.webp";
 import NdcWebsiteImage from "../../public/images/ndc-institute-website.png";
-import DrPamWebsiteImage from "../../public/images/drpam-website.png";
 
 export default function Home() {
   const [activePanel, setActivePanel] = useState(0);
@@ -93,12 +92,12 @@ export default function Home() {
             start-up. My main focus these days is building accessible websites
             for parents and health professionals at{" "}
             <Link
-              href={"https://possumsndc.com/"}
+              href={"https://possums.org/"}
               target="_blank"
               rel="noopener noreferrer"
               className="emphasised-text"
             >
-              Possums by Dr Pam
+              Possums
             </Link>
             .
           </p>
@@ -308,12 +307,12 @@ export default function Home() {
 const experiences = [
   {
     id: 0,
-    companyName: "Possums by Dr Pam",
-    companyLink: "https://possumsndc.com/",
+    companyName: "Possums",
+    companyLink: "https://possums.org/",
     role: "Fullstack Developer",
     period: "August 2023 - Present",
     responsibilities: [
-      "Developed and maintained key websites, focusing on implementing user-friendly interfaces and ensuring accessibility for users.",
+      "Developed and maintained the company's web platform, focusing on implementing user-friendly interfaces and ensuring accessibility for users.",
       "Implemented full-stack features, ensuring seamless functionality and integration with APIs and databases.",
       "Transitioned from SQL to PostgreSQL, learning how to design and manage relational databases for the project needs.",
       "Collaborated closely with the design and product teams to translate requirements into scalable and maintainable code.",
@@ -326,7 +325,7 @@ const experiences = [
     companyName: "Delância",
     companyLink: "https://delancia.com/",
     role: "Freelance Developer",
-    period: "December 2024 - March 2025",
+    period: "December 2024 - Present",
     responsibilities: [
       "Designed and developed a fully responsive website tailored to the client’s needs.",
       "Implemented a modern UI/UX with optimized performance and accessibility.",
@@ -353,12 +352,11 @@ const workProjects = [
   {
     id: 1,
     alignment: "left",
-    imageUrl: PspWebsiteImage,
-    imageAlt:
-      "Image of Possums Sleep Program website built by Marisha Deroubaix",
-    projectLink: "https://possumssleepprogram.com/",
-    title: "Possums Sleep Program",
-    description: `The Possums Sleep Program is a platform designed to help parents and their children achieve better sleep using evidence-based methods. This program empowers families by aligning with a child's natural biology, fostering secure attachment, and supporting mental and emotional wellbeing.`,
+    imageUrl: PossumsWebsiteImage,
+    imageAlt: "Image of Possums website built by Marisha Deroubaix",
+    projectLink: "https://possums.org/",
+    title: "Possums",
+    description: `Possums helps parents and health professionals resolve sleep, breastfeeding and unsettled baby challenges through Neuroprotective Developmental Care (NDC), an evidence-based approach that works with a child's natural biology rather than against it. Several previously separate websites were consolidated into this single platform, which now hosts all the parent programs, free resources and a practitioner directory.`,
     techStack: [
       "Next.js",
       "Sass",
@@ -388,19 +386,9 @@ const workProjects = [
     ],
   },
   {
-    id: 3,
-    alignment: "left",
-    imageUrl: DrPamWebsiteImage,
-    imageAlt: "Image of Dr Pam website built by Marisha Deroubaix",
-    projectLink: "https://possumsndc.com/",
-    title: "Possums by Dr Pam",
-    description: `Possums by Dr Pam is a comprehensive online platform introducing Neuroprotective Developmental Care (NDC), a groundbreaking, evidence-based approach to supporting parents and their infants. The website provides parents with accessible resources and tools to navigate the challenges of infant care, fostering healthier outcomes for families worldwide.`,
-    techStack: ["Next.js", "React", "Prisma", "NestJS", "Sass", "PostgreSQL"],
-  },
-  {
     id: 4,
-    alignment: "right",
-    imageUrl: "/images/delancia.avif",
+    alignment: "left",
+    imageUrl: "/images/delancia.webp",
     imageAlt: "Image of Delância website built by Marisha Deroubaix",
     projectLink: "https://delancia.com/",
     title: "Delância",
