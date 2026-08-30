@@ -37,8 +37,10 @@
 
 .button {
   font-family: $font-body-normal-family;
-  font-weight: 400;
+  font-weight: 500;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-sm);
   display: inline-block;
   cursor: pointer;
   width: 150px;

@@ -421,6 +421,18 @@ $padding-project-description: 1rem;
                 justify-content: flex-start;
               }
             }
+
+            // The description's own side padding insets its text from the
+            // border. Match it on the siblings so everything lines up.
+            @include responsive(75rem, min) {
+              // h3 is a block inside an inline <a>, so it must be padded
+              // directly — padding on the anchor would not indent it.
+              h3,
+              > .tech-list,
+              > a.icon-only {
+                padding-right: $padding-project-description * 2;
+              }
+            }
           }
 
           .project-image {
@@ -434,6 +446,14 @@ $padding-project-description: 1rem;
             order: 1;
             .project-description {
               border-left: 1px solid $color-grey;
+            }
+
+            @include responsive(75rem, min) {
+              h3,
+              > .tech-list,
+              > a.icon-only {
+                padding-left: $padding-project-description * 2;
+              }
             }
           }
 
@@ -457,6 +477,12 @@ $padding-project-description: 1rem;
             padding: $padding-project-description $padding-project-description *
               2;
             z-index: 1;
+
+            // The box already supplies its own padding; the paragraph's
+            // default 1em margin doubles it and overshoots the border.
+            p {
+              margin: 0;
+            }
           }
 
           .tech-list {
