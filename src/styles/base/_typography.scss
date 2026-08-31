@@ -29,6 +29,13 @@ ol {
   list-style: none;
 }
 
+// dl/dd carry a default indent that fights every grid they appear in.
+dl,
+dt,
+dd {
+  margin: 0;
+}
+
 // Shared label treatment — meta rows, nav, tech lists, figure captions.
 .label {
   @include label;

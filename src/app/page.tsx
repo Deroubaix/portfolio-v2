@@ -1,4 +1,5 @@
 import React from "react";
+import TopBar from "../components/layout/TopBar";
 import Hero from "../components/sections/Hero";
 import Work from "../components/sections/Work";
 import About from "../components/sections/About";
@@ -9,7 +10,8 @@ import Footer from "../components/layout/Footer";
 export default function Home() {
   return (
     <>
-      <main>
+      <TopBar />
+      <main className="page">
         <Hero />
         <Work />
         <About />

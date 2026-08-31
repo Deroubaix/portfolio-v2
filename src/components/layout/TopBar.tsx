@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const SECTIONS = [
   { id: "work", label: "Work" },
@@ -57,33 +57,12 @@ function useActiveSection() {
   return active;
 }
 
-function useScrollProgress() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      if (ref.current) {
-        ref.current.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
-      }
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return ref;
-}
-
 export default function TopBar() {
   const time = useLisbonTime();
   const active = useActiveSection();
-  const progressRef = useScrollProgress();
 
   return (
-    <>
-      <div className="progress" ref={progressRef} aria-hidden="true" />
-      <header className="top-bar">
+    <header className="top-bar">
       <a href="#top" className="top-bar__mark">
         M. Deroubaix
       </a>
@@ -106,7 +85,6 @@ export default function TopBar() {
         {/* suppressHydrationWarning: the clock is client-only by design */}
         <span suppressHydrationWarning>{time ?? "--:--"} LIS</span>
       </p>
-      </header>
-    </>
+    </header>
   );
 }

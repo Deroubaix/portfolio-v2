@@ -1,0 +1,364 @@
+// Case study
+// -----------------------------------------------------------------------------
+// One route per study. The tab bar navigates between them rather than swapping
+// content client-side, so each study has a real URL that can be shared.
+
+@use "../abstracts" as *;
+
+.cs {
+  // --- Tab bar -------------------------------------------------------------
+  &__tabs {
+    display: flex;
+    overflow-x: auto;
+    border-bottom: 2px solid $color-ink;
+    @include hide-scrollbar;
+  }
+
+  &__tab {
+    display: flex;
+    align-items: center;
+    gap: $space-2xs;
+    padding: 16px $gutter;
+    @include label($color-text-muted, 11.5px);
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    border-right: 1px solid $color-rule;
+    transition: background 0.25s ease, color 0.25s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: $color-surface-inverse;
+      color: $color-text-inverse;
+    }
+
+    &.is-active {
+      color: $color-text;
+
+      // Active marker, as in the design.
+      &::after {
+        content: "▮";
+        color: $color-accent;
+      }
+    }
+  }
+
+  &__tab-n {
+    color: $color-text-subtle;
+  }
+
+  // --- Opening -------------------------------------------------------------
+  &__intro {
+    padding: clamp(30px, 5vw, 66px) $gutter;
+    border-bottom: 2px solid $color-ink;
+  }
+
+  &__kicker {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: $space-sm;
+    @include label($color-text-muted, 11.5px);
+    letter-spacing: 0.16em;
+    margin-bottom: $space-md;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(38px, 7vw, 104px);
+    font-weight: $weight-black;
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    text-transform: none;
+
+    // Optical alignment, as on the home page.
+    margin-inline-start: -0.045em;
+
+    span {
+      display: block;
+    }
+  }
+
+  &__lede {
+    margin-top: $space-lg;
+    max-width: 62ch;
+    font-size: clamp(16px, 1.4vw, 19px);
+    line-height: 1.65;
+    color: $color-grey-900;
+  }
+
+  &__meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    margin-top: $space-xl;
+    border-top: 1px solid $color-rule;
+  }
+
+  &__meta-item {
+    padding: $space-md $space-md $space-md 0;
+    border-right: 1px solid $color-rule;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &__meta-k {
+    @include label($color-text-subtle, 11px);
+    letter-spacing: 0.14em;
+    margin-bottom: 2px;
+  }
+
+  &__meta-v {
+    font-size: 15px;
+  }
+
+  // --- Screenshot ----------------------------------------------------------
+  &__shot {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: $color-ink;
+    border-bottom: 2px solid $color-ink;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // --- Numbered blocks -----------------------------------------------------
+  &__block {
+    padding: clamp(30px, 5vw, 66px) $gutter;
+    border-bottom: 2px solid $color-ink;
+  }
+
+  &__split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: clamp($space-lg, 4vw, $space-3xl);
+  }
+
+  &__h2 {
+    @include label($color-text-muted, 11.5px);
+    letter-spacing: 0.16em;
+    font-family: $font-mono;
+    font-weight: $weight-regular;
+    margin-bottom: $space-md;
+  }
+
+  // Larger opener used where the design sets a display heading plus a caption.
+  &__h2--display {
+    font-family: $font-display;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: $weight-bold;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: $color-text;
+  }
+
+  &__caption {
+    @include label($color-text-subtle, 11px);
+    letter-spacing: 0.14em;
+    margin-top: $space-2xs;
+    margin-bottom: $space-lg;
+  }
+
+  &__prose p {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: $color-grey-900;
+    max-width: 60ch;
+
+    + p {
+      margin-top: 18px;
+    }
+  }
+
+  // Pull-quote style callout: "The real constraint", "Trade-off".
+  &__callout {
+    margin-top: $space-lg;
+    padding: $space-md;
+    background: rgba($color-ink, 0.04);
+    border-left: 2px solid $color-accent;
+  }
+
+  &__callout-k {
+    @include label($color-accent, 11px);
+    letter-spacing: 0.14em;
+    margin-bottom: $space-3xs;
+  }
+
+  &__callout-v {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  // --- Lists ---------------------------------------------------------------
+  &__arrows {
+    display: grid;
+    gap: $space-sm;
+    margin-top: $space-md;
+  }
+
+  &__arrow {
+    display: grid;
+    grid-template-columns: 1.6rem 1fr;
+    font-size: 15px;
+    line-height: 1.7;
+    color: $color-grey-900;
+
+    &::before {
+      content: "→";
+      color: $color-accent;
+    }
+  }
+
+  // Key/value rows: tech layers, craft notes.
+  &__rows {
+    border-top: 1px solid $color-rule;
+    margin-top: $space-md;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: minmax(120px, 1fr) 2fr;
+    gap: $space-md;
+    padding-block: $space-sm;
+    border-bottom: 1px solid $color-rule;
+  }
+
+  &__row-k {
+    @include label($color-text, 11.5px);
+    letter-spacing: 0.1em;
+  }
+
+  &__row-v {
+    font-size: 15px;
+    line-height: 1.6;
+    color: $color-grey-900;
+  }
+
+  // --- Decisions -----------------------------------------------------------
+  &__decision {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: clamp($space-lg, 3vw, $space-2xl);
+    padding-block: clamp($space-lg, 3vw, $space-2xl);
+
+    + .cs__decision {
+      border-top: 1px solid $color-rule;
+    }
+  }
+
+  &__decision-n {
+    @include label($color-accent, 12px);
+    letter-spacing: $tracking-normal;
+  }
+
+  &__decision-title {
+    font-family: $font-display;
+    font-size: clamp(22px, 2.4vw, 32px);
+    font-weight: $weight-bold;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-block: $space-2xs;
+  }
+
+  &__decision-tags {
+    @include label($color-text-muted, 11.5px);
+    letter-spacing: $tracking-normal;
+    text-transform: none;
+  }
+
+  // --- Results (placeholders until real figures exist) ---------------------
+  &__results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin-top: $space-md;
+    border-top: 1px solid $color-rule;
+  }
+
+  &__result {
+    padding: $space-lg $space-md $space-lg 0;
+    border-right: 1px solid $color-rule;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  // Dashed, muted: unmistakably unfilled, so it cannot ship by accident.
+  &__result-value {
+    @include label($color-text-subtle, 11px);
+    letter-spacing: 0.14em;
+    padding: $space-2xs $space-xs;
+    border: 1px dashed $color-rule-strong;
+    display: inline-block;
+    margin-bottom: $space-2xs;
+  }
+
+  &__result-hint {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: $color-text-muted;
+  }
+
+  &__note {
+    margin-top: $space-lg;
+    max-width: 70ch;
+    font-size: 14px;
+    line-height: 1.7;
+    color: $color-text-subtle;
+  }
+
+  // --- Foot of the study ---------------------------------------------------
+  &__end {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: $space-lg;
+    align-items: end;
+    margin-top: $space-xl;
+    padding-top: $space-lg;
+    border-top: 1px solid $color-rule;
+  }
+
+  &__next-label {
+    @include label($color-text-subtle, 11px);
+    letter-spacing: 0.14em;
+    margin-bottom: $space-3xs;
+  }
+
+  &__next-link {
+    font-family: $font-display;
+    font-size: clamp(24px, 3vw, 38px);
+    font-weight: $weight-bold;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    line-height: 1;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-accent;
+    }
+  }
+
+  &__end-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-md;
+
+    a {
+      @include label($color-text, $text-sm);
+      border-bottom: 1px solid currentColor;
+      transition: color 0.2s ease, border-color 0.2s ease;
+
+      &:hover,
+      &:focus-visible {
+        color: $color-accent;
+        border-bottom-color: $color-accent;
+      }
+    }
+  }
+}

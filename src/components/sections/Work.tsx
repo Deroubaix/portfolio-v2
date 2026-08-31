@@ -49,7 +49,7 @@ export default function Work() {
         <Link
           key={item.slug}
           className="work__row"
-          href={`/case-studies#${item.slug}`}
+          href={`/case-studies/${item.slug}`}
           onPointerEnter={() => show(item.img)}
           onPointerLeave={hide}
           onPointerMove={move}
@@ -77,7 +77,7 @@ export default function Work() {
               <a href={item.link} target="_blank" rel="noopener noreferrer">
                 Visit site ↗
               </a>
-              <Link href={`/case-studies#${item.slug}`}>Case study →</Link>
+              <Link href={`/case-studies/${item.slug}`}>Case study →</Link>
             </p>
           </div>
         ))}

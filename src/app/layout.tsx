@@ -2,7 +2,7 @@ import "../styles/main.scss";
 import React, { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
-import TopBar from "../components/layout/TopBar";
+import ScrollProgress from "../components/layout/ScrollProgress";
 
 // Self-hosted at build time by next/font — no runtime request to Google.
 const archivo = Archivo({
@@ -32,8 +32,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={archivo.variable}>
       <body>
-        <TopBar />
-        <div className="page">{children}</div>
+        <ScrollProgress />
+        {children}
       </body>
     </html>
   );
