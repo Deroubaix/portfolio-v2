@@ -79,6 +79,26 @@
   }
 }
 
+/// Cells in a divided row.
+///
+/// The dividers sit on the LEFT of every cell but the first, so each cell can
+/// carry left padding that clears its own divider. Putting the border on the
+/// right instead (as the source design does) leaves the following cell's text
+/// jammed against the line.
+///
+/// The first cell keeps zero left padding so its text stays flush with the
+/// page gutter.
+@mixin divided-cells($pad: 20px, $color: $color-rule) {
+  > * {
+    padding-right: $pad;
+
+    + * {
+      padding-left: $pad;
+      border-left: 1px solid $color;
+    }
+  }
+}
+
 @mixin hide-scrollbar {
   scrollbar-width: none;
 

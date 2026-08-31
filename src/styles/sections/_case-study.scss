@@ -157,15 +157,11 @@
     margin-top: clamp(26px, 4vw, 44px);
     border-top: 1px solid $color-ink;
     border-bottom: 2px solid $color-ink;
+    @include divided-cells(20px);
   }
 
   &__meta-item {
-    padding: 20px 20px 20px 0;
-    border-right: 1px solid $color-rule;
-
-    &:last-child {
-      border-right: none;
-    }
+    padding-block: 20px;
   }
 
   &__meta-k {
@@ -211,10 +207,9 @@
 
     > * {
       padding: clamp(26px, 4vw, 50px) $gutter;
-      border-right: 1px solid $color-rule;
 
-      &:last-child {
-        border-right: none;
+      + * {
+        border-left: 1px solid $color-rule;
       }
     }
   }
@@ -358,15 +353,11 @@
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     margin-top: $space-md;
     border-top: 1px solid $color-rule;
+    @include divided-cells($space-md);
   }
 
   &__result {
-    padding: $space-lg $space-md $space-lg 0;
-    border-right: 1px solid $color-rule;
-
-    &:last-child {
-      border-right: none;
-    }
+    padding-block: $space-lg;
   }
 
   // Dashed, muted: unmistakably unfilled, so it cannot ship by accident.

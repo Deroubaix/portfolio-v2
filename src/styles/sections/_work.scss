@@ -133,10 +133,9 @@ $row-gutter: clamp(16px, 3vw, 34px);
 
   &__note {
     padding: $space-lg $row-gutter;
-    border-right: 1px solid $color-rule;
 
-    &:last-child {
-      border-right: none;
+    + .work__note {
+      border-left: 1px solid $color-rule;
     }
   }
 

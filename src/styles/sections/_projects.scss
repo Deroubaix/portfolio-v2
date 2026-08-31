@@ -17,11 +17,10 @@
     flex-direction: column;
     gap: 14px;
     padding: clamp(24px, 3vw, 38px) $gutter;
-    border-right: 1px solid $color-rule;
     transition: background 0.3s ease, color 0.3s ease;
 
-    &:last-child {
-      border-right: none;
+    + .projects__item {
+      border-left: 1px solid $color-rule;
     }
 
     &:hover,

@@ -64,17 +64,13 @@
     margin-top: clamp(24px, 4vw, 44px);
     border-top: 1px solid $color-ink;
 
+    // Bottom padding keeps content off the section's 2px ink rule; the hero
+    // itself has none, so the cell must supply it.
     > * {
-      // Bottom padding keeps content off the section's 2px ink rule; the hero
-      // itself has none, so the cell must supply it.
-      padding: 22px 22px 34px 0;
-      border-right: 1px solid $color-rule;
+      padding-block: 22px 34px;
     }
 
-    // No trailing divider on the last cell in a row.
-    > *:last-child {
-      border-right: none;
-    }
+    @include divided-cells(22px);
   }
 
   &__lead {
