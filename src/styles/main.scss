@@ -8,7 +8,6 @@
 //
 //   abstracts/  compile-time only (variables, mixins) — emits no CSS
 //   base/       element defaults: fonts, reset, headings, links
-//   utilities/  single-purpose helper classes
 //   layout/     page shell and persistent furniture
 //   sections/   one file per page section
 //   components/ reusable pieces, last so they win over section context
@@ -21,11 +20,6 @@
 @use "./base/fonts";
 @use "./base/headings";
 
-// Utilities ------------------------------------------------------------------
-@use "./utilities/colors";
-@use "./utilities/text";
-
-// Base, continued ------------------------------------------------------------
 @use "./base/reset";
 @use "./base/typography";
 

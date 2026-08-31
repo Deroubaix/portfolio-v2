@@ -6,10 +6,6 @@
 .home-page {
   --section-vertical-padding: 4rem;
 
-  section.image-right .image {
-    max-height: calc(100dvh - var(--approx-menu-height));
-  }
-
   // Only the hero fills the viewport; every section after it sizes to content.
   #landing-section + section {
     min-height: unset;

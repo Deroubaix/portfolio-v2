@@ -18,11 +18,8 @@ $font-size-xxxl: $text-base-size * math.pow($text-scale-ratio, 4);
 $font-size-xxxxl: $text-base-size * math.pow($text-scale-ratio, 5);
 
 $font-body-normal-family: $font-inter-normal;
-$font-body-normal-weight: 500;
 
-$font-body-bold-family: $font-inter-bold;
 $font-body-bold-spacing: 0.03em;
-$font-body-bold-weight: 700;
 
 $font-display-normal-family: $font-fira-mono-normal;
 $font-display-normal-weight: 400;

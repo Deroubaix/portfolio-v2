@@ -27,15 +27,6 @@
     }
   }
 
-  .image-box {
-    --image-width: 50px;
-
-    img {
-      max-width: 100%;
-      max-height: 100%;
-    }
-  }
-
   p,
   li {
     line-height: 1.8rem;
@@ -53,10 +44,6 @@
 
   .color-slate {
     color: $color-brand-1;
-  }
-
-  .no-list-style {
-    list-style: none;
   }
 
   h1,
