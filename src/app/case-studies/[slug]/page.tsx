@@ -31,9 +31,9 @@ export default function CaseStudyPage({ params }: Params) {
 
   return (
     <article className="cs">
-      <div className="band">
+      <div className="cs__bar">
         <Link href="/">← Index</Link>
-        <span>
+        <span className="cs__counter">
           Case studies — {study.n} / 0{caseStudies.length}
         </span>
         <a href={study.link} target="_blank" rel="noopener noreferrer">
@@ -62,8 +62,12 @@ export default function CaseStudyPage({ params }: Params) {
         </div>
 
         <h1 className="cs__title">
-          <span>{study.h1a}</span>
-          <span>{study.h1b}</span>
+          <span className="cs__line">
+            <span className="cs__rise">{study.h1a}</span>
+          </span>
+          <span className="cs__line">
+            <span className="cs__rise cs__rise--muted">{study.h1b}</span>
+          </span>
         </h1>
 
         <p className="cs__lede">{study.intro}</p>
@@ -84,11 +88,12 @@ export default function CaseStudyPage({ params }: Params) {
           alt={`${study.name} — screenshot`}
           width={1600}
           height={900}
+          sizes="100vw"
           priority
         />
       </div>
 
-      <section className="cs__block cs__split">
+      <section className="cs__split">
         <div>
           <h2 className="cs__h2">01 — The problem</h2>
           <div className="cs__prose">
@@ -141,7 +146,7 @@ export default function CaseStudyPage({ params }: Params) {
         ))}
       </section>
 
-      <section className="cs__block cs__split">
+      <section className="cs__split">
         <div>
           <h2 className="cs__h2">04 — How it&rsquo;s built</h2>
           <dl className="cs__rows">
@@ -218,7 +223,7 @@ export default function CaseStudyPage({ params }: Params) {
         </div>
       </section>
 
-      <div className="band">
+      <div className="band cs__foot">
         <Link href="/">← Index</Link>
         <a href={`mailto:${site.email}`}>{site.email}</a>
         <span>

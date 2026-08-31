@@ -8,15 +8,6 @@
 
 @use "../abstracts" as *;
 
-@keyframes hero-rise {
-  from {
-    transform: translateY(105%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
 .hero {
   padding: clamp(24px, 4vw, 46px) $gutter 0;
 

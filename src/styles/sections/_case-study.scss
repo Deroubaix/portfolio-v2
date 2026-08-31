@@ -6,95 +6,161 @@
 @use "../abstracts" as *;
 
 .cs {
-  // --- Tab bar -------------------------------------------------------------
-  &__tabs {
-    display: flex;
-    overflow-x: auto;
-    border-bottom: 2px solid $color-ink;
-    @include hide-scrollbar;
-  }
-
-  &__tab {
+  // --- Sticky ink header ---------------------------------------------------
+  &__bar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
     display: flex;
     align-items: center;
-    gap: $space-2xs;
-    padding: 16px $gutter;
-    @include label($color-text-muted, 11.5px);
-    letter-spacing: 0.12em;
-    white-space: nowrap;
-    border-right: 1px solid $color-rule;
-    transition: background 0.25s ease, color 0.25s ease;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 11px $gutter;
+    background: $color-surface-inverse;
+    color: $color-text-inverse;
+    @include label($color-text-inverse, 11.5px);
+    letter-spacing: 0.14em;
 
-    &:hover,
-    &:focus-visible {
-      background: $color-surface-inverse;
-      color: $color-text-inverse;
-    }
+    a {
+      color: $color-cream;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
 
-    &.is-active {
-      color: $color-text;
-
-      // Active marker, as in the design.
-      &::after {
-        content: "▮";
-        color: $color-accent;
+      &:hover,
+      &:focus-visible {
+        border-bottom-color: $color-accent-decorative;
       }
     }
   }
 
-  &__tab-n {
-    color: $color-text-subtle;
+  &__counter {
+    color: $color-grey-300;
+  }
+
+  // --- Tab bar -------------------------------------------------------------
+  &__tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    border-bottom: 2px solid $color-ink;
+  }
+
+  &__tab {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 18px $gutter;
+    border-right: 1px solid $color-rule-strong;
+    text-align: left;
+    font-family: $font-mono;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: transparent;
+    color: $color-text;
+    transition: background 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: rgba($color-ink, 0.07);
+    }
+
+    .cs__tab-n {
+      color: $color-accent;
+    }
+
+    // Active tab inverts, and its number and marker turn orange.
+    &.is-active {
+      background: $color-surface-inverse;
+      color: $color-text-inverse;
+      font-weight: $weight-bold;
+
+      &:hover,
+      &:focus-visible {
+        background: $color-surface-inverse;
+      }
+
+      .cs__tab-n {
+        color: $color-accent-decorative;
+      }
+
+      &::after {
+        content: "▮";
+        margin-left: auto;
+        color: $color-accent-decorative;
+      }
+    }
   }
 
   // --- Opening -------------------------------------------------------------
   &__intro {
-    padding: clamp(30px, 5vw, 66px) $gutter;
-    border-bottom: 2px solid $color-ink;
+    padding: clamp(26px, 4vw, 52px) $gutter 0;
   }
 
   &__kicker {
     display: flex;
     flex-wrap: wrap;
+    align-items: baseline;
     justify-content: space-between;
-    gap: $space-sm;
+    gap: 14px;
     @include label($color-text-muted, 11.5px);
-    letter-spacing: 0.16em;
-    margin-bottom: $space-md;
+    letter-spacing: 0.14em;
   }
 
+  // Two-tone: the first line in ink, the second in muted olive. Each rises
+  // from behind its own mask, staggered.
   &__title {
+    margin: clamp(14px, 2vw, 24px) 0 0;
     font-family: $font-display;
-    font-size: clamp(38px, 7vw, 104px);
+    font-size: clamp(44px, 11vw, 150px);
     font-weight: $weight-black;
-    line-height: 0.9;
+    line-height: 0.86;
     letter-spacing: -0.045em;
-    text-transform: none;
+    text-transform: uppercase;
 
     // Optical alignment, as on the home page.
-    margin-inline-start: -0.045em;
+    margin-inline-start: -0.0749em;
+  }
 
-    span {
-      display: block;
+  &__line {
+    display: block;
+    overflow: hidden;
+  }
+
+  &__rise {
+    display: block;
+    animation: hero-rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  &__rise--muted {
+    color: $color-grey-500;
+    animation-delay: 0.1s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__rise {
+      animation: none;
     }
   }
 
   &__lede {
-    margin-top: $space-lg;
-    max-width: 62ch;
-    font-size: clamp(16px, 1.4vw, 19px);
-    line-height: 1.65;
+    margin: clamp(20px, 3vw, 32px) 0 0;
+    max-width: 66ch;
+    font-size: clamp(16px, 1.45vw, 20px);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
     color: $color-grey-900;
   }
 
   &__meta {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    margin-top: $space-xl;
-    border-top: 1px solid $color-rule;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-top: clamp(26px, 4vw, 44px);
+    border-top: 1px solid $color-ink;
+    border-bottom: 2px solid $color-ink;
   }
 
   &__meta-item {
-    padding: $space-md $space-md $space-md 0;
+    padding: 20px 20px 20px 0;
     border-right: 1px solid $color-rule;
 
     &:last-child {
@@ -103,40 +169,54 @@
   }
 
   &__meta-k {
-    @include label($color-text-subtle, 11px);
+    @include label($color-accent, 10.5px);
     letter-spacing: 0.14em;
-    margin-bottom: 2px;
   }
 
   &__meta-v {
+    margin-top: 7px;
     font-size: 15px;
+    line-height: 1.45;
   }
 
   // --- Screenshot ----------------------------------------------------------
+  // Inset with a margin rather than full-bleed, framed by an ink hairline.
   &__shot {
-    position: relative;
-    aspect-ratio: 16 / 9;
+    margin: clamp(26px, 4vw, 44px) $gutter 0;
+    border: 1px solid $color-ink;
     background: $color-ink;
-    border-bottom: 2px solid $color-ink;
     overflow: hidden;
 
     img {
+      display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
     }
   }
 
   // --- Numbered blocks -----------------------------------------------------
   &__block {
-    padding: clamp(30px, 5vw, 66px) $gutter;
+    padding: clamp(26px, 4vw, 50px) $gutter;
     border-bottom: 2px solid $color-ink;
   }
 
+  // Two cells divided by a hairline, matching the design's split sections.
   &__split {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: clamp($space-lg, 4vw, $space-3xl);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: clamp(44px, 7vw, 86px);
+    border-top: 2px solid $color-ink;
+    border-bottom: 2px solid $color-ink;
+    padding: 0;
+
+    > * {
+      padding: clamp(26px, 4vw, 50px) $gutter;
+      border-right: 1px solid $color-rule;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
   }
 
   &__h2 {
