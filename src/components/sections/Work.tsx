@@ -38,7 +38,7 @@ export default function Work() {
 
   return (
     <section id="work" className="work">
-      <div className="work__head">
+      <div className="band work__head">
         <h2>Selected work</h2>
         <p className="work__hint">
           Hover to preview — click to read the case study

@@ -23,6 +23,7 @@
     color: $color-cream;
   }
 
+  // Filled: hovers to red rather than inverting again.
   &--solid {
     background: $color-ink;
     color: $color-cream;

@@ -18,7 +18,7 @@
 }
 
 .hero {
-  padding-block: $space-lg $space-2xl;
+  padding: clamp(24px, 4vw, 46px) $gutter 0;
 
   &__meta {
     margin-bottom: 0;

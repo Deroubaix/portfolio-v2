@@ -1,40 +1,39 @@
 import React from "react";
 import { site } from "../../content/site";
 
+/** Two identical halves so the marquee can loop by translating -50%. */
+const SHOUTS = Array.from({ length: 6 });
+
 export default function Footer() {
   return (
-    <footer className="footer shell">
-      <h2 className="footer__cta">Let&rsquo;s build something good.</h2>
-
-      <div className="footer__actions">
-        <a className="button button--solid" href={`mailto:${site.email}`}>
-          Email me
-        </a>
-        <a
-          className="button"
-          href={site.github}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub ↗
-        </a>
-        <a
-          className="button"
-          href={site.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn ↗
-        </a>
-      </div>
+    <footer className="footer">
+      <a className="footer__shout" href={`mailto:${site.email}`}>
+        <span className="footer__track">
+          {SHOUTS.map((_, i) => (
+            <span className="footer__word" key={i} aria-hidden={i > 0}>
+              Say hello
+              <span className="footer__star" aria-hidden="true">
+                ✱
+              </span>
+            </span>
+          ))}
+        </span>
+      </a>
 
       <div className="footer__meta">
-        <p>
-          Designed &amp; built by {site.name.first} {site.name.last} — 2026
-        </p>
-        <p className="footer__links">
-          <a href={`mailto:${site.email}`}>{site.email}</a>
-        </p>
+        <span>{site.email}</span>
+        <span className="footer__links">
+          <a href={site.github} target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+          <a href={site.linkedin} target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+          <a href={site.cv} target="_blank" rel="noopener noreferrer">
+            CV
+          </a>
+        </span>
+        <span>Designed &amp; built by me — 2026</span>
       </div>
     </footer>
   );

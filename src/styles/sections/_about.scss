@@ -1,49 +1,88 @@
 // About
 // -----------------------------------------------------------------------------
+// The section is itself the grid: prose in one cell, a full-bleed portrait in
+// the other. auto-fit means it collapses to one column without a breakpoint.
 
 @use "../abstracts" as *;
 
 .about {
-  &__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    gap: $space-2xl;
-    align-items: start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 
-    @include responsive($breakpoint-2xl) {
-      grid-template-columns: 1fr;
-      gap: $space-xl;
-    }
+  &__prose {
+    padding: clamp(30px, 5vw, 70px) $gutter;
+    border-right: 1px solid $color-rule;
+  }
+
+  &__label {
+    @include label($color-text-muted, 11.5px);
+    letter-spacing: 0.16em;
+    font-weight: $weight-regular;
+    margin-bottom: 26px;
   }
 
   &__intro {
-    @include display($display-sm, $weight-semibold);
-    text-transform: none;
-    letter-spacing: -0.02em;
-    line-height: $leading-tight;
-    margin-bottom: $space-lg;
-    max-width: 30ch;
+    font-size: clamp(17px, 1.5vw, 21px);
+    line-height: 1.6;
+    letter-spacing: -0.012em;
+    max-width: 44ch;
+    margin-bottom: 18px;
   }
 
-  &__body {
-    display: grid;
-    gap: $space-md;
-    color: $color-text-muted;
-    max-width: 58ch;
+  &__body p {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: $color-grey-900;
+    max-width: 52ch;
+
+    + p {
+      margin-top: 18px;
+    }
   }
 
+  // Portrait cell: ink ground so the image has something to sit on before it
+  // loads, and while it is being cropped.
   &__figure {
+    position: relative;
+    min-height: 380px;
+    background: $color-ink;
+    overflow: hidden;
     margin: 0;
   }
 
   &__portrait {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: auto;
-    filter: grayscale(1) contrast(1.05);
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.08);
+    transition: filter 0.6s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  &__figure:hover &__portrait {
+    filter: grayscale(0%);
+    transform: scale(1.04);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__portrait {
+      transition: none;
+    }
+
+    &__figure:hover &__portrait {
+      transform: none;
+    }
+  }
+
+  // difference blend keeps the caption legible over either a light or dark
+  // part of the photograph.
   &__caption {
-    @include label($color-text-subtle, $text-xs);
-    margin-top: $space-2xs;
+    position: absolute;
+    left: 16px;
+    bottom: 14px;
+    @include label($color-cream, 11px);
+    letter-spacing: 0.14em;
+    mix-blend-mode: difference;
   }
 }

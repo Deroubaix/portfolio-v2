@@ -14,40 +14,25 @@
   padding-inline: $gutter;
 }
 
+// Every top-level section closes with a 2px ink rule — the structural
+// division in this system. Hairlines are only used inside a section.
 .section {
-  padding-block: $section-gap;
-  @include rule(top);
-
-  &:first-of-type {
-    border-top: none;
-  }
+  border-bottom: 2px solid $color-ink;
 }
 
-// Sections that manage their own gutter and dividers (the work table).
-.section--bleed {
-  padding-block: 0;
-  border-top: none;
+// Label band that opens a section: mono caps, hairline beneath.
+.band {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: $space-md;
+  padding: 18px $gutter;
+  @include label($color-text-muted, 11.5px);
+  letter-spacing: 0.16em;
+  border-bottom: 1px solid $color-rule-strong;
 }
 
 // Section opener: mono label on the left, rule filling the remainder.
-.section-head {
-  display: flex;
-  align-items: baseline;
-  gap: $space-md;
-  margin-bottom: $space-xl;
-
-  &__label {
-    @include label;
-    white-space: nowrap;
-  }
-
-  &__rule {
-    flex: 1;
-    height: 1px;
-    background: $color-rule;
-  }
-}
-
 // Meta row under the top bar: three columns on desktop, stacked on phones.
 .meta-row {
   display: grid;

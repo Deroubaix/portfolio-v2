@@ -14,18 +14,6 @@ $row-gutter: clamp(16px, 3vw, 34px);
 .work {
   padding: 0;
 
-  // Label left, interaction hint right.
-  &__head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: $space-md;
-    padding: 18px $row-gutter;
-    @include label($color-text-muted, 11.5px);
-    letter-spacing: 0.16em;
-    border-bottom: 1px solid $color-rule-strong;
-  }
-
   &__hint {
     text-align: right;
 

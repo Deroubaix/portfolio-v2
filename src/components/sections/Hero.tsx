@@ -3,7 +3,7 @@ import { site } from "../../content/site";
 
 export default function Hero() {
   return (
-    <section id="top" className="hero shell">
+    <section id="top" className="section hero">
       <div className="meta-row hero__meta">
         <p>{site.role}</p>
         <p className="meta-row__center">{site.location}</p>
