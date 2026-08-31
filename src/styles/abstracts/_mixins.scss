@@ -116,25 +116,6 @@
   }
 }
 
-@mixin scrollbar(
-  $size,
-  $foreground-color,
-  $background-color: mix($foreground-color, white, 50%)
-) {
-  &::-webkit-scrollbar {
-    width: $size;
-    height: $size;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: $foreground-color;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: $background-color;
-  }
-}
-
 /// Hide a scrollbar while keeping the element scrollable.
 @mixin hide-scrollbar {
   scrollbar-width: none;

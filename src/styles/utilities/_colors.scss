@@ -14,4 +14,4 @@
 .color-warning { color: $color-warning; }
 .color-error { color: $color-error; }
 .color-success { color: $color-success; }
-.color-success-darker { color: color.adjust($color-success, $lightness: -30%); }
+.color-success-darker { color: color.scale($color-success, $lightness: -30%); }
