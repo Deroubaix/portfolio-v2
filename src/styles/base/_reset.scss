@@ -1,0 +1,31 @@
+// Reset & document defaults
+// -----------------------------------------------------------------------------
+
+@use "../abstracts" as *;
+
+body,
+html {
+  color: $color-primary;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 15px;
+  font-family: $font-body-normal-family;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+
+  // Approximate header height, used by sections that need to offset for it.
+  --approx-menu-height: 6rem;
+}
+
+:root {
+  --font-weight-semibold: 600;
+  --letter-spacing-sm: 0.65px;
+}

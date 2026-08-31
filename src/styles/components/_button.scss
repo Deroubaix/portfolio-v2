@@ -1,24 +1,12 @@
+// Button
+// -----------------------------------------------------------------------------
+// Variants: .primary .secondary .outline .reverse
+// Sizes:    .small .medium .large
+
 @use "sass:color";
+@use "../abstracts" as *;
 
-@mixin set-button-color(
-  $background-gradient,
-  $border-gradient,
-  $hover-gradient
-) {
-  background: $background-gradient;
-  border-radius: 30px;
-  border: 1.53px solid transparent;
-  border-image-source: $border-gradient 1;
-  color: $color-text-light;
-
-  &:hover {
-    background: $hover-gradient;
-    border-image-source: $border-gradient 1;
-    color: $color-text-light;
-  }
-}
-
-@mixin set-button-size($size) {
+@mixin button-size($size) {
   @if $size == small {
     font-size: 0.8em;
     padding: 1em 0.5em;
@@ -54,6 +42,7 @@
     z-index: 1;
   }
 
+  // --- Variants ------------------------------------------------------------
   &.primary {
     background-color: $color-accent-1;
     color: $color-text-dark;
@@ -68,23 +57,23 @@
 
   &.outline {
     border: 1px solid $color-accent-1;
-  }
 
-  &.outline:hover {
-    border: 1px solid $color-accent-1;
+    &:hover {
+      border: 1px solid $color-accent-1;
+    }
   }
 
   &.secondary {
     overflow: hidden;
-    --bg-color-1: rgba(124, 101, 161, 0);
-    --bg-color-2: rgba(124, 101, 161, 0.38);
-    --bg-stop-1: 70%;
-    --bg-stop-2: 120%;
-    background: radial-gradient(5rem 60% at 100% 50%, #ffffff80, #292931 90%);
-    transition-duration: 0.45s;
-    transition-property: --bg-color-1, --bg-color-2, --bg-stop-1, --bg-stop-2;
+    background: radial-gradient(
+      5rem 60% at 100% 50%,
+      rgba(255, 255, 255, 0.5),
+      $color-surface-raised 90%
+    );
+    transition: background 0.45s ease;
     color: $color-text-light;
 
+    // Inset fill so only a 1px rim of the gradient shows as a border.
     &::before {
       content: "";
       position: absolute;
@@ -94,35 +83,28 @@
       pointer-events: none;
       z-index: 0;
     }
+
+    &:hover,
+    &:focus-visible {
+      z-index: 2;
+      background: radial-gradient(
+        5rem 60% at 100% 50%,
+        rgba(255, 255, 255, 0.65),
+        color.scale($color-surface-raised, $lightness: 8%) 90%
+      );
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+      outline: none;
+    }
   }
 
-  &.small {
-    @include set-button-size(small);
-  }
-
-  &.medium {
-    @include set-button-size(medium);
-  }
-
-  &.large {
-    @include set-button-size(large);
-  }
+  // --- Sizes ---------------------------------------------------------------
+  &.small { @include button-size(small); }
+  &.medium { @include button-size(medium); }
+  &.large { @include button-size(large); }
 
   &:disabled,
   &.disabled {
     opacity: 0.7;
     cursor: not-allowed;
   }
-}
-
-.button.secondary:hover,
-.button.secondary:focus-visible {
-z-index: 2;
-  background: radial-gradient(
-    5rem 60% at 100% 50%,
-    rgba(255,255,255,.65),
-    color.scale(#292931, $lightness: 8%) 90%
-  );
-  box-shadow: 0 8px 20px rgba(0,0,0,.18);
-  outline: none;
 }

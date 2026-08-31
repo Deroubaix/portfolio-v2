@@ -1,0 +1,71 @@
+// Links & text helpers
+// -----------------------------------------------------------------------------
+
+@use "../abstracts" as *;
+
+.switch-link-underline-direction {
+  &::after,
+  a::after {
+    right: 0;
+    left: unset;
+  }
+}
+
+a {
+  position: relative;
+  word-break: normal;
+  text-decoration: none;
+  font-family: $font-fira-mono-normal;
+  color: $color-brand-1;
+
+  // Underline that grows from the leading edge on hover.
+  &:not(.email-link)::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    left: 0;
+    bottom: -0.5rem;
+    border-bottom: 1.5px solid $color-accent-1;
+    @include transition(width);
+  }
+
+  &:hover {
+    color: $color-accent-1;
+  }
+
+  @include active-state {
+    &::after {
+      width: 100%;
+    }
+  }
+
+  // Buttons and opted-out links draw no underline.
+  &.button::after,
+  &.no-underline::after {
+    content: unset;
+    display: none;
+  }
+}
+
+.emphasised-text {
+  color: $color-accent-1;
+  font-family: $font-display-normal-family;
+}
+
+.emphasised-number {
+  color: $color-accent-1;
+  font-family: $font-display-normal-family;
+  font-size: $font-size-lg;
+}
+
+.emphasised-text-normal {
+  color: $color-brand-1;
+  font-family: $font-fira-mono-normal;
+}
+
+.large-paragraph {
+  font-size: 18px;
+  max-width: 36rem;
+  margin-top: 0;
+}

@@ -1,197 +1,50 @@
-@import "./fonts/fonts.scss";
-@import "./abstracts/typography.scss";
-@import "./abstracts/responsiveness.scss";
-@import "./abstracts/spacing.scss";
-@import "./abstracts/colors.scss";
-@import "./abstracts/mixins.scss";
-@import "./elements/headings.scss";
-@import "./utilities/colors.scss";
-@import "./utilities/text.scss";
+// -----------------------------------------------------------------------------
+// Entry point
+// -----------------------------------------------------------------------------
+// This file is a manifest and nothing else — no rules live here.
+//
+// Layer order matters: it is the cascade. Later layers may override earlier
+// ones at equal specificity, so keep this sequence.
+//
+//   abstracts/  compile-time only (variables, mixins) — emits no CSS
+//   base/       element defaults: fonts, reset, headings, links
+//   utilities/  single-purpose helper classes
+//   layout/     page shell and persistent furniture
+//   sections/   one file per page section
+//   components/ reusable pieces, last so they win over section context
+//
+// Partials pull in what they need with `@use "../abstracts" as *`. Because
+// abstracts emits nothing, that costs no duplicated output.
+// -----------------------------------------------------------------------------
 
-body,
-html {
-  color: $color-primary;
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  font-size: 15px;
-  font-family: $font-body-normal-family;
-}
+// Base -----------------------------------------------------------------------
+@use "./base/fonts";
+@use "./base/headings";
 
-html {
-  scroll-behavior: smooth;
-}
+// Utilities ------------------------------------------------------------------
+@use "./utilities/colors";
+@use "./utilities/text";
 
-.switch-link-underline-direction {
-  &:after,
-  a:after {
-    right: 0;
-    left: unset;
-  }
-}
+// Base, continued ------------------------------------------------------------
+@use "./base/reset";
+@use "./base/typography";
 
-a {
-  position: relative;
-  word-break: normal;
-  text-decoration: none;
-  font-family: $font-fira-mono-normal;
-  color: $color-brand-1;
+// Layout ---------------------------------------------------------------------
+@use "./layout/page";
+@use "./layout/header";
 
-  &:not(.email-link)::after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 0;
-    left: 0;
-    bottom: -0.5rem;
-    border-bottom: 1.5px solid $color-accent-1;
-    @include transition(width);
-  }
+// Sections -------------------------------------------------------------------
+@use "./sections/hero";
+@use "./sections/about";
+@use "./sections/experience";
+@use "./sections/work";
+@use "./sections/projects";
+@use "./sections/contact";
 
-  &:hover {
-    color: $color-accent-1;
-  }
+// Layout, continued ----------------------------------------------------------
+@use "./layout/side-rails";
+@use "./layout/footer";
 
-  @include active-state {
-    &::after {
-      width: 100%;
-    }
-  }
-
-  &.button {
-    &::after {
-      content: unset;
-    }
-  }
-  &.no-underline {
-    text-decoration: none;
-
-    &:after {
-      display: none;
-    }
-  }
-}
-
-.emphasised-text {
-  color: $color-accent-1;
-  font-family: $font-display-normal-family;
-}
-.emphasised-number {
-  color: $color-accent-1;
-  font-family: $font-display-normal-family;
-  font-size: $font-size-lg;
-}
-.emphasised-text-normal {
-  color: $color-brand-1;
-  font-family: $font-fira-mono-normal;
-}
-
-.large-paragraph {
-  font-size: 18px;
-  max-width: 36rem;
-  margin-top: 0;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-// ------------------------------------------------------------------
-// Variables
-// ------------------------------------------------------------------
-
-$page_padding-horizontal: $spacing-xxl;
-$page_padding-vertical: calc($spacing-xxl * 1.5);
-
-* {
-  --approx-menu-height: 6rem;
-  // $page_padding-vertical + 3rem
-}
-
-// ------------------------------------------------------------------
-// Backgrounds
-// ------------------------------------------------------------------
-
-.dark-bg {
-  background-color: $color-primary;
-  color: $color-brand-2;
-}
-
-.content-body {
-  color: $color-primary;
-
-  section {
-    padding: $page_padding-vertical * 0.5 $page_padding-horizontal * 4
-      $page_padding-vertical * 2;
-
-    @include responsive($breakpoint-tablet) {
-      padding: $page_padding-vertical  * 0.5 $page_padding-horizontal * 3;
-    }
-
-    @include responsive($breakpoint-mobile) {
-      padding: $page_padding-vertical  * 0.2 $page_padding-horizontal $page_padding-vertical  * 0.5;
-    }
-  }
-
-  .image-box {
-    --image-width: 50px;
-    img {
-      max-width: 100%;
-      max-height: 100%;
-    }
-  }
-
-  p,
-  li {
-    line-height: 1.8rem;
-    font-weight: 300;
-  }
-  p {
-    color: $color-white;
-  }
-  li {
-    list-style: none;
-    padding-bottom: 1em;
-  }
-  .color-slate {
-    color: $color-brand-1;
-  }
-
-  .no-list-style {
-    list-style: none;
-  }
-
-  h1,
-  h2,
-  h4 {
-    font-weight: 600;
-    letter-spacing: $font-body-bold-spacing;
-    margin: 2em 0 1em;
-  }
-
-  h2 {
-    border-top: 2px solid $color-primary;
-    padding-top: 1.5em;
-    padding-bottom: 1em;
-    color: $color-brand-1;
-  }
-
-  h3 {
-    font-weight: 600;
-    color: $color-brand-1;
-    margin: 0 0 1em;
-  }
-}
-
-// ------------------------------------------------------------------
-// Imports
-// ------------------------------------------------------------------
-
-@import "./components/header.scss";
-@import "./components/homepage.scss";
-@import "./components/left-right-bar.scss";
-@import "./components/footer.scss";
-@import "./components/circle-pointer.scss";
-@import "./components/general.scss";
-@import "./components/buttons.scss";
+// Components -----------------------------------------------------------------
+@use "./components/cursor";
+@use "./components/button";

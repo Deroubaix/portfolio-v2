@@ -1,0 +1,12 @@
+// Font families
+// -----------------------------------------------------------------------------
+// Family names and the asset path only. The @font-face rules live in
+// base/_fonts.scss — abstracts must never emit CSS.
+
+$font-path: "/fonts";
+
+$font-inter-normal: "Inter", sans-serif;
+$font-inter-bold: "Inter", sans-serif;
+
+$font-fira-mono-normal: "Fira Mono", monospace;
+$font-fira-mono-bold: "Fira Mono", monospace;

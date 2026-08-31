@@ -1,0 +1,88 @@
+// Page shell
+// -----------------------------------------------------------------------------
+// Section gutters and the shared prose defaults every section inherits.
+
+@use "../abstracts" as *;
+
+.dark-bg {
+  background-color: $color-primary;
+  color: $color-brand-2;
+}
+
+.content-body {
+  color: $color-primary;
+  padding-top: 6rem;
+
+  section {
+    padding: $page-padding-vertical * 0.5 $page-padding-horizontal * 4
+      $page-padding-vertical * 2;
+
+    @include responsive($breakpoint-2xl) {
+      padding: $page-padding-vertical * 0.5 $page-padding-horizontal * 3;
+    }
+
+    @include responsive($breakpoint-md) {
+      padding: $page-padding-vertical * 0.2 $page-padding-horizontal
+        $page-padding-vertical * 0.5;
+    }
+  }
+
+  .image-box {
+    --image-width: 50px;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  p,
+  li {
+    line-height: 1.8rem;
+    font-weight: 300;
+  }
+
+  p {
+    color: $color-white;
+  }
+
+  li {
+    list-style: none;
+    padding-bottom: 1em;
+  }
+
+  .color-slate {
+    color: $color-brand-1;
+  }
+
+  .no-list-style {
+    list-style: none;
+  }
+
+  h1,
+  h2,
+  h4 {
+    font-weight: 600;
+    letter-spacing: $font-body-bold-spacing;
+    margin: 2em 0 1em;
+  }
+
+  h2 {
+    border-top: 2px solid $color-primary;
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+    color: $color-brand-1;
+  }
+
+  h3 {
+    font-weight: 600;
+    color: $color-brand-1;
+    margin: 0 0 1em;
+  }
+}
+
+.middle-center {
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}

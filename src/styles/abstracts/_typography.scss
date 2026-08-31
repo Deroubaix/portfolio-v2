@@ -1,6 +1,8 @@
-@use 'sass:math';
+// Type scale
+// -----------------------------------------------------------------------------
 
-@import '../fonts/fonts.scss';
+@use "sass:math";
+@use "./fonts" as *;
 
 $text-base-size: 14px;
 $text-scale-ratio: 1.333;

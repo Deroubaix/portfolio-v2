@@ -1,0 +1,14 @@
+// Abstracts barrel
+// -----------------------------------------------------------------------------
+// Everything here is compile-time only — variables, mixins, functions. Nothing
+// in this layer emits a single byte of CSS, so partials can `@use` it freely
+// without duplicating output.
+//
+// Usage in any partial:  @use "../abstracts" as *;
+
+@forward "./breakpoints";
+@forward "./colors";
+@forward "./fonts";
+@forward "./spacing";
+@forward "./typography";
+@forward "./mixins";

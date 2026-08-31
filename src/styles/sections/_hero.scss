@@ -1,0 +1,109 @@
+// Hero / landing
+// -----------------------------------------------------------------------------
+
+@use "../abstracts" as *;
+
+.home-page {
+  --section-vertical-padding: 4rem;
+
+  section.image-right .image {
+    max-height: calc(100dvh - var(--approx-menu-height));
+  }
+
+  // Only the hero fills the viewport; every section after it sizes to content.
+  #landing-section + section {
+    min-height: unset;
+  }
+}
+
+#landing-section {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: $page-padding-vertical $page-padding-horizontal;
+
+  // Pull up under the fixed header.
+  margin-top: calc(($page-padding-vertical + 3rem) * -1);
+
+  .content {
+    max-width: 1000px;
+    width: 100%;
+    padding: 0 $page-padding-horizontal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include responsive($breakpoint-md) {
+      align-items: flex-start;
+    }
+
+    .intro {
+      margin-bottom: 0;
+    }
+
+    h1 {
+      margin: 0.5em;
+      line-height: 1.5;
+
+      @include responsive($breakpoint-md) {
+        line-height: 1.2;
+      }
+    }
+
+    .second-heading {
+      color: $color-brand-2;
+    }
+  }
+
+  .button-container {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+
+    a {
+      font-family: $font-fira-mono-normal;
+    }
+  }
+
+  @include responsive($breakpoint-2xl, min) {
+    padding: 0 $page-padding-horizontal * 1.5;
+  }
+
+  @include responsive($breakpoint-md, max) {
+    padding: $page-padding-vertical $page-padding-horizontal 0;
+    padding-top: var(--section-vertical-padding);
+    text-align: left;
+
+    .content {
+      padding: $page-padding-vertical 0 0;
+
+      h1,
+      p {
+        margin: 0.5em 0;
+      }
+    }
+
+    .button-container {
+      margin: 2em 0 2.5em;
+      flex-direction: row;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+  }
+
+  // Stack the buttons once they can no longer sit side by side.
+  @include responsive($breakpoint-xs, max) {
+    .button-container {
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+  }
+}

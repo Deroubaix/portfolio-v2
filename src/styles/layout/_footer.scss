@@ -1,0 +1,32 @@
+// Site footer
+// -----------------------------------------------------------------------------
+
+@use "../abstracts" as *;
+
+#footer-container .footer {
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.85rem;
+
+  .footer-icons {
+    // Only shown once the fixed side rails are hidden.
+    display: none;
+    margin-bottom: 1rem;
+
+    a {
+      margin: 0 1rem;
+      color: $color-grey-light;
+
+      &:hover {
+        color: $color-accent-1;
+      }
+    }
+  }
+
+  @include responsive($breakpoint-xl) {
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

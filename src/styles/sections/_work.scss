@@ -1,0 +1,208 @@
+// Work
+// -----------------------------------------------------------------------------
+// Alternating image / copy rows on desktop. Below $breakpoint-3xl the image is
+// dropped and each row collapses into a bordered card.
+
+@use "../abstracts" as *;
+
+$row-gap: 2rem;
+$row-margin: 2rem;
+$description-padding: 1rem;
+
+// The description box is inset from its own border by this much, so the title,
+// tech list and icon are padded to match. Derived, never hardcoded twice.
+$description-inset: $description-padding * 2;
+
+/// Aligns the row's other children with the description text.
+/// $side is `left` or `right` — whichever side carries the border.
+@mixin align-with-description($side) {
+  @include responsive($breakpoint-3xl, min) {
+    // h3 is a block inside an inline <a>: padding on the anchor would not move
+    // it, so the heading must be padded directly.
+    h3,
+    > .tech-list,
+    > a.icon-only {
+      padding-#{$side}: $description-inset;
+    }
+  }
+}
+
+#work .content-work {
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .project {
+    display: flex;
+    flex-direction: row;
+    gap: $row-gap;
+    margin-bottom: $row-margin;
+    align-items: flex-start;
+    position: relative;
+
+    // --- Alternating orientation -------------------------------------------
+    &.project-left {
+      .project-content {
+        text-align: right;
+        order: 2;
+        @include align-with-description(right);
+
+        .project-description {
+          border-right: 1px solid $color-grey;
+        }
+
+        .tech-list {
+          justify-content: flex-end;
+
+          @include responsive($breakpoint-3xl) {
+            justify-content: flex-start;
+          }
+        }
+      }
+
+      .project-image {
+        order: 1;
+      }
+    }
+
+    &.project-right {
+      .project-content {
+        text-align: left;
+        order: 1;
+        @include align-with-description(left);
+
+        .project-description {
+          border-left: 1px solid $color-grey;
+        }
+      }
+
+      .project-image {
+        order: 2;
+      }
+    }
+
+    // --- Row parts ----------------------------------------------------------
+    .project-content {
+      flex: 1;
+      position: relative;
+
+      a h3:hover {
+        color: $color-accent-1;
+      }
+
+      .project-description {
+        padding: $description-padding $description-inset;
+        z-index: 1;
+
+        // The box supplies its own padding; the paragraph's default 1em margin
+        // would double it and overshoot the border.
+        p {
+          margin: 0;
+        }
+      }
+
+      .tech-list {
+        display: flex;
+        gap: 1rem;
+        row-gap: 0;
+        flex-wrap: wrap;
+        padding: 1.5rem 0 0;
+        margin: 0;
+        list-style: none;
+
+        li {
+          font-family: $font-fira-mono-normal;
+          font-size: $font-size-md;
+        }
+      }
+    }
+
+    .project-image {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+
+      @include responsive($breakpoint-3xl, min) {
+        @include hover-effect;
+      }
+
+      a {
+        display: block;
+        position: relative;
+        @include overlay($opacity: 0.5);
+
+        &:hover {
+          @include overlay($opacity: 0);
+        }
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+
+    // Shown only in the stacked layout below.
+    .link-btn {
+      display: none;
+    }
+
+    // --- Stacked card layout -------------------------------------------------
+    @include responsive($breakpoint-3xl) {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+
+      .project-image {
+        display: none;
+      }
+
+      .project-content {
+        position: relative;
+        padding: $page-padding-vertical $page-padding-horizontal;
+        border: 2px solid $color-accent-1;
+        text-align: left;
+
+        > * {
+          position: relative;
+          z-index: 2;
+        }
+
+        h3 {
+          text-align: left;
+          margin-bottom: $row-margin;
+        }
+
+        .project-description {
+          border-left: none;
+          border-right: none;
+          padding: 0;
+
+          p {
+            text-align: left;
+          }
+        }
+
+        .tech-list {
+          padding: 0;
+          margin-top: $row-margin;
+
+          li {
+            padding: 0;
+          }
+        }
+
+        svg {
+          display: none;
+        }
+
+        .link-btn {
+          margin-top: 1.5rem;
+          @include outline-button;
+        }
+      }
+    }
+  }
+}

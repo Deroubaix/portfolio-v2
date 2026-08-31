@@ -1,3 +1,10 @@
+// Fixed left / right rails
+// -----------------------------------------------------------------------------
+// Social icons on the left, email on the right. Hidden on narrow viewports,
+// where the footer shows the same links instead.
+
+@use "../abstracts" as *;
+
 .left-stick,
 .right-stick {
   position: fixed;
@@ -5,7 +12,8 @@
   flex-direction: column;
   align-items: center;
   z-index: 1000;
-  @include responsive(48rem, max) {
+
+  @include responsive($breakpoint-xl, max) {
     display: none;
   }
 }
@@ -39,6 +47,7 @@
   position: relative;
   display: inline-block;
 
+  // Vertical counterpart of the link underline in base/_typography.
   &::after {
     content: "";
     display: block;

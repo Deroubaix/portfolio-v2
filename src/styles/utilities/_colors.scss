@@ -1,0 +1,17 @@
+// Colour utilities
+// -----------------------------------------------------------------------------
+// Helper classes only. The tokens themselves live in abstracts/_colors.scss.
+
+@use "sass:color";
+@use "../abstracts" as *;
+
+.color-primary { color: $color-primary; }
+.color-secondary { color: $color-secondary; }
+.color-accent-1 { color: $color-accent-1; }
+.color-accent-2 { color: $color-accent-2; }
+.color-brand-1 { color: $color-brand-1; }
+.color-brand-2 { color: $color-brand-2; }
+.color-warning { color: $color-warning; }
+.color-error { color: $color-error; }
+.color-success { color: $color-success; }
+.color-success-darker { color: color.adjust($color-success, $lightness: -30%); }

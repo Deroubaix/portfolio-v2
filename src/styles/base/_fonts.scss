@@ -1,10 +1,9 @@
-$font-path: "/fonts";
+// Font face declarations
+// -----------------------------------------------------------------------------
+// Family name variables live in abstracts/_fonts.scss; only the @font-face rules
+// belong here, because this layer emits CSS.
 
-$font-inter-normal: "Inter", sans-serif;
-$font-inter-bold: "Inter", sans-serif;
-
-$font-fira-mono-normal: "Fira Mono", monospace;
-$font-fira-mono-bold: "Fira Mono", monospace;
+@use "../abstracts" as *;
 
 /* inter-100 - latin */
 @font-face {
