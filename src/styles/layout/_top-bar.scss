@@ -1,0 +1,62 @@
+// Fixed top bar
+// -----------------------------------------------------------------------------
+// Inverted strip carrying the wordmark, section nav and a live Lisbon clock.
+
+@use "../abstracts" as *;
+
+.top-bar {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 100;
+  height: $bar-height;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: $space-md;
+  padding-inline: $gutter;
+  background: $color-surface-inverse;
+  color: $color-text-inverse;
+
+  &__mark {
+    @include label($color-text-inverse, $text-sm);
+    letter-spacing: $tracking-wider;
+  }
+
+  &__nav {
+    display: flex;
+    gap: clamp($space-sm, 2vw, $space-lg);
+    justify-content: center;
+
+    a {
+      @include label(rgba($color-cream, 0.72), $text-sm);
+      transition: color 0.2s ease;
+
+      &:hover,
+      &.is-active {
+        color: $color-cream;
+      }
+    }
+
+    @include responsive($breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &__clock {
+    @include label(rgba($color-cream, 0.72), $text-sm);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $space-2xs;
+    font-variant-numeric: tabular-nums;
+  }
+
+  // Decorative only — never the sole carrier of meaning.
+  &__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $color-accent-decorative;
+  }
+}

@@ -1,105 +1,98 @@
-// Hero / landing
+// Hero
 // -----------------------------------------------------------------------------
+// The name set as large as the viewport allows, stacked on two lines, with a
+// three-column summary beneath it.
 
 @use "../abstracts" as *;
 
-.home-page {
-  --section-vertical-padding: 4rem;
+.hero {
+  padding-block: $space-xl $space-2xl;
 
-  // Only the hero fills the viewport; every section after it sizes to content.
-  #landing-section + section {
-    min-height: unset;
+  &__meta {
+    margin-bottom: $space-lg;
   }
-}
 
-#landing-section {
-  position: relative;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: $page-padding-vertical $page-padding-horizontal;
+  &__name {
+    @include display($display-xl, $weight-bold);
+    margin: 0;
 
-  // Pull up under the fixed header.
-  margin-top: calc(($page-padding-vertical + 3rem) * -1);
+    // Each word on its own line, optically flush to the gutter.
+    span {
+      display: block;
+      margin-inline-start: -0.055em;
+    }
+  }
 
-  .content {
-    max-width: 1000px;
-    width: 100%;
-    padding: 0 $page-padding-horizontal;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  &__status {
+    @include label($color-accent, $text-sm);
+    display: inline-flex;
     align-items: center;
+    gap: $space-2xs;
+    margin-top: $space-md;
+  }
 
-    @include responsive($breakpoint-md) {
-      align-items: flex-start;
-    }
+  &__summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: $space-2xl;
+    @include rule(top);
 
-    .intro {
-      margin-bottom: 0;
-    }
+    > * {
+      padding: $space-lg $space-md $space-lg 0;
 
-    h1 {
-      margin: 0.5em;
-      line-height: 1.5;
-
-      @include responsive($breakpoint-md) {
-        line-height: 1.2;
+      + * {
+        padding-left: $space-lg;
+        @include rule(left);
       }
     }
 
-    .second-heading {
-      color: $color-brand-2;
-    }
-  }
+    @include responsive($breakpoint-lg) {
+      grid-template-columns: 1fr;
 
-  .button-container {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    justify-content: center;
-    margin: 2rem 0;
-
-    a {
-      font-family: $font-fira-mono-normal;
-    }
-  }
-
-  @include responsive($breakpoint-2xl, min) {
-    padding: 0 $page-padding-horizontal * 1.5;
-  }
-
-  @include responsive($breakpoint-md, max) {
-    padding: $page-padding-vertical $page-padding-horizontal 0;
-    padding-top: var(--section-vertical-padding);
-    text-align: left;
-
-    .content {
-      padding: $page-padding-vertical 0 0;
-
-      h1,
-      p {
-        margin: 0.5em 0;
+      > * + * {
+        padding-left: 0;
+        border-left: none;
+        @include rule(top);
       }
     }
+  }
 
-    .button-container {
-      margin: 2em 0 2.5em;
-      flex-direction: row;
-      gap: 2rem;
-      justify-content: space-between;
+  &__lead {
+    font-size: $text-md;
+    line-height: $leading-body;
+    max-width: 34ch;
+  }
+
+  &__stack {
+    @include label($color-text-muted, $text-sm);
+    text-transform: none;
+
+    div {
+      display: flex;
+      gap: $space-2xs;
+      line-height: 2;
+    }
+
+    dt,
+    dd {
+      margin: 0;
+    }
+
+    dt {
+      color: $color-text-subtle;
     }
   }
 
-  // Stack the buttons once they can no longer sit side by side.
-  @include responsive($breakpoint-xs, max) {
-    .button-container {
-      flex-direction: column;
-      align-items: stretch;
-      justify-content: flex-start;
-    }
+  &__now {
+    @include label($color-text-muted, $text-sm);
+    line-height: 2;
+    text-transform: none;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-xs;
+    margin-top: $space-md;
   }
 }

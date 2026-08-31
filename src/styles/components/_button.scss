@@ -1,110 +1,53 @@
 // Button
 // -----------------------------------------------------------------------------
-// Variants: .primary .secondary .outline .reverse
-// Sizes:    .small .medium .large
+// Two variants, both rectangular — the editorial system has no rounded corners.
+//   .button--solid    filled ink, for the primary action
+//   .button--outline  hairline box, for everything else
 
-@use "sass:color";
 @use "../abstracts" as *;
 
-@mixin button-size($size) {
-  @if $size == small {
-    font-size: 0.8em;
-    padding: 1em 0.5em;
-  } @else if $size == medium {
-    font-size: 1em;
-    padding: 1em 1.5em;
-    height: 50px;
-  } @else if $size == large {
-    font-size: 1.2em;
-    padding: 1em 3em;
-    height: 60px;
-  } @else {
-    @error "Unknown size '#{$size}'. Expecting 'small', 'medium', or 'large'.";
-  }
-}
-
 .button {
-  font-family: $font-body-normal-family;
-  font-weight: 500;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-sm);
-  display: inline-block;
-  cursor: pointer;
-  width: 150px;
-  border-radius: 0.5rem;
-  position: relative;
-  isolation: isolate;
-  color: $color-text-light;
+  @include label($color-text, $text-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2xs;
+  padding: $space-xs $space-md;
+  border: 1px solid $color-ink;
+  background: transparent;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  white-space: nowrap;
 
-  > * {
-    position: relative;
-    z-index: 1;
+  &:hover,
+  &:focus-visible {
+    background: $color-ink;
+    color: $color-cream;
   }
 
-  // --- Variants ------------------------------------------------------------
-  &.primary {
-    background-color: $color-accent-1;
-    color: $color-text-dark;
-  }
-
-  &.reverse:hover {
-    color: $color-accent-1;
-    background-color: transparent;
-    box-shadow: none;
-    transform: none;
-  }
-
-  &.outline {
-    border: 1px solid $color-accent-1;
-
-    &:hover {
-      border: 1px solid $color-accent-1;
-    }
-  }
-
-  &.secondary {
-    overflow: hidden;
-    background: radial-gradient(
-      5rem 60% at 100% 50%,
-      rgba(255, 255, 255, 0.5),
-      $color-surface-raised 90%
-    );
-    transition: background 0.45s ease;
-    color: $color-text-light;
-
-    // Inset fill so only a 1px rim of the gradient shows as a border.
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 1px;
-      background: $color-primary;
-      border-radius: 0.5rem;
-      pointer-events: none;
-      z-index: 0;
-    }
+  &--solid {
+    background: $color-ink;
+    color: $color-cream;
 
     &:hover,
     &:focus-visible {
-      z-index: 2;
-      background: radial-gradient(
-        5rem 60% at 100% 50%,
-        rgba(255, 255, 255, 0.65),
-        color.scale($color-surface-raised, $lightness: 8%) 90%
-      );
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-      outline: none;
+      background: $color-accent;
+      border-color: $color-accent;
+      color: $color-cream;
     }
   }
 
-  // --- Sizes ---------------------------------------------------------------
-  &.small { @include button-size(small); }
-  &.medium { @include button-size(medium); }
-  &.large { @include button-size(large); }
+  &--accent {
+    border-color: $color-accent;
+    color: $color-accent;
 
-  &:disabled,
-  &.disabled {
-    opacity: 0.7;
+    &:hover,
+    &:focus-visible {
+      background: $color-accent;
+      color: $color-cream;
+    }
+  }
+
+  &[disabled] {
+    opacity: 0.5;
     cursor: not-allowed;
   }
 }

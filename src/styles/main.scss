@@ -1,44 +1,22 @@
 // -----------------------------------------------------------------------------
 // Entry point
 // -----------------------------------------------------------------------------
-// This file is a manifest and nothing else — no rules live here.
+// A manifest only — no rules live here. Layer order is the cascade order.
 //
-// Layer order matters: it is the cascade. Later layers may override earlier
-// ones at equal specificity, so keep this sequence.
-//
-//   abstracts/  compile-time only (variables, mixins) — emits no CSS
-//   base/       element defaults: fonts, reset, headings, links
+//   abstracts/  compile-time only (tokens, mixins) — emits no CSS
+//   base/       element defaults
 //   layout/     page shell and persistent furniture
 //   sections/   one file per page section
 //   components/ reusable pieces, last so they win over section context
-//
-// Partials pull in what they need with `@use "../abstracts" as *`. Because
-// abstracts emits nothing, that costs no duplicated output.
 // -----------------------------------------------------------------------------
 
-// Base -----------------------------------------------------------------------
 @use "./base/fonts";
-@use "./base/headings";
-
 @use "./base/reset";
 @use "./base/typography";
 
-// Layout ---------------------------------------------------------------------
 @use "./layout/page";
-@use "./layout/header";
+@use "./layout/top-bar";
 
-// Sections -------------------------------------------------------------------
 @use "./sections/hero";
-@use "./sections/about";
-@use "./sections/experience";
-@use "./sections/work";
-@use "./sections/projects";
-@use "./sections/contact";
 
-// Layout, continued ----------------------------------------------------------
-@use "./layout/side-rails";
-@use "./layout/footer";
-
-// Components -----------------------------------------------------------------
-@use "./components/cursor";
 @use "./components/button";

@@ -1,12 +1,10 @@
 // Font families
 // -----------------------------------------------------------------------------
-// Family names and the asset path only. The @font-face rules live in
-// base/_fonts.scss — abstracts must never emit CSS.
+// Archivo is loaded through next/font in layout.tsx, which self-hosts it and
+// exposes it as a CSS variable — no runtime request to Google. Fira Mono is
+// self-hosted from public/Fonts via base/_fonts.scss.
 
 $font-path: "/fonts";
 
-$font-inter-normal: "Inter", sans-serif;
-$font-inter-bold: "Inter", sans-serif;
-
-$font-fira-mono-normal: "Fira Mono", monospace;
-$font-fira-mono-bold: "Fira Mono", monospace;
+$font-display: var(--font-archivo), "Archivo", Helvetica, Arial, sans-serif;
+$font-mono: "Fira Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
