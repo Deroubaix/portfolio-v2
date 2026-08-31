@@ -61,7 +61,7 @@ export const caseStudies: readonly CaseStudy[] = [
           "Two very different audiences were being served by one voice, and neither journey was clear. Maintaining separate codebases also meant every change had to be made — and tested — several times over.",
         ],
         constraint: "The users are sleep-deprived. Every extra click, every ambiguous label, every slow page is a person giving up on help they need.",
-        roleIntro: "Fullstack developer, working alongside the design and product teams. I owned the front end end-to-end and shared the back end and database work.",
+        roleIntro: "Fullstack developer, working alongside the design and product teams. Most of my work is on the front end, but a fair amount sits behind it: NestJS endpoints, Prisma schema changes, GraphQL, and data migrations against live records.",
         owned: [
           "Front-end architecture and shared components",
           "Full-stack features from API to interface",
@@ -80,8 +80,8 @@ export const caseStudies: readonly CaseStudy[] = [
           },
           {
             n: "02", title: "Sign-ins failed on capitalisation", tags: "Prisma · auth",
-            body: "Anyone who registered with a capitalised email could not log back in with the lowercase version — the lookup compared the stored string exactly. The fix was one line in UserService; the work was reproducing it, because it only surfaced for accounts created a particular way.",
-            tradeoff: "Case-insensitive matching has to be supported by the database. Prisma's insensitive mode covers it, so no schema change was needed.",
+            body: "Anyone who registered with a capitalised email could not log back in with the lowercase version — the lookup compared the stored string exactly. Fixing it properly took three changes rather than one: a case-insensitive lookup so existing accounts could sign in, normalisation on write so new ones are stored consistently, and an admin-only migration endpoint to clean up the rows already in the database.",
+            tradeoff: "My first migration read every user and updated the mismatched ones row by row — one round trip per user for something the database does in a single statement. I replaced it with a raw SQL update three days later. Slower to write twice, far faster to run, and much less to go wrong halfway through.",
           },
           {
             n: "03", title: "The page stopped scrolling", tags: "React · lifecycle",
@@ -158,7 +158,12 @@ export const caseStudies: readonly CaseStudy[] = [
             tradeoff: "The font is now declared in three places instead of one. That is the cost of not depending on bundler-specific behaviour.",
           },
           {
-            n: "03", title: "Completed work still looked outstanding", tags: "React · UX",
+            n: "03", title: "Finding a practitioner meant scrolling", tags: "NestJS · API",
+            body: "The practitioner directory had no way to search by name, so anyone looking for someone specific scrolled the list. I added public search and autocomplete endpoints on the practitioner controller, filtered to the accreditation and maintenance programmes so only qualified practitioners come back, with a minimum query length so a single keystroke does not scan the table.",
+            tradeoff: "The programme IDs come from config rather than the code, so who counts as accredited can change without a deploy. The minimum query length is a blunt guard though — a busier directory would want proper rate limiting rather than a length check.",
+          },
+          {
+            n: "04", title: "Completed work still looked outstanding", tags: "React · UX",
             body: "Required activities carried a red asterisk to mark them as mandatory, but the marker stayed after completion — so finished modules still read as something left to do. I scoped it to incomplete activities and reduced its size so it reads as a marker rather than an error.",
             tradeoff: "Learners can no longer tell at a glance which completed activities had been required. That is on the activity itself, and the list stays legible.",
           },
