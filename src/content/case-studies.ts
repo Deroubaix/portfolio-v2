@@ -99,6 +99,7 @@ export const caseStudies: readonly CaseStudy[] = [
           { layer: "API", detail: "NestJS · GraphQL" },
           { layer: "Data", detail: "PostgreSQL via Prisma" },
           { layer: "Content", detail: "Editor-managed pages, resources and courses" },
+          { layer: "Search", detail: "Meilisearch, indexed from the article service" },
           { layer: "Quality", detail: "Semantic HTML, keyboard paths, Lighthouse budgets" },
         ],
         craftTitle: "Accessibility",
