@@ -18,7 +18,6 @@
 }
 
 .hero {
-  container-type: inline-size;
   padding-block: $space-lg $space-2xl;
 
   &__meta {
@@ -28,12 +27,16 @@
   &__name {
     margin: clamp(14px, 2vw, 26px) 0 0;
     font-family: $font-display;
-    // "Deroubaix" measures 5.902x the font-size in width, so the largest size
-    // that fits is container-width / 5.902 -> 16.9cqw. Sizing off the
-    // container rather than the viewport means it is flush at every width and
-    // can never overflow. vw clamp is the fallback where cqw is unsupported.
-    font-size: clamp(44px, 14.5vw, 260px);
-    font-size: min(16.9cqw, 260px);
+    // Fluid between a floor and a fixed ceiling, matching the design. The cap
+    // keeps the setting stable on wide screens rather than growing without
+    // limit.
+    font-size: clamp(44px, 14.7vw, 260px);
+
+    // Optical alignment. Archivo's M and D both carry 0.0749em of left side
+    // bearing, so the ink sits inset from the text box. Pull the block left by
+    // exactly that much to make the letterforms flush with the page gutter.
+    // Applied to the h1 (not the masked line) so nothing gets clipped.
+    margin-inline-start: -0.0749em;
     font-weight: $weight-black;
     line-height: 0.82;
     letter-spacing: -0.05em;
