@@ -240,6 +240,18 @@
     margin-bottom: $space-lg;
   }
 
+  // Says plainly where the direction came from, so the items below are read
+  // as work owned rather than authority claimed.
+  &__attribution {
+    max-width: 62ch;
+    margin-bottom: $space-lg;
+    padding-left: $space-sm;
+    border-left: 2px solid $color-rule-strong;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: $color-text-muted;
+  }
+
   &__prose p {
     font-size: 15.5px;
     line-height: 1.75;

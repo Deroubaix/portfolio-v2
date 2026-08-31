@@ -24,6 +24,11 @@ export type CaseStudy = {
   constraint: string;
   roleIntro: string;
   owned: readonly string[];
+  /** Heading for the decisions block — varies with how much was actually mine. */
+  decisionsTitle: string;
+  decisionsCaption: string;
+  /** Attribution, where the direction came from someone else. */
+  decisionsNote?: string;
   decisions: ReadonlyArray<{
     n: string;
     title: string;
@@ -63,21 +68,25 @@ export const caseStudies: readonly CaseStudy[] = [
           "SQL → PostgreSQL migration and schema design",
           "Performance, SEO and accessibility work",
         ],
+        decisionsTitle: "Problems I found and fixed",
+        decisionsCaption: "03 — bugs I caught, and what I changed",
+        decisionsNote:
+          "Product direction came from the team and the architecture calls from my lead. These are problems I found in the code and the fixes I shipped.",
         decisions: [
           {
-            n: "01", title: "One platform, two front doors", tags: "Information architecture · Next.js",
-            body: "Rather than one homepage trying to speak to parents and clinicians at once, the platform routes each audience into its own path early — parent programs and free resources on one side, professional training and the practitioner directory on the other — while sharing a single codebase, design system and CMS underneath.",
-            tradeoff: "More routing and navigation logic to maintain, and a harder cold-start for anyone who doesn't self-identify. Worth it: neither audience wades through content meant for the other.",
+            n: "01", title: "Draft articles were publicly readable", tags: "Prisma · data integrity",
+            body: "The blog listing queried articles without filtering on publish state, so anything saved as a draft was reachable by anyone who found the URL. I added the constraint at the query level in the article service rather than filtering in the component, so it holds everywhere that service is called.",
+            tradeoff: "A query-level filter means any future preview mode has to opt out explicitly. Worth it — the safe default should be \"not published\".",
           },
           {
-            n: "02", title: "A component library before pages", tags: "Design system · Sass",
-            body: "Consolidating several separate sites meant a large body of existing content. I built the shared pieces first — layout, typography, cards, forms, media blocks — so pages became compositions rather than bespoke builds. Design handed over patterns, not screens.",
-            tradeoff: "Slower for the first weeks, with little visible to show. It paid for itself the first time a global style change shipped in one commit instead of dozens.",
+            n: "02", title: "Sign-ins failed on capitalisation", tags: "Prisma · auth",
+            body: "Anyone who registered with a capitalised email could not log back in with the lowercase version — the lookup compared the stored string exactly. The fix was one line in UserService; the work was reproducing it, because it only surfaced for accounts created a particular way.",
+            tradeoff: "Case-insensitive matching has to be supported by the database. Prisma's insensitive mode covers it, so no schema change was needed.",
           },
           {
-            n: "03", title: "Moving to PostgreSQL", tags: "PostgreSQL · Prisma",
-            body: "The merged data model — programs, lessons, practitioners, enrolments — needed real relational integrity. I migrated the project from SQL to PostgreSQL and designed the schema with Prisma, which also gave the team typed queries end to end.",
-            tradeoff: "I was learning parts of it as I went, so I moved in stages rather than one cutover. Slower migration, no data loss.",
+            n: "03", title: "The page stopped scrolling", tags: "React · lifecycle",
+            body: "The article Progress Tracker locked body scroll while its sidebar was open, but never removed the class when the component unmounted. Navigating away left the whole page unscrollable. I added the cleanup to the effect and reset the sidebar state with it.",
+            tradeoff: "Nothing is traded here — it was a missing cleanup, not a design choice. It did change how I work: anything added to the body now gets a paired removal in the same effect.",
           },
         ],
         layers: [
@@ -128,21 +137,25 @@ export const caseStudies: readonly CaseStudy[] = [
           "Schema design for courses, modules and users",
           "Responsive, accessible front-end build",
         ],
+        decisionsTitle: "Problems I found and fixed",
+        decisionsCaption: "03 — bugs I caught, and what I changed",
+        decisionsNote:
+          "Course structure and product direction came from the team. These are problems I found in the code and the fixes I shipped.",
         decisions: [
           {
-            n: "01", title: "Structure the curriculum as data", tags: "Prisma · schema design",
-            body: "Courses, modules, lessons and media were modelled as first-class relational entities rather than pages of prose. That let the team reorder a curriculum, reuse a lesson across courses and report on progress without a developer touching markup.",
-            tradeoff: "More modelling work before anything was visible, and stricter constraints on how content can be authored. In exchange the curriculum is editable by the people who own it.",
+            n: "01", title: "Terms couldn't be edited without a deploy", tags: "Next.js · content",
+            body: "The terms and conditions page was 370 lines of hardcoded JSX. Every wording change needed a developer and a release. I replaced it with a fetch from the article service, keyed by an ID in config, so the content team edits it in the CMS like any other article.",
+            tradeoff: "The page now depends on the backend being reachable, so it needs a sensible failure path. Worth it — legal copy changes more often than anyone plans for.",
           },
           {
-            n: "02", title: "Built for interrupted study", tags: "UX · front end",
-            body: "The interface leans on clear lesson boundaries, visible progress and obvious resumption points, so a learner returning after a week can see where they stopped and what remains — rather than scrolling to find their place.",
-            tradeoff: "More state to track and keep in sync than a simple video list. Worth it for an audience that studies in fragments.",
+            n: "02", title: "Fonts silently stopped loading", tags: "Turbopack · build",
+            body: "Montserrat was pulled in with a CSS @import in the shared typography partial. Turbopack strips @import rules when it bundles, so the font quietly failed across every app with no error to follow. I moved it to a link tag in each app's layout, with preconnect, so all three load it the same way.",
+            tradeoff: "The font is now declared in three places instead of one. That is the cost of not depending on bundler-specific behaviour.",
           },
           {
-            n: "03", title: "Shared foundations with the wider platform", tags: "Design system · reuse",
-            body: "NDC sits alongside the other Possums-family properties, so it reuses the same component conventions and stack instead of forking a new one. Fixes and accessibility improvements travel between projects.",
-            tradeoff: "Less freedom to design NDC in isolation; some patterns had to be generalised rather than made bespoke. The payoff is one set of habits to maintain, not two.",
+            n: "03", title: "Completed work still looked outstanding", tags: "React · UX",
+            body: "Required activities carried a red asterisk to mark them as mandatory, but the marker stayed after completion — so finished modules still read as something left to do. I scoped it to incomplete activities and reduced its size so it reads as a marker rather than an error.",
+            tradeoff: "Learners can no longer tell at a glance which completed activities had been required. That is on the activity itself, and the list stays legible.",
           },
         ],
         layers: [
@@ -193,6 +206,8 @@ export const caseStudies: readonly CaseStudy[] = [
           "Product, collection and cart interfaces",
           "Performance, motion and responsive behaviour",
         ],
+        decisionsTitle: "Decisions & trade-offs",
+        decisionsCaption: "03 — what I chose, what I gave up",
         decisions: [
           {
             n: "01", title: "Headless, not a theme", tags: "Shopify Storefront API · Next.js",

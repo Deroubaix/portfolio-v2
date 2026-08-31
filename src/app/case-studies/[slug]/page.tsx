@@ -123,8 +123,11 @@ export default function CaseStudyPage({ params }: Params) {
       </section>
 
       <section className="cs__block">
-        <h2 className="cs__h2 cs__h2--display">Decisions &amp; trade-offs</h2>
-        <p className="cs__caption">03 — what I chose, what I gave up</p>
+        <h2 className="cs__h2 cs__h2--display">{study.decisionsTitle}</h2>
+        <p className="cs__caption">{study.decisionsCaption}</p>
+        {study.decisionsNote && (
+          <p className="cs__attribution">{study.decisionsNote}</p>
+        )}
 
         {study.decisions.map((d) => (
           <div key={d.n} className="cs__decision">
