@@ -10,7 +10,6 @@ export const site = {
   role: "Full stack developer",
   location: "Lisbon / remote",
   edition: "Portfolio no. 03 — 2026",
-  status: "Open to work",
   email: "deroubaix.marisha@gmail.com",
   github: "https://github.com/Deroubaix",
   linkedin: "https://www.linkedin.com/in/marisha-deroubaix",

@@ -1,34 +1,65 @@
 // Hero
 // -----------------------------------------------------------------------------
-// The name set as large as the viewport allows, stacked on two lines, with a
-// three-column summary beneath it.
+// The name is set as two stacked lines at display weight. "Open to work" sits
+// on the second line's baseline, pushed to the right edge — that is what makes
+// the block read as full-bleed, not a larger type size.
+//
+// Each line rises into place from behind an overflow:hidden mask.
 
 @use "../abstracts" as *;
 
+@keyframes hero-rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .hero {
-  padding-block: $space-xl $space-2xl;
+  container-type: inline-size;
+  padding-block: $space-lg $space-2xl;
 
   &__meta {
-    margin-bottom: $space-lg;
+    margin-bottom: 0;
   }
 
   &__name {
-    @include display($display-xl, $weight-bold);
-    margin: 0;
-
-    // Each word on its own line, optically flush to the gutter.
-    span {
-      display: block;
-      margin-inline-start: -0.055em;
-    }
+    margin: clamp(14px, 2vw, 26px) 0 0;
+    font-family: $font-display;
+    // "Deroubaix" measures 5.902x the font-size in width, so the largest size
+    // that fits is container-width / 5.902 -> 16.9cqw. Sizing off the
+    // container rather than the viewport means it is flush at every width and
+    // can never overflow. vw clamp is the fallback where cqw is unsupported.
+    font-size: clamp(44px, 14.5vw, 260px);
+    font-size: min(16.9cqw, 260px);
+    font-weight: $weight-black;
+    line-height: 0.82;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
   }
 
-  &__status {
-    @include label($color-accent, $text-sm);
-    display: inline-flex;
-    align-items: center;
-    gap: $space-2xs;
-    margin-top: $space-md;
+  // Mask: the inner element is what animates, so the line appears to rise
+  // out of the one above it.
+  &__line {
+    display: block;
+    overflow: hidden;
+  }
+
+  &__rise {
+    display: block;
+    animation: hero-rise 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  &__rise--last {
+    animation-delay: 0.1s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__rise {
+      animation: none;
+    }
   }
 
   &__summary {
@@ -63,14 +94,17 @@
     max-width: 34ch;
   }
 
-  &__stack {
+  &__stack,
+  &__now {
     @include label($color-text-muted, $text-sm);
     text-transform: none;
+    line-height: 2;
+  }
 
+  &__stack {
     div {
       display: flex;
       gap: $space-2xs;
-      line-height: 2;
     }
 
     dt,
@@ -81,12 +115,6 @@
     dt {
       color: $color-text-subtle;
     }
-  }
-
-  &__now {
-    @include label($color-text-muted, $text-sm);
-    line-height: 2;
-    text-transform: none;
   }
 
   &__actions {

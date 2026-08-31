@@ -11,11 +11,13 @@ export default function Hero() {
       </div>
 
       <h1 className="hero__name">
-        <span>{site.name.first}</span>
-        <span>{site.name.last}</span>
+        <span className="hero__line">
+          <span className="hero__rise">{site.name.first}</span>
+        </span>
+        <span className="hero__line">
+          <span className="hero__rise hero__rise--last">{site.name.last}</span>
+        </span>
       </h1>
-
-      <p className="hero__status">{site.status}</p>
 
       <div className="hero__summary">
         <div>
