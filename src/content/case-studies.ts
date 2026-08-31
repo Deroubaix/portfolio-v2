@@ -88,6 +88,11 @@ export const caseStudies: readonly CaseStudy[] = [
             body: "The article Progress Tracker locked body scroll while its sidebar was open, but never removed the class when the component unmounted. Navigating away left the whole page unscrollable. I added the cleanup to the effect and reset the sidebar state with it.",
             tradeoff: "Nothing is traded here — it was a missing cleanup, not a design choice. It did change how I work: anything added to the body now gets a paired removal in the same effect.",
           },
+          {
+            n: "04", title: "The carousel could never reach its last card", tags: "React · shared hook",
+            body: "The guest speaker carousel tracked its position with a round of scrollLeft divided by the track width. Cards are sized as a percentage of that track, so the estimate drifts further out with every item — and the last card's left edge never reaches the viewport's, so it could not be selected at all. I measured position off the items themselves, special-cased the end of the scroll, and moved the whole thing into the shared carousel hook, which took 68 lines out of the component. While I was there I hid the dots and arrows when there is nothing to scroll, using a ResizeObserver so it stays correct as the layout changes.",
+            tradeoff: "Measuring per item is a little more work on each scroll than a single division. It is correct at any card width, which the division never was.",
+          },
         ],
         layers: [
           { layer: "Front end", detail: "Next.js · TypeScript · Sass modules" },
