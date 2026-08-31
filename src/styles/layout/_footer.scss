@@ -1,32 +1,43 @@
-// Site footer
+// Footer
 // -----------------------------------------------------------------------------
 
 @use "../abstracts" as *;
 
-#footer-container .footer {
-  text-align: center;
-  padding: 1rem 0;
-  font-size: 0.85rem;
+.footer {
+  @include rule(top);
+  padding-block: $space-2xl $space-xl;
 
-  .footer-icons {
-    // Only shown once the fixed side rails are hidden.
-    display: none;
-    margin-bottom: 1rem;
-
-    a {
-      margin: 0 1rem;
-      color: $color-grey-light;
-
-      &:hover {
-        color: $color-accent-1;
-      }
-    }
+  &__cta {
+    @include display($display-md, $weight-bold);
+    text-transform: none;
+    letter-spacing: -0.03em;
+    max-width: 24ch;
   }
 
-  @include responsive($breakpoint-xl) {
-    .footer-icons {
-      display: flex;
-      justify-content: center;
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-xs;
+    margin-top: $space-lg;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: $space-md;
+    margin-top: $space-3xl;
+    padding-top: $space-md;
+    @include rule(top);
+    @include label($color-text-subtle, $text-sm);
+  }
+
+  &__links {
+    display: flex;
+    gap: $space-md;
+
+    a {
+      @include underline-on-hover;
     }
   }
 }

@@ -1,0 +1,54 @@
+// Experience
+// -----------------------------------------------------------------------------
+// Every role listed at once — no tabs. Editorial layouts read top to bottom,
+// and a CV that hides two thirds of itself behind a tab serves nobody.
+
+@use "../abstracts" as *;
+
+.experience {
+  &__job {
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: $space-lg;
+    padding-block: $space-xl;
+    @include rule(top);
+
+    @include responsive($breakpoint-xl) {
+      grid-template-columns: 1fr;
+      gap: $space-sm;
+    }
+  }
+
+  &__period {
+    @include label($color-text-subtle, $text-sm);
+  }
+
+  &__name {
+    @include display($display-sm, $weight-bold);
+    letter-spacing: -0.02em;
+  }
+
+  &__role {
+    @include label($color-accent, $text-sm);
+    margin-top: $space-3xs;
+  }
+
+  &__duties {
+    display: grid;
+    gap: $space-2xs;
+    margin-top: $space-md;
+    color: $color-text-muted;
+
+    li {
+      display: grid;
+      grid-template-columns: 1.5rem 1fr;
+      align-items: baseline;
+    }
+
+    // Arrow marker instead of a bullet, matching the design.
+    li::before {
+      content: "→";
+      color: $color-accent;
+    }
+  }
+}

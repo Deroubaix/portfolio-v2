@@ -16,7 +16,12 @@
 
 @use "./layout/page";
 @use "./layout/top-bar";
+@use "./layout/footer";
 
 @use "./sections/hero";
+@use "./sections/work";
+@use "./sections/about";
+@use "./sections/experience";
+@use "./sections/projects";
 
 @use "./components/button";

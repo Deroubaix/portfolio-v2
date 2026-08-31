@@ -1,0 +1,71 @@
+// Projects
+// -----------------------------------------------------------------------------
+// Side projects. Called "Projects", not "lab" — a recruiter scanning the page
+// should not have to guess.
+
+@use "../abstracts" as *;
+
+.projects {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @include rule(top);
+
+    @include responsive($breakpoint-2xl) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2xs;
+    padding: $space-lg $space-lg $space-lg 0;
+
+    + * {
+      padding-left: $space-lg;
+      @include rule(left);
+    }
+
+    @include responsive($breakpoint-2xl) {
+      padding-right: 0;
+
+      + * {
+        padding-left: 0;
+        border-left: none;
+        @include rule(top);
+      }
+    }
+  }
+
+  &__kind {
+    @include label($color-text-subtle, $text-xs);
+  }
+
+  &__title {
+    @include display($display-sm, $weight-bold);
+    letter-spacing: -0.02em;
+  }
+
+  &__stack {
+    @include label($color-text-muted, $text-sm);
+    text-transform: none;
+  }
+
+  &__blurb {
+    color: $color-text-muted;
+    margin-top: $space-2xs;
+  }
+
+  &__links {
+    display: flex;
+    gap: $space-md;
+    margin-top: auto;
+    padding-top: $space-md;
+
+    a {
+      @include label($color-text, $text-sm);
+      @include underline-on-hover;
+    }
+  }
+}
