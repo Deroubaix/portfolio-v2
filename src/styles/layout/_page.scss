@@ -30,6 +30,16 @@
   @include label($color-text-muted, 11.5px);
   letter-spacing: 0.16em;
   border-bottom: 1px solid $color-rule-strong;
+
+  // These are headings semantically but labels visually. Without this the
+  // h1-h4 bold rule in base/_typography wins over the label mixin.
+  h1,
+  h2,
+  h3 {
+    font: inherit;
+    letter-spacing: inherit;
+    margin: 0;
+  }
 }
 
 // Section opener: mono label on the left, rule filling the remainder.

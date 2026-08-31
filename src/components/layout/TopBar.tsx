@@ -9,7 +9,6 @@ const SECTIONS = [
   { id: "projects", label: "Projects" },
 ];
 
-/** Live Lisbon time. Renders nothing until mounted so SSR and client agree. */
 function useLisbonTime() {
   const [time, setTime] = useState<string | null>(null);
 
@@ -32,7 +31,6 @@ function useLisbonTime() {
   return time;
 }
 
-/** Highlights whichever section currently occupies the upper viewport. */
 function useActiveSection() {
   const [active, setActive] = useState<string | null>(null);
 
@@ -59,7 +57,6 @@ function useActiveSection() {
   return active;
 }
 
-/** Width tracks scroll position. Written directly to style, not state. */
 function useScrollProgress() {
   const ref = useRef<HTMLDivElement>(null);
 

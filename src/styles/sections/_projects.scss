@@ -68,9 +68,18 @@
     @include label(currentColor, 11.5px);
     letter-spacing: 0.1em;
 
+    // The design leaves these static; a link with no hover feedback gives
+    // the reader nothing to confirm they are on target.
     a {
       color: inherit;
       border-bottom: 1px solid currentColor;
+      transition: color 0.2s ease, border-color 0.2s ease;
+
+      &:hover,
+      &:focus-visible {
+        color: $color-accent-decorative;
+        border-bottom-color: $color-accent-decorative;
+      }
     }
   }
 }

@@ -18,6 +18,7 @@
     @include label($color-text-muted, 11.5px);
     letter-spacing: 0.16em;
     font-weight: $weight-regular;
+    font-family: $font-mono;
     margin-bottom: 26px;
   }
 

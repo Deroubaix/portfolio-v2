@@ -1,7 +1,6 @@
 import React from "react";
 import { site } from "../../content/site";
 
-/** Two identical halves so the marquee can loop by translating -50%. */
 const SHOUTS = Array.from({ length: 6 });
 
 export default function Footer() {
