@@ -23,6 +23,12 @@
   }
 }
 
+// Sections that manage their own gutter and dividers (the work table).
+.section--bleed {
+  padding-block: 0;
+  border-top: none;
+}
+
 // Section opener: mono label on the left, rule filling the remainder.
 .section-head {
   display: flex;

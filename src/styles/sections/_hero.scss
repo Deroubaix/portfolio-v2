@@ -65,29 +65,22 @@
     }
   }
 
+  // auto-fit rather than a fixed three, so cells reflow instead of squashing.
+  // Divider is solid ink, not the faded hairline — it is structural.
   &__summary {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin-top: $space-2xl;
-    @include rule(top);
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    margin-top: clamp(24px, 4vw, 44px);
+    border-top: 1px solid $color-ink;
 
     > * {
-      padding: $space-lg $space-md $space-lg 0;
-
-      + * {
-        padding-left: $space-lg;
-        @include rule(left);
-      }
+      padding: 22px 22px 22px 0;
+      border-right: 1px solid $color-rule;
     }
 
-    @include responsive($breakpoint-lg) {
-      grid-template-columns: 1fr;
-
-      > * + * {
-        padding-left: 0;
-        border-left: none;
-        @include rule(top);
-      }
+    // No trailing divider on the last cell in a row.
+    > *:last-child {
+      border-right: none;
     }
   }
 

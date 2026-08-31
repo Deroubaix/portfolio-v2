@@ -1,15 +1,17 @@
 "use client";
 
 import React, { useRef } from "react";
+import Link from "next/link";
 import { work } from "../../content/site";
 
 /**
- * Index of work. Hovering a row lifts a preview that tracks the cursor.
+ * Selected work. Each row links to that project's case study; the live site is
+ * reachable from the note beneath.
  *
- * The preview is decorative: it only appears for fine pointers, is hidden
- * under prefers-reduced-motion, and carries no information that isn't already
- * in the row. Positioned by writing transform directly rather than through
- * state, so pointer moves don't trigger a React render on every frame.
+ * The hover preview is decorative — fine pointers only, hidden under
+ * prefers-reduced-motion, and it shows nothing the row does not already say.
+ * Positioned by writing transform directly rather than through state, so
+ * pointer moves do not trigger a render on every frame.
  */
 export default function Work() {
   const peekRef = useRef<HTMLDivElement>(null);
@@ -35,33 +37,31 @@ export default function Work() {
   };
 
   return (
-    <section id="work" className="section shell work">
-      <div className="section-head">
-        <h2 className="section-head__label">Index of work</h2>
-        <span className="section-head__rule" aria-hidden="true" />
+    <section id="work" className="work">
+      <div className="work__head">
+        <h2>Selected work</h2>
+        <p className="work__hint">
+          Hover to preview — click to read the case study
+        </p>
       </div>
 
-      <ul className="work__rows">
-        {work.map((item) => (
-          <li key={item.slug}>
-            <a
-              className="work__row"
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              onPointerEnter={() => show(item.img)}
-              onPointerLeave={hide}
-              onPointerMove={move}
-              onFocus={hide}
-            >
-              <span className="work__n">{item.n}</span>
-              <span className="work__title">{item.title}</span>
-              <span className="work__stack">{item.stack}</span>
-              <span className="work__year">{item.year}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
+      {work.map((item) => (
+        <Link
+          key={item.slug}
+          className="work__row"
+          href={`/case-studies#${item.slug}`}
+          onPointerEnter={() => show(item.img)}
+          onPointerLeave={hide}
+          onPointerMove={move}
+          onFocus={hide}
+        >
+          <span className="work__n">{item.n}</span>
+          <span className="work__title">{item.title}</span>
+          <span className="work__stack">{item.stack}</span>
+          <span className="work__year">{item.year}</span>
+          <span className="work__case">Case →</span>
+        </Link>
+      ))}
 
       <div className="work__peek" ref={peekRef} aria-hidden="true">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -70,13 +70,14 @@ export default function Work() {
 
       <div className="work__notes">
         {work.map((item) => (
-          <div key={item.slug}>
+          <div key={item.slug} className="work__note">
             <p className="work__note-label">{item.title}</p>
             <p className="work__note-text">{item.note}</p>
             <p className="work__note-links">
               <a href={item.link} target="_blank" rel="noopener noreferrer">
-                Visit ↗
+                Visit site ↗
               </a>
+              <Link href={`/case-studies#${item.slug}`}>Case study →</Link>
             </p>
           </div>
         ))}

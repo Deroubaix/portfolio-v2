@@ -1,34 +1,59 @@
-// Work index
+// Selected work
 // -----------------------------------------------------------------------------
-// A table of work, one row per project. Hovering a row inverts it and lifts a
-// preview image that tracks the cursor — pointer-only, so touch and keyboard
-// users get the plain list.
+// A full-bleed table: header band, one row per project, then short notes. Rows
+// link to the case study. Hovering inverts the row and lifts a preview image
+// that tracks the cursor.
+//
+// The section carries no gutter of its own — each row supplies it, so the
+// hover inversion runs edge to edge.
 
 @use "../abstracts" as *;
 
+$row-gutter: clamp(16px, 3vw, 34px);
+
 .work {
-  &__rows {
-    @include rule(top);
+  padding: 0;
+
+  // Label left, interaction hint right.
+  &__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: $space-md;
+    padding: 18px $row-gutter;
+    @include label($color-text-muted, 11.5px);
+    letter-spacing: 0.16em;
+    border-bottom: 1px solid $color-rule-strong;
+  }
+
+  &__hint {
+    text-align: right;
+
+    // The hint describes a pointer-only affordance.
+    @media (hover: none), (pointer: coarse) {
+      display: none;
+    }
   }
 
   &__row {
     display: grid;
-    // Title takes its natural width so it never wraps; the stack column is
-    // the one allowed to shrink.
-    grid-template-columns: 3.5rem max-content minmax(0, 1fr) 5.5rem;
-    align-items: baseline;
-    gap: $space-md;
-    padding: $space-md $space-sm;
-    @include rule(bottom);
+    grid-template-columns:
+      4.5rem minmax(180px, 1.4fr) minmax(120px, 1fr)
+      6rem 5.5rem;
+    align-items: center;
+    gap: 16px;
+    padding: clamp(18px, 2.4vw, 30px) $row-gutter;
+    border-bottom: 1px solid $color-rule-strong;
     transition: background 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
 
     &:hover,
     &:focus-visible {
       background: $color-surface-inverse;
       color: $color-text-inverse;
-      padding-left: calc(#{$space-sm} + 14px);
+      padding-left: calc(#{$row-gutter} + 14px);
       outline: none;
 
+      .work__n,
       .work__stack,
       .work__year {
         color: rgba($color-cream, 0.7);
@@ -36,44 +61,54 @@
     }
 
     @include responsive($breakpoint-xl) {
-      grid-template-columns: 2.5rem minmax(0, 1fr);
+      grid-template-columns: 3rem minmax(0, 1fr) auto;
       row-gap: $space-2xs;
 
-      .work__stack,
-      .work__year {
+      .work__stack {
+        grid-column: 2 / -1;
+      }
+
+      .work__case {
         grid-column: 2;
+        text-align: left;
       }
     }
   }
 
   &__n {
-    @include label($color-text-subtle, $text-sm);
+    @include label($color-text-muted, 12px);
+    letter-spacing: $tracking-normal;
   }
 
   &__title {
-    @include display($display-sm, $weight-bold);
-    letter-spacing: -0.02em;
-  }
-
-  &__stack,
-  &__year {
-    @include label($color-text-muted, $text-sm);
-    text-transform: none;
+    font-family: $font-display;
+    font-size: clamp(26px, 4.2vw, 54px);
+    font-weight: $weight-bold;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    text-transform: uppercase;
   }
 
   &__stack {
-    text-align: right;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    @include label($color-grey-700, 12px);
+    letter-spacing: $tracking-normal;
+    text-transform: none;
+    line-height: 1.6;
   }
 
   &__year {
-    text-align: right;
+    @include label($color-grey-700, 12px);
+    letter-spacing: $tracking-normal;
     font-variant-numeric: tabular-nums;
   }
 
-  // Cursor-following preview.
+  &__case {
+    @include label(currentColor, 11px);
+    letter-spacing: 0.1em;
+    text-align: right;
+  }
+
+  // Cursor-following preview. Decorative: it shows nothing the row does not.
   &__peek {
     position: fixed;
     top: 0;
@@ -97,41 +132,23 @@
       opacity: 1;
     }
 
-    // No hover target, no preview.
     @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
       display: none;
     }
   }
 
-  // Short notes on each project, under the index.
   &__notes {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin-top: $space-2xl;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    border-bottom: 2px solid $color-ink;
+  }
 
-    > * {
-      padding-right: $space-lg;
+  &__note {
+    padding: $space-lg $row-gutter;
+    border-right: 1px solid $color-rule;
 
-      + * {
-        padding-left: $space-lg;
-        @include rule(left);
-      }
-    }
-
-    @include responsive($breakpoint-xl) {
-      grid-template-columns: 1fr;
-      gap: $space-lg;
-
-      > * {
-        padding-right: 0;
-
-        + * {
-          padding-left: 0;
-          border-left: none;
-          padding-top: $space-lg;
-          @include rule(top);
-        }
-      }
+    &:last-child {
+      border-right: none;
     }
   }
 
@@ -142,7 +159,6 @@
 
   &__note-text {
     color: $color-text-muted;
-    max-width: 42ch;
   }
 
   &__note-links {
