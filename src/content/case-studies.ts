@@ -49,7 +49,7 @@ export const caseStudies: readonly CaseStudy[] = [
         id: "possums", n: "01", name: "Possums", link: "https://possums.org/", img: "/images/possums-website.webp",
         kicker: "Health platform · consolidation", timeline: "Aug 2023 — ongoing",
         h1a: "Several sites,", h1b: "one platform.",
-        intro: "Possums helps exhausted parents and the clinicians who support them. The knowledge was excellent; finding it was not. I rebuilt several separate websites into a single platform serving both audiences — programs, free resources and a practitioner directory in one place.",
+        intro: "Possums helps exhausted parents and the clinicians who support them. The knowledge was excellent; finding it was not. Marketing made the call to bring several separate sites under one domain, for SEO and a single brand; the team rebuilt them as one platform serving both audiences. I have worked on the front end throughout, and I am building the professional side now as NDC Institute moves across.",
         meta: [
           { k: "Client", v: "Possums" },
           { k: "My role", v: "Fullstack developer" },
@@ -179,6 +179,7 @@ export const caseStudies: readonly CaseStudy[] = [
           "e.g. performance / accessibility score",
         ],
         next: [
+          "It is moving. NDC Institute is being folded into possums.org — marketing's call, for SEO and a single brand — and I am building the professional side of Possums that will host it: the accreditation pathway, course and purchase pages, guest speakers and the professional dashboard. The Education Hub follows after that.",
           "The obvious next step is richer assessment and certification — practitioners want evidence of completion they can show an employer or professional body.",
           "After that, analytics on where learners stall. Completion data tells you which lesson needs rewriting, and right now that's guesswork.",
         ],
