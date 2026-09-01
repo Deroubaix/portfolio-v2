@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import ScrollProgress from "../components/layout/ScrollProgress";
 
-// Self-hosted at build time by next/font — no runtime request to Google.
+// Self-hosted at build time by next/font, so no runtime request to Google.
 const archivo = Archivo({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -15,7 +15,7 @@ const archivo = Archivo({
 export const metadata: Metadata = {
   title: "Marisha Deroubaix — Full Stack Developer",
   description:
-    "Full stack developer in Lisbon. I build accessible, fast websites end to end — currently building platforms for parents and clinicians at Possums.",
+    "Full stack developer in Lisbon. I build accessible, fast websites end to end, currently building platforms for parents and clinicians at Possums.",
   openGraph: {
     title: "Marisha Deroubaix — Full Stack Developer",
     description:

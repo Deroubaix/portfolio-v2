@@ -8,7 +8,7 @@ import { work } from "../../content/site";
  * Selected work. Each row links to that project's case study; the live site is
  * reachable from the note beneath.
  *
- * The hover preview is decorative — fine pointers only, hidden under
+ * The hover preview is decorative: fine pointers only, hidden under
  * prefers-reduced-motion, and it shows nothing the row does not already say.
  * Positioned by writing transform directly rather than through state, so
  * pointer moves do not trigger a render on every frame.
@@ -41,7 +41,7 @@ export default function Work() {
       <div className="band work__head">
         <h2>Selected work</h2>
         <p className="work__hint">
-          Hover to preview — click to read the case study
+          Hover to preview, click to read the case study
         </p>
       </div>
 

@@ -2,7 +2,7 @@
  * Single source of truth for site copy.
  *
  * Kept out of the components so wording can be reviewed and changed without
- * touching markup — and so the same fact cannot drift between sections.
+ * touching markup, and so the same fact cannot drift between sections.
  *
  * NOTE (pending review): the "2017" start date in `about.intro` is the one
  * claim not verified against Marisha's history. Everything else here is drawn
@@ -19,7 +19,7 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/marisha-deroubaix",
   cv: "/CV_Marisha-Deroubaix.pdf",
 
-  lead: "I build accessible, fast websites end to end — and I care most about the parts nobody praises.",
+  lead: "I build accessible, fast websites end to end, and I care most about the parts nobody praises.",
 
   stack: [
     { label: "Front", value: "Next.js, TypeScript, Sass" },
@@ -40,7 +40,7 @@ export const work = [
     link: "https://possums.org/",
     img: "/images/possums-website.webp",
     slug: "possums",
-    note: "Several separate sites consolidated into one platform — parent programs, free resources and a practitioner directory, built for clinicians and exhausted parents alike.",
+    note: "Several separate sites consolidated into one platform: parent programs, free resources and a practitioner directory, built for clinicians and exhausted parents alike.",
   },
   {
     n: "02",
@@ -60,7 +60,7 @@ export const work = [
     link: "https://delancia.com/",
     img: "/images/delancia.webp",
     slug: "delancia",
-    note: "A custom storefront on Shopify's GraphQL API — real-time product data, motion-led browsing, shipped solo end to end.",
+    note: "A custom storefront on Shopify's GraphQL API, with real-time product data and motion-led browsing. Shipped solo, end to end.",
   },
 ] as const;
 
@@ -69,8 +69,8 @@ export const about = {
   intro:
     "It began in 2017 with Swift, took a hard turn into the web, and became a career at a bootcamp in Lisbon.",
   paragraphs: [
-    "Today I work across the whole stack at a start-up — interfaces and design systems on the front, Prisma, NestJS and GraphQL behind them. I like the unglamorous work: accessibility, performance, and code the next person can actually read.",
-    "Outside of work I break things on purpose — small games, API toys, anything that teaches me something new by Friday.",
+    "Today I work across the whole stack at a start-up: interfaces and design systems on the front, Prisma, NestJS and GraphQL behind them. I like the unglamorous work: accessibility, performance, and code the next person can actually read.",
+    "Outside of work I break things on purpose. Small games, API toys, anything that teaches me something new by Friday.",
   ],
   portrait: "/images/marisha-photo.jpeg",
 } as const;
