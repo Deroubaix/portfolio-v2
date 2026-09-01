@@ -1,0 +1,557 @@
+// One route per study; the tab bar navigates between them.
+
+@use "../abstracts" as *;
+
+.cs {
+  // Sticky ink header
+  &__bar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 11px $gutter;
+    background: $color-surface-inverse;
+    color: $color-text-inverse;
+    @include label($color-text-inverse, 11.5px);
+    letter-spacing: 0.14em;
+
+    // Phone: drop the counter. The tab list directly below already says which
+    // study this is, so it is the one part that can go.
+    @include responsive($breakpoint-md) {
+      gap: $space-sm;
+
+      .cs__counter {
+        display: none;
+      }
+    }
+
+    a {
+      color: $color-cream;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+
+      &:hover,
+      &:focus-visible {
+        border-bottom-color: $color-accent-decorative;
+      }
+    }
+  }
+
+  &__counter {
+    color: $color-grey-300;
+  }
+
+  // Tab bar
+  &__tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    border-bottom: 2px solid $color-ink;
+
+    // Phone: a full-width list rather than three cramped columns.
+    @include responsive($breakpoint-md) {
+      grid-template-columns: 1fr;
+
+      .cs__tab {
+        border-right: none;
+        border-bottom: 1px solid $color-rule;
+      }
+
+      .cs__tab:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__tab {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 18px $gutter;
+    min-height: 44px;
+    border-right: 1px solid $color-rule-strong;
+    text-align: left;
+    font-family: $font-mono;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: transparent;
+    color: $color-text;
+    transition: background 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: rgba($color-ink, 0.07);
+    }
+
+    .cs__tab-n {
+      color: $color-accent;
+    }
+
+    // Active tab inverts, and its number and marker turn orange.
+    &.is-active {
+      background: $color-surface-inverse;
+      color: $color-text-inverse;
+      font-weight: $weight-bold;
+
+      &:hover,
+      &:focus-visible {
+        background: $color-surface-inverse;
+      }
+
+      .cs__tab-n {
+        color: $color-accent-decorative;
+      }
+
+      &::after {
+        content: "▮";
+        margin-left: auto;
+        color: $color-accent-decorative;
+      }
+    }
+  }
+
+  // Opening
+  &__intro {
+    padding: clamp(26px, 4vw, 52px) $gutter 0;
+  }
+
+  &__kicker {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    @include label($color-text-muted, 11.5px);
+    letter-spacing: 0.14em;
+  }
+
+  // Two-tone: the first line in ink, the second in muted olive. Each rises
+  // from behind its own mask, staggered.
+  &__title {
+    margin: clamp(14px, 2vw, 24px) 0 0;
+    font-family: $font-display;
+    font-size: clamp(44px, 11vw, 150px);
+    font-weight: $weight-black;
+    line-height: 0.86;
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+
+    // Optical alignment, as on the home page.
+    margin-inline-start: -0.0749em;
+  }
+
+  &__line {
+    display: block;
+    overflow: hidden;
+  }
+
+  &__rise {
+    display: block;
+    animation: hero-rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  &__rise--muted {
+    color: $color-grey-500;
+    animation-delay: 0.1s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__rise {
+      animation: none;
+    }
+  }
+
+  &__lede {
+    margin: clamp(20px, 3vw, 32px) 0 0;
+    max-width: 66ch;
+    font-size: clamp(16px, 1.45vw, 20px);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    color: $color-grey-900;
+  }
+
+  &__meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-top: clamp(26px, 4vw, 44px);
+    border-top: 1px solid $color-ink;
+    border-bottom: 2px solid $color-ink;
+    @include divided-cells(20px);
+  }
+
+  &__meta-item {
+    padding-block: 20px;
+  }
+
+  &__meta-k {
+    @include label($color-accent, 10.5px);
+    letter-spacing: 0.14em;
+  }
+
+  &__meta-v {
+    margin-top: 7px;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  // Screenshot
+  // Inset with a margin rather than full-bleed, framed by an ink hairline.
+  &__shot {
+    margin: clamp(26px, 4vw, 44px) $gutter 0;
+    border: 1px solid $color-ink;
+    background: $color-ink;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // Numbered blocks
+  &__block {
+    padding: clamp(26px, 4vw, 50px) $gutter;
+    border-bottom: 2px solid $color-ink;
+  }
+
+  // Two cells divided by a hairline, bounded top and bottom by ink rules.
+  &__split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: clamp(44px, 7vw, 84px);
+    border-top: 2px solid $color-ink;
+    border-bottom: 2px solid $color-ink;
+
+    > * {
+      padding: clamp(26px, 4vw, 50px) $gutter;
+
+      + * {
+        border-left: 1px solid $color-rule;
+      }
+    }
+  }
+
+  // Sections that sit between the ruled blocks.
+  &__flow {
+    padding: clamp(44px, 7vw, 84px) $gutter 0;
+  }
+
+  &__h2 {
+    @include label($color-text-muted, 11.5px);
+    letter-spacing: 0.16em;
+    font-family: $font-mono;
+    font-weight: $weight-regular;
+    margin-bottom: $space-md;
+  }
+
+  // Section opener: display heading on the left, mono caption on the right,
+  // sharing a baseline.
+  &__opener {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  &__h2--display {
+    font-family: $font-display;
+    font-size: clamp(26px, 4vw, 48px);
+    font-weight: $weight-bold;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    text-transform: uppercase;
+    color: $color-text;
+  }
+
+  &__caption {
+    @include label($color-text-muted, 11.5px);
+    letter-spacing: 0.14em;
+  }
+
+  // Says plainly where the direction came from, so the items below are read
+  // as work owned rather than authority claimed.
+  &__attribution {
+    max-width: 62ch;
+    margin-bottom: $space-lg;
+    padding-left: $space-sm;
+    border-left: 2px solid $color-rule-strong;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: $color-text-muted;
+  }
+
+  &__prose p {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: $color-grey-900;
+    max-width: 60ch;
+
+    + p {
+      margin-top: 18px;
+    }
+  }
+
+  // Pull-quote style callout: "The real constraint", "Trade-off".
+  &__callout {
+    margin-top: $space-lg;
+    padding: $space-md;
+    background: rgba($color-ink, 0.04);
+    border-left: 2px solid $color-accent;
+  }
+
+  &__callout-k {
+    @include label($color-accent, 11px);
+    letter-spacing: 0.14em;
+    margin-bottom: $space-3xs;
+  }
+
+  &__callout-v {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  // Lists
+  &__arrows {
+    display: grid;
+    gap: $space-sm;
+    margin-top: $space-md;
+  }
+
+  &__arrow {
+    display: grid;
+    grid-template-columns: 1.6rem 1fr;
+    font-size: 15px;
+    line-height: 1.7;
+    color: $color-grey-900;
+
+    &::before {
+      content: "→";
+      color: $color-accent;
+    }
+  }
+
+  // 04 — the stack. Mono throughout, fixed label column, hairline per row.
+  &__rows {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid $color-rule;
+    font-family: $font-mono;
+    font-size: 12.5px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid $color-rule;
+  }
+
+  &__row-k {
+    color: $color-accent;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__row-v {
+    color: $color-grey-900;
+    line-height: 1.55;
+  }
+
+  // Cells carry their own hairline rather than the design's 1px-gap-over-dark
+  // trick, which fills empty tracks in a partly filled last row.
+  &__craft-intro {
+    margin: 0 0 20px;
+    font-size: clamp(15.5px, 1.2vw, 17px);
+    line-height: 1.72;
+    color: $color-grey-900;
+    max-width: 50ch;
+  }
+
+  &__craft {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: $color-surface;
+  }
+
+  &__craft-item {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 20px;
+    background: $color-surface;
+    // Sits in the 1px gap, so neighbouring cells share one hairline.
+    box-shadow: 0 0 0 1px $color-rule-strong;
+  }
+
+  &__craft-k {
+    @include label($color-accent, 10.5px);
+    letter-spacing: 0.13em;
+  }
+
+  &__craft-v {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: $color-grey-900;
+  }
+
+  // Decisions
+  // Each decision is a row that inverts on hover and shifts right, matching
+  // the work index on the home page.
+  &__decision {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: clamp(18px, 3vw, 48px);
+    padding: clamp(22px, 3vw, 34px) 0;
+    border-top: 1px solid $color-rule-strong;
+    transition: background 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+
+    &:hover,
+    &:focus-within {
+      background: $color-surface-inverse;
+      color: $color-text-inverse;
+      padding-left: 18px;
+
+      .cs__decision-tags {
+        color: rgba($color-cream, 0.7);
+      }
+
+      .cs__tradeoff {
+        border-top-color: rgba($color-cream, 0.28);
+      }
+    }
+  }
+
+  &__decision-n {
+    @include label($color-accent, 11.5px);
+    letter-spacing: 0.12em;
+  }
+
+  &__decision-title {
+    font-family: $font-display;
+    font-size: clamp(21px, 2.6vw, 32px);
+    font-weight: $weight-bold;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    text-transform: uppercase;
+    max-width: 20ch;
+    margin: 10px 0 0;
+  }
+
+  &__decision-tags {
+    @include label($color-text-muted, 11px);
+    letter-spacing: 0.1em;
+    margin-top: 14px;
+    transition: color 0.3s ease;
+  }
+
+  &__decision-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    p {
+      font-size: clamp(15px, 1.15vw, 16.5px);
+      line-height: 1.75;
+    }
+  }
+
+  // Label and text side by side under a rule — not a boxed callout.
+  &__tradeoff {
+    display: grid;
+    grid-template-columns: 5.6rem 1fr;
+    gap: 14px;
+    padding-top: 14px;
+    border-top: 1px solid $color-rule-strong;
+    transition: border-color 0.3s ease;
+  }
+
+  &__tradeoff-k {
+    @include label($color-accent, 10.5px);
+    letter-spacing: 0.12em;
+  }
+
+  &__tradeoff-v {
+    font-size: 14.5px;
+    line-height: 1.65;
+    opacity: 0.8;
+  }
+
+  // Closing split: what's next on the left, where to go on the right
+  // No margin or top rule: the preceding block's bottom rule is the divider.
+  // The design has a gap here because the outcomes section sat between them.
+  &__final {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  &__final-prose {
+    padding: clamp(26px, 4vw, 50px) $gutter;
+    border-right: 1px solid $color-rule;
+
+    p {
+      font-size: clamp(15.5px, 1.2vw, 17.5px);
+      line-height: 1.72;
+      color: $color-grey-900;
+      max-width: 52ch;
+
+      + p {
+        margin-top: 14px;
+      }
+    }
+  }
+
+  &__final-cta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 26px;
+    padding: clamp(26px, 4vw, 50px) $gutter;
+  }
+
+  &__next-label {
+    @include label($color-text-muted, 11.5px);
+    letter-spacing: 0.14em;
+  }
+
+  &__next-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: $font-display;
+    font-size: clamp(30px, 5vw, 62px);
+    font-weight: $weight-black;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-accent;
+    }
+  }
+
+  &__end-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  // Closing band: three items do not fit one narrow line, so stack them
+  // rather than letting the last one run past the gutter.
+  &__foot {
+    @include responsive($breakpoint-xl) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-2xs;
+    }
+  }
+
+}

@@ -1,0 +1,34 @@
+// Display sizes are fluid so the hero setting cannot overflow.
+
+@use "./fonts" as *;
+
+// Weights
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semibold: 600;
+$weight-bold: 700;
+$weight-black: 800;
+
+// Body scale
+$text-xs: 0.6875rem; // 11px  — micro labels
+$text-sm: 0.75rem; //  12px  — mono labels, meta
+$text-base: 0.9375rem; //  15px  — body
+$text-md: 1.0625rem; //  17px  — lead paragraphs
+$text-lg: 1.375rem; //  22px
+
+// Display scale (fluid)
+$display-sm: clamp(1.75rem, 1.2rem + 2.4vw, 2.75rem);
+$display-md: clamp(2.25rem, 1.3rem + 4.2vw, 4rem);
+$display-lg: clamp(3rem, 1rem + 8vw, 7rem);
+$display-xl: clamp(3.5rem, -0.5rem + 15vw, 13rem); // the name
+
+// Tracking
+$tracking-tight: -0.03em; // large display setting
+$tracking-normal: 0;
+$tracking-wide: 0.08em; // mono labels
+$tracking-wider: 0.14em; // small caps meta
+
+// Leading
+$leading-none: 0.86; // stacked display lines
+$leading-tight: 1.15;
+$leading-body: 1.65;

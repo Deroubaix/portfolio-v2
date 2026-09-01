@@ -1,0 +1,69 @@
+// Section gutters and the prose defaults every section inherits.
+
+@use "../abstracts" as *;
+
+.page {
+  padding-top: var(--bar-height);
+}
+
+// Horizontal gutter, used by every full-width block.
+.shell {
+  padding-inline: $gutter;
+}
+
+// Every top-level section closes with a 2px ink rule — the structural
+// division in this system. Hairlines are only used inside a section.
+.section {
+  border-bottom: 2px solid $color-ink;
+}
+
+// Label band that opens a section: mono caps, hairline beneath.
+.band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: $space-2xs $space-md;
+  // Long values (an email, a name) must not push past the gutter.
+  overflow-wrap: anywhere;
+  padding: 18px $gutter;
+  @include label($color-text-muted, 11.5px);
+  letter-spacing: 0.16em;
+  border-bottom: 1px solid $color-rule-strong;
+
+  // These are headings semantically but labels visually. Without this the
+  // h1-h4 bold rule in base/_typography wins over the label mixin.
+  h1,
+  h2,
+  h3 {
+    font: inherit;
+    letter-spacing: inherit;
+    margin: 0;
+  }
+}
+
+// Section opener: mono label on the left, rule filling the remainder.
+// Meta row under the top bar: three columns on desktop, stacked on phones.
+.meta-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: $space-md;
+  @include label($color-text-muted, $text-sm);
+
+  &__center {
+    text-align: center;
+  }
+
+  &__end {
+    text-align: right;
+  }
+
+  @include responsive($breakpoint-md) {
+    grid-template-columns: 1fr;
+
+    &__center,
+    &__end {
+      text-align: left;
+    }
+  }
+}

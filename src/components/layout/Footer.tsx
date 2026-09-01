@@ -1,37 +1,39 @@
-import { IconBrandLinkedin, IconBrandGithub } from "@tabler/icons-react";
 import React from "react";
-import Link from "next/link";
+import { site } from "../../content/site";
+
+const SHOUTS = Array.from({ length: 6 });
 
 export default function Footer() {
   return (
-    <section id="footer-container">
-      <footer className="dark-bg footer">
-        <div className="footer-icons">
-          <a
-            href="https://www.linkedin.com/in/your-linkedin-username"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-          >
-            <IconBrandLinkedin size={24} />
+    <footer className="footer">
+      <a className="footer__shout" href={`mailto:${site.email}`}>
+        <span className="footer__track">
+          {SHOUTS.map((_, i) => (
+            <span className="footer__word" key={i} aria-hidden={i > 0}>
+              Say hello
+              <span className="footer__star" aria-hidden="true">
+                ✱
+              </span>
+            </span>
+          ))}
+        </span>
+      </a>
+
+      <div className="footer__meta">
+        <span>{site.email}</span>
+        <span className="footer__links">
+          <a href={site.github} target="_blank" rel="noopener noreferrer">
+            GitHub
           </a>
-          <a
-            href="https://github.com/Deroubaix"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-          >
-            <IconBrandGithub size={24} />
+          <a href={site.linkedin} target="_blank" rel="noopener noreferrer">
+            LinkedIn
           </a>
-        </div>
-        <Link
-          href="https://github.com/Deroubaix/portfolio-v2"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          © 2024. Made by Marisha Deroubaix
-        </Link>
-      </footer>
-    </section>
+          <a href={site.cv} target="_blank" rel="noopener noreferrer">
+            CV
+          </a>
+        </span>
+        <span>Designed &amp; built by me — 2026</span>
+      </div>
+    </footer>
   );
 }

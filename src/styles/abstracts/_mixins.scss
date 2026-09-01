@@ -1,0 +1,115 @@
+// Mixins & functions
+
+@use "./colors" as *;
+@use "./fonts" as *;
+@use "./typography" as *;
+@use "./breakpoints" as *;
+
+@mixin active-state {
+  &:hover,
+  &:focus-visible,
+  &:active {
+    @content;
+  }
+}
+
+/// Uppercase monospace label — the editorial system's connective tissue.
+@mixin label($color: $color-text-muted, $size: $text-sm) {
+  font-family: $font-mono;
+  font-size: $size;
+  font-weight: $weight-regular;
+  letter-spacing: $tracking-wide;
+  text-transform: uppercase;
+  color: $color;
+}
+
+/// Stacked display setting used by the hero and section openers.
+@mixin display($size: $display-lg, $weight: $weight-bold) {
+  font-family: $font-display;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $leading-none;
+  letter-spacing: $tracking-tight;
+  text-transform: uppercase;
+}
+
+/// Hairline rule matching the grid.
+@mixin rule($side: top, $color: $color-rule) {
+  border-#{$side}: 1px solid $color;
+}
+
+/// Underline that draws in from the leading edge on hover.
+@mixin underline-on-hover($color: $color-accent, $thickness: 1px) {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.15em;
+    width: 0;
+    border-bottom: $thickness solid $color;
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @include active-state {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+/// Content revealed on scroll. Paired with IntersectionObserver in
+/// useReveal.ts; falls back to fully visible when motion is reduced.
+@mixin reveal($distance: 1.25rem, $duration: 0.7s) {
+  opacity: 0;
+  transform: translateY($distance);
+  transition: opacity $duration ease, transform $duration cubic-bezier(0.22, 1, 0.36, 1);
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/// Dividers sit on the left of every cell but the first, so each cell can pad
+/// away from its own rule. First cell stays flush with the gutter.
+@mixin divided-cells($pad: 20px, $color: $color-rule) {
+  > * {
+    padding-right: $pad;
+
+    + * {
+      padding-left: $pad;
+      border-left: 1px solid $color;
+    }
+  }
+
+  // Phone: once these wrap, a left rule on the item starting row two reads as
+  // an indent. Stack instead.
+  @include responsive($breakpoint-md) {
+    > * {
+      padding-right: 0;
+    }
+
+    > * + * {
+      padding-left: 0;
+      padding-top: $pad;
+      border-left: none;
+      border-top: 1px solid $color;
+    }
+  }
+}
+
+@mixin hide-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

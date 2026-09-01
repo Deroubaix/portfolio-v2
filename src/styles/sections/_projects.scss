@@ -1,0 +1,83 @@
+// Side projects. Cards invert to ink on hover, matching the work rows.
+
+@use "../abstracts" as *;
+
+.projects {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: clamp(24px, 3vw, 38px) $gutter;
+    transition: background 0.3s ease, color 0.3s ease;
+
+    + .projects__item {
+      border-left: 1px solid $color-rule;
+    }
+
+    &:hover,
+    &:focus-within {
+      background: $color-surface-inverse;
+      color: $color-text-inverse;
+
+      .projects__stack {
+        color: rgba($color-cream, 0.7);
+      }
+    }
+  }
+
+  &__kind {
+    @include label($color-accent, 11px);
+    letter-spacing: 0.14em;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 26px;
+    font-weight: $weight-bold;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  &__blurb {
+    flex: 1;
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+
+  &__stack {
+    @include label($color-text-muted, 11.5px);
+    letter-spacing: $tracking-normal;
+    text-transform: none;
+    transition: color 0.3s ease;
+  }
+
+  &__links {
+    display: flex;
+    gap: 18px;
+    @include label(currentColor, 11.5px);
+    letter-spacing: 0.1em;
+
+    // The design leaves these static; a link with no hover feedback gives
+    // the reader nothing to confirm they are on target.
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: inherit;
+      border-bottom: 1px solid currentColor;
+      transition: color 0.2s ease, border-color 0.2s ease;
+
+      &:hover,
+      &:focus-visible {
+        color: $color-accent-decorative;
+        border-bottom-color: $color-accent-decorative;
+      }
+    }
+  }
+}

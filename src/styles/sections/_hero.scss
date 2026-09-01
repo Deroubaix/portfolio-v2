@@ -1,0 +1,99 @@
+// The name is two stacked lines, each rising from behind its own mask.
+
+@use "../abstracts" as *;
+
+.hero {
+  padding: clamp(24px, 4vw, 46px) $gutter 0;
+
+  &__meta {
+    margin-bottom: 0;
+  }
+
+  &__name {
+    margin: clamp(14px, 2vw, 26px) 0 0;
+    font-family: $font-display;
+    font-size: clamp(44px, 14.7vw, 260px);
+
+    // Archivo's M and D carry 0.0749em of left side bearing. Pull the block
+    // left by that much so the ink sits flush with the gutter. On the h1, not
+    // the masked line, or the overhang gets clipped.
+    margin-inline-start: -0.0749em;
+    font-weight: $weight-black;
+    line-height: 0.82;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+  }
+
+  // Mask: the inner element is what animates, so the line appears to rise
+  // out of the one above it.
+  &__line {
+    display: block;
+    overflow: hidden;
+  }
+
+  &__rise {
+    display: block;
+    animation: hero-rise 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  &__rise--last {
+    animation-delay: 0.1s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__rise {
+      animation: none;
+    }
+  }
+
+  // auto-fit rather than a fixed three, so cells reflow instead of squashing.
+  // Divider is solid ink, not the faded hairline — it is structural.
+  &__summary {
+    display: grid;
+    // 280 not 230: at 230 a tablet fits three ~237px columns and the stack
+    // rows wrap mid-item.
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin-top: clamp(24px, 4vw, 44px);
+    border-top: 1px solid $color-ink;
+
+    // Bottom padding keeps content off the section's 2px ink rule; the hero
+    // itself has none, so the cell must supply it.
+    > * {
+      padding-block: 22px 34px;
+    }
+
+    @include divided-cells(22px);
+  }
+
+  &__lead {
+    font-size: $text-md;
+    line-height: $leading-body;
+    max-width: 34ch;
+  }
+
+  &__stack,
+  &__now {
+    @include label($color-text-muted, $text-sm);
+    text-transform: none;
+    line-height: 2;
+  }
+
+  &__stack {
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 $space-2xs;
+    }
+
+    dt {
+      color: $color-text-subtle;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-xs;
+    margin-top: $space-md;
+  }
+}

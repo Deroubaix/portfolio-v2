@@ -1,0 +1,33 @@
+// Reference the roles, not the palette.
+//
+// Contrast on cream (AA needs 4.5:1 for body text):
+//   ink #16150F 15.61  red #CA2F19 4.56  mute #6A6656 4.72
+//   orange #F58E1C 2.04 — decorative only, fails for text
+
+// Palette
+$color-cream: #efede6;
+$color-ink: #16150f;
+$color-red: #ca2f19;
+$color-orange: #f58e1c;
+
+$color-grey-900: #3a3729;
+$color-grey-700: #4a4738;
+$color-grey-500: #6a6656;
+$color-grey-300: #8c8877;
+
+$color-white: #ffffff;
+
+// Roles
+$color-surface: $color-cream;
+$color-surface-inverse: $color-ink;
+
+$color-text: $color-ink;
+$color-text-muted: $color-grey-500;
+$color-text-subtle: $color-grey-300;
+$color-text-inverse: $color-cream;
+
+$color-accent: $color-red;
+$color-accent-decorative: $color-orange; // never used for text
+
+$color-rule: rgba($color-ink, 0.14); // hairlines between grid cells
+$color-rule-strong: rgba($color-ink, 0.28);

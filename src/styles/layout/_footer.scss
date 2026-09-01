@@ -1,0 +1,80 @@
+// Ink ground. "Say hello" marquee as one large mailto link.
+
+@use "../abstracts" as *;
+
+@keyframes footer-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.footer {
+  background: $color-surface-inverse;
+  color: $color-text-inverse;
+  padding: clamp(40px, 6vw, 80px) 0 0;
+  overflow: hidden;
+
+  &__shout {
+    display: block;
+    color: inherit;
+  }
+
+  // The track holds two identical halves, so translating by -50% loops
+  // seamlessly. width: max-content keeps it on one line.
+  &__track {
+    display: flex;
+    width: max-content;
+    animation: footer-slide 24s linear infinite;
+    font-family: $font-display;
+    font-size: clamp(58px, 13vw, 190px);
+    font-weight: $weight-black;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    line-height: 0.9;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+
+  &__word {
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    padding-right: 3vw;
+  }
+
+  &__star {
+    color: $color-accent;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: clamp(34px, 5vw, 60px) $gutter 34px;
+    @include label($color-grey-300, 11.5px);
+    letter-spacing: 0.12em;
+  }
+
+  &__links {
+    display: flex;
+    gap: 22px;
+
+    a {
+      color: $color-cream;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+
+      &:hover,
+      &:focus-visible {
+        border-bottom-color: $color-accent-decorative;
+      }
+    }
+  }
+}

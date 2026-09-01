@@ -1,0 +1,45 @@
+// Element typography
+
+@use "../abstracts" as *;
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: $weight-bold;
+  letter-spacing: $tracking-tight;
+  line-height: $leading-tight;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// dl/dd carry a default indent that fights every grid they appear in.
+dl,
+dt,
+dd {
+  margin: 0;
+}
+
+// Shared label treatment — meta rows, nav, tech lists, figure captions.
+.label {
+  @include label;
+}
+
+.label--accent {
+  @include label($color-accent);
+}

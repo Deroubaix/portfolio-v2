@@ -1,0 +1,7 @@
+// Archivo comes from next/font in layout.tsx as --font-archivo.
+// Fira Mono is self-hosted in base/_fonts.scss.
+
+$font-path: "/fonts";
+
+$font-display: var(--font-archivo), "Archivo", Helvetica, Arial, sans-serif;
+$font-mono: "Fira Mono", ui-monospace, SFMono-Regular, Menlo, monospace;

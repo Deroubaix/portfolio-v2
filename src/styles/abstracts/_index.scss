@@ -1,0 +1,9 @@
+// Compile-time only: emits no CSS, so partials can `@use "../abstracts" as *`
+// without duplicating output.
+
+@forward "./breakpoints";
+@forward "./colors";
+@forward "./fonts";
+@forward "./spacing";
+@forward "./typography";
+@forward "./mixins";

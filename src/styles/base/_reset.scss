@@ -1,0 +1,60 @@
+// Reset & document defaults
+
+@use "../abstracts" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  // The top bar grows a second row at phone width, so its height is a variable
+  // and the page offset follows it.
+  --bar-height: #{$bar-height};
+
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--bar-height);
+  -webkit-text-size-adjust: 100%;
+
+  @include responsive($breakpoint-md) {
+    --bar-height: 4.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: $color-surface;
+  color: $color-text;
+  font-family: $font-display;
+  font-size: $text-base;
+  line-height: $leading-body;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid $color-accent;
+  outline-offset: 3px;
+}

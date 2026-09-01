@@ -1,0 +1,27 @@
+// Only Fira Mono: Archivo is self-hosted by next/font.
+
+@use "../abstracts" as *;
+
+@font-face {
+  font-display: swap;
+  font-family: "Fira Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("#{$font-path}/Fira-Mono/Fira-Mono-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Fira Mono";
+  font-style: normal;
+  font-weight: 500;
+  src: url("#{$font-path}/Fira-Mono/Fira-Mono-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Fira Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: url("#{$font-path}/Fira-Mono/Fira-Mono-700.woff2") format("woff2");
+}

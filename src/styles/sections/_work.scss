@@ -1,0 +1,179 @@
+// Full-bleed table: the gutter is on each row, so the hover inversion runs
+// edge to edge. Rows link to the case study.
+
+@use "../abstracts" as *;
+
+$row-gutter: clamp(16px, 3vw, 34px);
+
+.work {
+  padding: 0;
+
+  // One hint per input type. Hiding it on touch would drop the only cue that
+  // these rows lead somewhere.
+  &__hint {
+    text-align: right;
+  }
+
+  &__hint--pointer {
+    @media (hover: none), (pointer: coarse) {
+      display: none;
+    }
+
+    // No room for a sentence beside the label at phone width.
+    @include responsive($breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &__hint--touch {
+    display: none;
+
+    @media (hover: none), (pointer: coarse) {
+      display: block;
+    }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns:
+      4.5rem minmax(180px, 1.4fr) minmax(120px, 1fr)
+      6rem 5.5rem;
+    align-items: center;
+    gap: 16px;
+    padding: clamp(18px, 2.4vw, 30px) $row-gutter;
+    border-bottom: 1px solid $color-rule-strong;
+    transition: background 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: $color-surface-inverse;
+      color: $color-text-inverse;
+      padding-left: calc(#{$row-gutter} + 14px);
+      outline: none;
+
+      .work__n,
+      .work__stack,
+      .work__year {
+        color: rgba($color-cream, 0.7);
+      }
+    }
+
+    // Tablet and below: number, title, year and "Case" stay on one line, the
+    // stack drops underneath the title. No horizontal scroll at any width.
+    @include responsive($breakpoint-xl) {
+      grid-template-columns: 2.75rem minmax(0, 1fr) auto auto;
+      column-gap: $space-sm;
+      row-gap: $space-2xs;
+      min-height: 44px;
+
+      .work__stack {
+        grid-column: 2 / -1;
+        grid-row: 2;
+        text-align: left;
+      }
+    }
+  }
+
+  &__n {
+    @include label($color-text-muted, 12px);
+    letter-spacing: $tracking-normal;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(26px, 4.2vw, 54px);
+    font-weight: $weight-bold;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  &__stack {
+    @include label($color-grey-700, 12px);
+    letter-spacing: $tracking-normal;
+    text-transform: none;
+    line-height: 1.6;
+  }
+
+  &__year {
+    @include label($color-grey-700, 12px);
+    letter-spacing: $tracking-normal;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__case {
+    @include label(currentColor, 11px);
+    letter-spacing: 0.1em;
+    text-align: right;
+  }
+
+  // Cursor-following preview. Decorative: it shows nothing the row does not.
+  &__peek {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    width: 340px;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    will-change: transform;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &.is-visible {
+      opacity: 1;
+    }
+
+    @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+      display: none;
+    }
+  }
+
+  &__notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    border-bottom: 2px solid $color-ink;
+  }
+
+  &__note {
+    padding: $space-lg $row-gutter;
+
+    + .work__note {
+      border-left: 1px solid $color-rule;
+    }
+  }
+
+  &__note-label {
+    @include label($color-accent, $text-sm);
+    margin-bottom: $space-2xs;
+  }
+
+  &__note-text {
+    color: $color-text-muted;
+  }
+
+  &__note-links {
+    display: flex;
+    gap: $space-md;
+    margin-top: $space-sm;
+
+    a {
+      @include label($color-text, $text-sm);
+      border-bottom: 1px solid currentColor;
+      transition: color 0.2s ease, border-color 0.2s ease;
+
+      &:hover,
+      &:focus-visible {
+        color: $color-accent;
+        border-bottom-color: $color-accent;
+      }
+    }
+  }
+}
