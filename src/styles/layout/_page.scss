@@ -23,9 +23,12 @@
 // Label band that opens a section: mono caps, hairline beneath.
 .band {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: $space-md;
+  gap: $space-2xs $space-md;
+  // Long values (an email, a name) must not push past the gutter.
+  overflow-wrap: anywhere;
   padding: 18px $gutter;
   @include label($color-text-muted, 11.5px);
   letter-spacing: 0.16em;

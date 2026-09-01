@@ -552,4 +552,14 @@
     gap: 12px;
   }
 
+  // Closing band: three items do not fit one narrow line, so stack them
+  // rather than letting the last one run past the gutter.
+  &__foot {
+    @include responsive($breakpoint-xl) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-2xs;
+    }
+  }
+
 }
