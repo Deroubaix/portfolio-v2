@@ -6,7 +6,7 @@
 @use "../abstracts" as *;
 
 .page {
-  padding-top: $bar-height;
+  padding-top: var(--bar-height);
 }
 
 // Horizontal gutter, used by every full-width block.

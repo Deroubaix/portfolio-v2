@@ -12,6 +12,8 @@
   align-items: center;
   gap: $space-2xs;
   padding: $space-xs $space-md;
+  min-height: 44px;
+  justify-content: center;
   border: 1px solid $color-ink;
   background: transparent;
   transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;

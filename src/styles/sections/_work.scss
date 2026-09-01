@@ -14,12 +14,29 @@ $row-gutter: clamp(16px, 3vw, 34px);
 .work {
   padding: 0;
 
+  // Two hints, one shown at a time: the pointer one describes hovering, the
+  // touch one describes tapping. Hiding it entirely on touch would drop the
+  // only cue that these rows lead somewhere.
   &__hint {
     text-align: right;
+  }
 
-    // The hint describes a pointer-only affordance.
+  &__hint--pointer {
     @media (hover: none), (pointer: coarse) {
       display: none;
+    }
+
+    // No room for a sentence beside the label at phone width.
+    @include responsive($breakpoint-md) {
+      display: none;
+    }
+  }
+
+  &__hint--touch {
+    display: none;
+
+    @media (hover: none), (pointer: coarse) {
+      display: block;
     }
   }
 
@@ -48,16 +65,17 @@ $row-gutter: clamp(16px, 3vw, 34px);
       }
     }
 
+    // Tablet and below: number, title, year and "Case" stay on one line, the
+    // stack drops underneath the title. No horizontal scroll at any width.
     @include responsive($breakpoint-xl) {
-      grid-template-columns: 3rem minmax(0, 1fr) auto;
+      grid-template-columns: 2.75rem minmax(0, 1fr) auto auto;
+      column-gap: $space-sm;
       row-gap: $space-2xs;
+      min-height: 44px;
 
       .work__stack {
         grid-column: 2 / -1;
-      }
-
-      .work__case {
-        grid-column: 2;
+        grid-row: 2;
         text-align: left;
       }
     }

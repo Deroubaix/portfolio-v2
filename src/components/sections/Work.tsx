@@ -40,9 +40,10 @@ export default function Work() {
     <section id="work" className="work">
       <div className="band work__head">
         <h2>Selected work</h2>
-        <p className="work__hint">
+        <p className="work__hint work__hint--pointer">
           Hover to preview, click to read the case study
         </p>
+        <p className="work__hint work__hint--touch">Tap a project</p>
       </div>
 
       {work.map((item) => (

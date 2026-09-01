@@ -97,6 +97,22 @@
       border-left: 1px solid $color;
     }
   }
+
+  // Phone: these grids wrap to two rows, and a left rule on the item that
+  // starts row two reads as an indent rather than a divider. Stack instead,
+  // separating rows with a rule above.
+  @include responsive($breakpoint-md) {
+    > * {
+      padding-right: 0;
+    }
+
+    > * + * {
+      padding-left: 0;
+      padding-top: $pad;
+      border-left: none;
+      border-top: 1px solid $color;
+    }
+  }
 }
 
 @mixin hide-scrollbar {

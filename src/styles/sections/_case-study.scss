@@ -21,6 +21,16 @@
     @include label($color-text-inverse, 11.5px);
     letter-spacing: 0.14em;
 
+    // Phone: drop the counter. The tab list directly below already says which
+    // study this is, so it is the one part that can go.
+    @include responsive($breakpoint-md) {
+      gap: $space-sm;
+
+      .cs__counter {
+        display: none;
+      }
+    }
+
     a {
       color: $color-cream;
       border-bottom: 1px solid transparent;
@@ -42,6 +52,20 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     border-bottom: 2px solid $color-ink;
+
+    // Phone: a full-width list rather than three cramped columns.
+    @include responsive($breakpoint-md) {
+      grid-template-columns: 1fr;
+
+      .cs__tab {
+        border-right: none;
+        border-bottom: 1px solid $color-rule;
+      }
+
+      .cs__tab:last-child {
+        border-bottom: none;
+      }
+    }
   }
 
   &__tab {
@@ -49,6 +73,7 @@
     align-items: baseline;
     gap: 12px;
     padding: 18px $gutter;
+    min-height: 44px;
     border-right: 1px solid $color-rule-strong;
     text-align: left;
     font-family: $font-mono;

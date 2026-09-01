@@ -60,7 +60,10 @@
   // Divider is solid ink, not the faded hairline — it is structural.
   &__summary {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    // 280px, not 230px: at 230 a tablet fits three columns of ~237px, which is
+    // too narrow for the stack rows and they wrap mid-item. This drops to two
+    // columns on tablet and keeps three from ~1000px up.
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     margin-top: clamp(24px, 4vw, 44px);
     border-top: 1px solid $color-ink;
 
@@ -89,7 +92,8 @@
   &__stack {
     div {
       display: flex;
-      gap: $space-2xs;
+      flex-wrap: wrap;
+      gap: 0 $space-2xs;
     }
 
     dt {

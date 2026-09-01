@@ -10,9 +10,17 @@
 }
 
 html {
+  // The top bar grows a second row at phone width, so its height is a variable
+  // and the page offset follows it.
+  --bar-height: #{$bar-height};
+
   scroll-behavior: smooth;
-  scroll-padding-top: $bar-height;
+  scroll-padding-top: var(--bar-height);
   -webkit-text-size-adjust: 100%;
+
+  @include responsive($breakpoint-md) {
+    --bar-height: 4.75rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
