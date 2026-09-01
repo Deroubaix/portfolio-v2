@@ -37,5 +37,5 @@ export const cv = {
   ],
 
   languages: "Portuguese, English",
-  interests: "Horse riding, photography, wine",
+  interests: "Hiking, sci-fi, photography, coding",
 } as const;
