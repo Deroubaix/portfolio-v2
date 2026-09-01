@@ -117,7 +117,8 @@ export const caseStudies: readonly CaseStudy[] = [
           "e.g. time to publish a new page, before → after",
         ],
         next: [
-          "Two things I'd push for with more time: proper search across programs and resources, so parents stop navigating by menu; and visual regression tests on the shared components, because the design system is now load-bearing across every page.",
+          "Audio is moving onto the site. A lot of Possums is meant to be listened to rather than read, by someone who cannot be looking at a screen, and it currently lives elsewhere. Hosting it ourselves makes the player, the storage and the progress tracking all ours to build.",
+          "The other piece is making Possums installable. A progressive web app is the sensible route: one codebase rather than two native builds, and it answers the audio problem at the same time, because a service worker can cache episodes for offline listening. That matters for this audience specifically. A parent settling a baby at 3am is not reliably on wifi.",
         ],
       },
       {
