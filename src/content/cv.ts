@@ -8,7 +8,7 @@ export const cv = {
   /** Achievements per role, drawn from real commits. */
   achievements: {
     Possums: [
-      "Build and maintain the company web platform, focused on accessible interfaces serving two audiences: parents and clinicians.",
+      "Front-end development on the company platform, building accessible interfaces for two audiences: parents and clinicians.",
       "Ship full-stack features end to end: NestJS endpoints, Prisma schema changes, GraphQL and data migrations against live records.",
       "Fixed sign-ins that failed on capitalisation, across the lookup, the write path and the existing rows.",
       "Diagnosed a silent font failure caused by Turbopack stripping CSS @import, and fixed it across all three applications.",

@@ -44,15 +44,6 @@
     letter-spacing: 0.14em;
   }
 
-  // Opening statement, same line the site leads with.
-  &__lead {
-    max-width: 74ch;
-    padding-top: 8px;
-    font-size: 11pt;
-    line-height: 1.5;
-    color: $color-grey-900;
-  }
-
   &__contact {
     display: grid;
     // 210px, not 150: the email is wider than 150 and a grid item will not

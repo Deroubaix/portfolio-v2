@@ -22,8 +22,6 @@ export default function CvPage() {
         <p className="cv__role">{site.role}</p>
       </header>
 
-      <p className="cv__lead">{site.lead}</p>
-
       <dl className="cv__contact">
         <div>
           <dt>Email</dt>
