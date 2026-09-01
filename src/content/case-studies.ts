@@ -1,11 +1,12 @@
 /**
  * Case study content.
  *
- * Section 06 ("What changed") ships with placeholder results on purpose. The
- * design's own note reads: fill these with figures you can defend, and delete
- * any card you can't — one real number beats three invented ones. They are
- * rendered as visibly unfilled rather than quietly dropped, so they cannot be
- * published by accident.
+ * `results` is kept but no longer rendered. The outcomes section shipped as
+ * three empty "number needed" cards, which advertises a missing answer rather
+ * than giving one — worse than having no outcomes section at all. The prompts
+ * stay here so the section can be restored the moment there is a figure worth
+ * publishing. A Lighthouse score is the realistic first one; traffic and
+ * sign-ups are the client's data, not ours to publish.
  */
 
 export type CaseStudy = {

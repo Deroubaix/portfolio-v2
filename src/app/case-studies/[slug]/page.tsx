@@ -178,31 +178,9 @@ export default function CaseStudyPage({ params }: Params) {
       </section>
 
       <section className="cs__block">
-        <div className="cs__opener">
-          <h2 className="cs__h2--display">What changed</h2>
-          <span className="cs__caption">06 — outcomes</span>
-        </div>
-
-        <div className="cs__results">
-          {study.results.map((r) => (
-            <div key={r} className="cs__result">
-              <p className="cs__result-value">Number needed</p>
-              <p className="cs__result-hint">{r.replace(/^e\.g\.\s*/, "")}</p>
-            </div>
-          ))}
-        </div>
-
-        <p className="cs__note">
-          These are deliberately unfilled. Fill them with figures you can
-          defend, and delete any card you can&rsquo;t — one real number beats
-          three invented ones.
-        </p>
-      </section>
-
-      <section className="cs__block">
         <div className="cs__split">
           <div>
-            <h2 className="cs__h2">07 — What I&rsquo;d do next</h2>
+            <h2 className="cs__h2">06 — What I&rsquo;d do next</h2>
             <div className="cs__prose">
               {study.next.map((n) => (
                 <p key={n.slice(0, 24)}>{n}</p>

@@ -466,42 +466,6 @@
     opacity: 0.8;
   }
 
-  // --- Results (placeholders until real figures exist) ---------------------
-  &__results {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    margin-top: $space-md;
-    border-top: 1px solid $color-rule;
-    @include divided-cells($space-md);
-  }
-
-  &__result {
-    padding-block: $space-lg;
-  }
-
-  // Dashed, muted: unmistakably unfilled, so it cannot ship by accident.
-  &__result-value {
-    @include label($color-text-subtle, 11px);
-    letter-spacing: 0.14em;
-    padding: $space-2xs $space-xs;
-    border: 1px dashed $color-rule-strong;
-    display: inline-block;
-    margin-bottom: $space-2xs;
-  }
-
-  &__result-hint {
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: $color-text-muted;
-  }
-
-  &__note {
-    margin-top: $space-lg;
-    max-width: 70ch;
-    font-size: 14px;
-    line-height: 1.7;
-    color: $color-text-subtle;
-  }
 
   // --- Foot of the study ---------------------------------------------------
   &__end {
