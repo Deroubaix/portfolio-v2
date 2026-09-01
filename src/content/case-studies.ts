@@ -118,7 +118,6 @@ export const caseStudies: readonly CaseStudy[] = [
         ],
         next: [
           "Two things I'd push for with more time: proper search across programs and resources, so parents stop navigating by menu; and visual regression tests on the shared components, because the design system is now load-bearing across every page.",
-          "Saying this out loud isn't a weakness. It's the part that shows I think past shipping.",
         ],
       },
       {
@@ -260,7 +259,6 @@ export const caseStudies: readonly CaseStudy[] = [
         ],
         next: [
           "A design pass, before anything else. I made the design decisions on this one myself, and I am a developer who has never taken a design course, so the site works but it is not as strong as it could be. Mobile in particular needs rethinking rather than adjusting.",
-          "Next up: expanding the merchandising side, with better collection filtering and product recommendations, which is where a custom storefront can beat a theme outright.",
           "I'd also add basic analytics instrumentation on the browse-to-cart path, so design changes can be argued from data rather than taste.",
         ],
       },
