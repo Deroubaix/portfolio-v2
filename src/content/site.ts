@@ -3,10 +3,6 @@
  *
  * Kept out of the components so wording can be reviewed and changed without
  * touching markup, and so the same fact cannot drift between sections.
- *
- * NOTE (pending review): the "2017" start date in `about.intro` is the one
- * claim not verified against Marisha's history. Everything else here is drawn
- * from the design or the existing site.
  */
 
 export const site = {
@@ -67,7 +63,7 @@ export const work = [
 export const about = {
   figure: "Fig. 01 — the developer",
   intro:
-    "It began in 2017 with Swift, took a hard turn into the web, and became a career at a bootcamp in Lisbon.",
+    "It began in 2017, teaching myself Swift, then took a hard turn into the web and became a career at a bootcamp in Lisbon.",
   paragraphs: [
     "Today I work across the whole stack at a start-up: interfaces and design systems on the front, Prisma, NestJS and GraphQL behind them. I like the unglamorous work: accessibility, performance, and code the next person can actually read.",
     "Outside of work I am building The Sommelier Ledger, a blind tasting app that walks through the systematic approach from sight to final conclusion and keeps a record of what you have tasted. It is not live yet, since mobile and testing come first, but it is the one where every decision is mine.",
