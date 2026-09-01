@@ -1,5 +1,4 @@
 // Site header
-// -----------------------------------------------------------------------------
 
 @use "../abstracts" as *;
 
@@ -42,7 +41,7 @@ header {
     }
   }
 
-  // --- Desktop: inline nav -------------------------------------------------
+  // Desktop: inline nav
   @include responsive($breakpoint-2xl, min) {
     nav a {
       margin-left: $page-padding-horizontal * 1.25;
@@ -55,7 +54,7 @@ header {
     }
   }
 
-  // --- Below desktop: drawer nav -------------------------------------------
+  // Below desktop: drawer nav
   @include responsive($breakpoint-2xl) {
     position: fixed;
 

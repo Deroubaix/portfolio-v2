@@ -1,12 +1,9 @@
-// Case study
-// -----------------------------------------------------------------------------
-// One route per study. The tab bar navigates between them rather than swapping
-// content client-side, so each study has a real URL that can be shared.
+// One route per study; the tab bar navigates between them.
 
 @use "../abstracts" as *;
 
 .cs {
-  // --- Sticky ink header ---------------------------------------------------
+  // Sticky ink header
   &__bar {
     position: sticky;
     top: 0;
@@ -47,7 +44,7 @@
     color: $color-grey-300;
   }
 
-  // --- Tab bar -------------------------------------------------------------
+  // Tab bar
   &__tabs {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -116,7 +113,7 @@
     }
   }
 
-  // --- Opening -------------------------------------------------------------
+  // Opening
   &__intro {
     padding: clamp(26px, 4vw, 52px) $gutter 0;
   }
@@ -200,7 +197,7 @@
     line-height: 1.45;
   }
 
-  // --- Screenshot ----------------------------------------------------------
+  // Screenshot
   // Inset with a margin rather than full-bleed, framed by an ink hairline.
   &__shot {
     margin: clamp(26px, 4vw, 44px) $gutter 0;
@@ -215,7 +212,7 @@
     }
   }
 
-  // --- Numbered blocks -----------------------------------------------------
+  // Numbered blocks
   &__block {
     padding: clamp(26px, 4vw, 50px) $gutter;
     border-bottom: 2px solid $color-ink;
@@ -319,7 +316,7 @@
     line-height: 1.7;
   }
 
-  // --- Lists ---------------------------------------------------------------
+  // Lists
   &__arrows {
     display: grid;
     gap: $space-sm;
@@ -367,12 +364,8 @@
     line-height: 1.55;
   }
 
-  // 05 — a card grid, not a row list.
-  //
-  // The design draws the hairlines with a 1px gap over a dark ground. That
-  // breaks whenever the last row is only partly filled: the empty tracks show
-  // the dark ground as a block. Each cell carries its own hairline instead, so
-  // empty tracks stay on the page colour however many items there are.
+  // Cells carry their own hairline rather than the design's 1px-gap-over-dark
+  // trick, which fills empty tracks in a partly filled last row.
   &__craft-intro {
     margin: 0 0 20px;
     font-size: clamp(15.5px, 1.2vw, 17px);
@@ -409,7 +402,7 @@
     color: $color-grey-900;
   }
 
-  // --- Decisions -----------------------------------------------------------
+  // Decisions
   // Each decision is a row that inverts on hover and shifts right, matching
   // the work index on the home page.
   &__decision {
@@ -491,8 +484,7 @@
     opacity: 0.8;
   }
 
-
-  // --- Closing split: what's next on the left, where to go on the right ---
+  // Closing split: what's next on the left, where to go on the right
   // No margin or top rule: the preceding block's bottom rule is the divider.
   // The design has a gap here because the outcomes section sat between them.
   &__final {

@@ -1,5 +1,4 @@
 // Mixins & functions
-// -----------------------------------------------------------------------------
 
 @use "./colors" as *;
 @use "./fonts" as *;
@@ -79,15 +78,8 @@
   }
 }
 
-/// Cells in a divided row.
-///
-/// The dividers sit on the LEFT of every cell but the first, so each cell can
-/// carry left padding that clears its own divider. Putting the border on the
-/// right instead (as the source design does) leaves the following cell's text
-/// jammed against the line.
-///
-/// The first cell keeps zero left padding so its text stays flush with the
-/// page gutter.
+/// Dividers sit on the left of every cell but the first, so each cell can pad
+/// away from its own rule. First cell stays flush with the gutter.
 @mixin divided-cells($pad: 20px, $color: $color-rule) {
   > * {
     padding-right: $pad;
@@ -98,9 +90,8 @@
     }
   }
 
-  // Phone: these grids wrap to two rows, and a left rule on the item that
-  // starts row two reads as an indent rather than a divider. Stack instead,
-  // separating rows with a rule above.
+  // Phone: once these wrap, a left rule on the item starting row two reads as
+  // an indent. Stack instead.
   @include responsive($breakpoint-md) {
     > * {
       padding-right: 0;

@@ -1,7 +1,4 @@
-// Breakpoint scale
-// -----------------------------------------------------------------------------
-// One ordered scale, smallest to largest. Every media query in the codebase must
-// use one of these — never a raw rem value, or the scale stops being a scale.
+// One ordered scale. Media queries use these, never a raw rem value.
 
 $breakpoint-xs: 22rem; //  352px
 $breakpoint-sm: 30rem; //  480px
@@ -13,9 +10,6 @@ $breakpoint-3xl: 75rem; // 1200px — work rows stop sitting side by side
 $breakpoint-4xl: 80rem; // 1280px — desktop
 $breakpoint-5xl: 90rem; // 1440px — large desktop
 
-/// Media query helper.
-/// @param {Length} $size  - a $breakpoint-* value
-/// @param {String} $basis - `max` (default) or `min`
 @mixin responsive($size, $basis: max, $type: width) {
   @media only screen and (#{$basis}-#{$type}: #{$size}) {
     @content;

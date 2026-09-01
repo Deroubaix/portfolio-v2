@@ -1,8 +1,4 @@
-// Button
-// -----------------------------------------------------------------------------
-// Two variants, both rectangular — the editorial system has no rounded corners.
-//   .button--solid    filled ink, for the primary action
-//   .button--outline  hairline box, for everything else
+// Variants: .button--solid .button--accent   Sizes come from padding.
 
 @use "../abstracts" as *;
 

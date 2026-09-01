@@ -1,10 +1,4 @@
-// Hero
-// -----------------------------------------------------------------------------
-// The name is set as two stacked lines at display weight. "Open to work" sits
-// on the second line's baseline, pushed to the right edge — that is what makes
-// the block read as full-bleed, not a larger type size.
-//
-// Each line rises into place from behind an overflow:hidden mask.
+// The name is two stacked lines, each rising from behind its own mask.
 
 @use "../abstracts" as *;
 
@@ -18,15 +12,11 @@
   &__name {
     margin: clamp(14px, 2vw, 26px) 0 0;
     font-family: $font-display;
-    // Fluid between a floor and a fixed ceiling, matching the design. The cap
-    // keeps the setting stable on wide screens rather than growing without
-    // limit.
     font-size: clamp(44px, 14.7vw, 260px);
 
-    // Optical alignment. Archivo's M and D both carry 0.0749em of left side
-    // bearing, so the ink sits inset from the text box. Pull the block left by
-    // exactly that much to make the letterforms flush with the page gutter.
-    // Applied to the h1 (not the masked line) so nothing gets clipped.
+    // Archivo's M and D carry 0.0749em of left side bearing. Pull the block
+    // left by that much so the ink sits flush with the gutter. On the h1, not
+    // the masked line, or the overhang gets clipped.
     margin-inline-start: -0.0749em;
     font-weight: $weight-black;
     line-height: 0.82;
@@ -60,9 +50,8 @@
   // Divider is solid ink, not the faded hairline — it is structural.
   &__summary {
     display: grid;
-    // 280px, not 230px: at 230 a tablet fits three columns of ~237px, which is
-    // too narrow for the stack rows and they wrap mid-item. This drops to two
-    // columns on tablet and keeps three from ~1000px up.
+    // 280 not 230: at 230 a tablet fits three ~237px columns and the stack
+    // rows wrap mid-item.
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     margin-top: clamp(24px, 4vw, 44px);
     border-top: 1px solid $color-ink;

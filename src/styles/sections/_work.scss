@@ -1,11 +1,5 @@
-// Selected work
-// -----------------------------------------------------------------------------
-// A full-bleed table: header band, one row per project, then short notes. Rows
-// link to the case study. Hovering inverts the row and lifts a preview image
-// that tracks the cursor.
-//
-// The section carries no gutter of its own — each row supplies it, so the
-// hover inversion runs edge to edge.
+// Full-bleed table: the gutter is on each row, so the hover inversion runs
+// edge to edge. Rows link to the case study.
 
 @use "../abstracts" as *;
 
@@ -14,9 +8,8 @@ $row-gutter: clamp(16px, 3vw, 34px);
 .work {
   padding: 0;
 
-  // Two hints, one shown at a time: the pointer one describes hovering, the
-  // touch one describes tapping. Hiding it entirely on touch would drop the
-  // only cue that these rows lead somewhere.
+  // One hint per input type. Hiding it on touch would drop the only cue that
+  // these rows lead somewhere.
   &__hint {
     text-align: right;
   }

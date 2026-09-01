@@ -1,8 +1,5 @@
-// Font families
-// -----------------------------------------------------------------------------
-// Archivo is loaded through next/font in layout.tsx, which self-hosts it and
-// exposes it as a CSS variable — no runtime request to Google. Fira Mono is
-// self-hosted from public/Fonts via base/_fonts.scss.
+// Archivo comes from next/font in layout.tsx as --font-archivo.
+// Fira Mono is self-hosted in base/_fonts.scss.
 
 $font-path: "/fonts";
 

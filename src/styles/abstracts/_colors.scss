@@ -1,17 +1,10 @@
-// Colour tokens — editorial
-// -----------------------------------------------------------------------------
-// Single source of truth. Palette = raw values, roles = what the UI references.
-// Components should reference roles, never the palette directly.
+// Reference the roles, not the palette.
 //
-// Contrast against the cream ground (WCAG AA needs 4.5:1 for body text):
-//   ink    #16150F  15.61:1  body text
-//   red    #CA2F19   4.56:1  accent text, links
-//   orange #F58E1C   2.04:1  DECORATIVE ONLY — fails for text
-//   mute   #6A6656   4.72:1  secondary text
-//
-// The previous mint #64FFDA measures 1.06:1 here — unusable on cream.
+// Contrast on cream (AA needs 4.5:1 for body text):
+//   ink #16150F 15.61  red #CA2F19 4.56  mute #6A6656 4.72
+//   orange #F58E1C 2.04 — decorative only, fails for text
 
-// --- Palette ---------------------------------------------------------------
+// Palette
 $color-cream: #efede6;
 $color-ink: #16150f;
 $color-red: #ca2f19;
@@ -24,7 +17,7 @@ $color-grey-300: #8c8877;
 
 $color-white: #ffffff;
 
-// --- Roles -----------------------------------------------------------------
+// Roles
 $color-surface: $color-cream;
 $color-surface-inverse: $color-ink;
 

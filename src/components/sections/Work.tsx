@@ -5,13 +5,10 @@ import Link from "next/link";
 import { work } from "../../content/site";
 
 /**
- * Selected work. Each row links to that project's case study; the live site is
- * reachable from the note beneath.
+ * Rows link to the case study; the live site is in the note beneath.
  *
- * The hover preview is decorative: fine pointers only, hidden under
- * prefers-reduced-motion, and it shows nothing the row does not already say.
- * Positioned by writing transform directly rather than through state, so
- * pointer moves do not trigger a render on every frame.
+ * The hover preview is decorative and pointer-only. Its transform is written
+ * straight to style so pointer moves do not re-render.
  */
 export default function Work() {
   const peekRef = useRef<HTMLDivElement>(null);

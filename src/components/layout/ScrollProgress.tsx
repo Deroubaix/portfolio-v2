@@ -3,11 +3,8 @@
 import React, { useEffect, useRef } from "react";
 
 /**
- * Reading progress bar. Present on every page.
- *
- * Width is written straight to style rather than held in state, so scrolling
- * does not re-render. Decorative: it duplicates the scrollbar, so it is
- * hidden from assistive tech and dropped under reduced motion (in CSS).
+ * Width is written straight to style so scrolling does not re-render.
+ * Decorative: it duplicates the scrollbar, so it is hidden from assistive tech.
  */
 export default function ScrollProgress() {
   const ref = useRef<HTMLDivElement>(null);

@@ -1,9 +1,5 @@
-// Shared keyframes
-// -----------------------------------------------------------------------------
-// Used by more than one section, so they live here rather than in whichever
-// section happened to need them first.
+// Keyframes used by more than one section.
 
-/// A line rising into place from behind an overflow:hidden mask.
 @keyframes hero-rise {
   from {
     transform: translateY(105%);
@@ -13,7 +9,6 @@
   }
 }
 
-/// Soft entrance for supporting copy.
 @keyframes fade-in {
   from {
     opacity: 0;

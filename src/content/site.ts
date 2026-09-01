@@ -1,9 +1,5 @@
-/**
- * Single source of truth for site copy.
- *
- * Kept out of the components so wording can be reviewed and changed without
- * touching markup, and so the same fact cannot drift between sections.
- */
+// All site copy. Kept out of the components so the same fact cannot drift
+// between sections.
 
 export const site = {
   name: { first: "Marisha", last: "Deroubaix" },

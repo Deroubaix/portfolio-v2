@@ -1,14 +1,5 @@
-// -----------------------------------------------------------------------------
-// Entry point
-// -----------------------------------------------------------------------------
-// A manifest only — no rules live here. Layer order is the cascade order.
-//
-//   abstracts/  compile-time only (tokens, mixins) — emits no CSS
-//   base/       element defaults
-//   layout/     page shell and persistent furniture
-//   sections/   one file per page section
-//   components/ reusable pieces, last so they win over section context
-// -----------------------------------------------------------------------------
+// Manifest only. Order is the cascade, so components come last and win over
+// section context.
 
 @use "./base/fonts";
 @use "./base/reset";

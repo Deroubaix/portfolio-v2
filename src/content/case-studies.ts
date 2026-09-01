@@ -1,12 +1,6 @@
 /**
- * Case study content.
- *
- * `results` is kept but no longer rendered. The outcomes section shipped as
- * three empty "number needed" cards, which advertises a missing answer rather
- * than giving one, and worse than having no outcomes section at all. The prompts
- * stay here so the section can be restored the moment there is a figure worth
- * publishing. A Lighthouse score is the realistic first one; traffic and
- * sign-ups are the client's data, not ours to publish.
+ * `results` is kept but not rendered. The outcomes section shipped as empty
+ * "number needed" cards; the prompts stay here for when there is a real figure.
  */
 
 export type CaseStudy = {
