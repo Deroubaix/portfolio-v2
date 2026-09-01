@@ -12,7 +12,7 @@ export const cv = {
       "Ship full-stack features end to end: NestJS endpoints, Prisma schema changes, GraphQL and data migrations against live records.",
       "Fixed sign-ins that failed on capitalisation, across the lookup, the write path and the existing rows.",
       "Diagnosed a silent font failure caused by Turbopack stripping CSS @import, and fixed it across all three applications.",
-      "Moved a hardcoded 370-line page into the CMS so copy changes no longer need a release.",
+      "Corrected subscription access so a cancelled plan stays valid until the paid period ends, and centralised the entitlement check so two services could not disagree about who has access.",
     ],
     "Delância": [
       "Designed and built a custom Shopify storefront on the GraphQL Storefront API, with real-time product data.",
