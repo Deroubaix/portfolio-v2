@@ -122,9 +122,12 @@ export default function CaseStudyPage({ params }: Params) {
         </div>
       </section>
 
-      <section className="cs__block">
-        <h2 className="cs__h2 cs__h2--display">{study.decisionsTitle}</h2>
-        <p className="cs__caption">{study.decisionsCaption}</p>
+      <section className="cs__flow">
+        <div className="cs__opener">
+          <h2 className="cs__h2--display">{study.decisionsTitle}</h2>
+          <span className="cs__caption">{study.decisionsCaption}</span>
+        </div>
+
         {study.decisionsNote && (
           <p className="cs__attribution">{study.decisionsNote}</p>
         )}
@@ -136,13 +139,11 @@ export default function CaseStudyPage({ params }: Params) {
               <h3 className="cs__decision-title">{d.title}</h3>
               <p className="cs__decision-tags">{d.tags}</p>
             </div>
-            <div>
-              <div className="cs__prose">
-                <p>{d.body}</p>
-              </div>
-              <div className="cs__callout">
-                <p className="cs__callout-k">Trade-off</p>
-                <p className="cs__callout-v">{d.tradeoff}</p>
+            <div className="cs__decision-body">
+              <p>{d.body}</p>
+              <div className="cs__tradeoff">
+                <span className="cs__tradeoff-k">Trade-off</span>
+                <span className="cs__tradeoff-v">{d.tradeoff}</span>
               </div>
             </div>
           </div>
@@ -164,14 +165,12 @@ export default function CaseStudyPage({ params }: Params) {
 
         <div>
           <h2 className="cs__h2">05 — {study.craftTitle}</h2>
-          <div className="cs__prose">
-            <p>{study.craftIntro}</p>
-          </div>
-          <dl className="cs__rows">
+          <p className="cs__craft-intro">{study.craftIntro}</p>
+          <dl className="cs__craft">
             {study.craft.map((c) => (
-              <div key={c.k} className="cs__row">
-                <dt className="cs__row-k">{c.k}</dt>
-                <dd className="cs__row-v">{c.v}</dd>
+              <div key={c.k} className="cs__craft-item">
+                <dt className="cs__craft-k">{c.k}</dt>
+                <dd className="cs__craft-v">{c.v}</dd>
               </div>
             ))}
           </dl>
@@ -179,8 +178,10 @@ export default function CaseStudyPage({ params }: Params) {
       </section>
 
       <section className="cs__block">
-        <h2 className="cs__h2 cs__h2--display">What changed</h2>
-        <p className="cs__caption">06 — outcomes</p>
+        <div className="cs__opener">
+          <h2 className="cs__h2--display">What changed</h2>
+          <span className="cs__caption">06 — outcomes</span>
+        </div>
 
         <div className="cs__results">
           {study.results.map((r) => (

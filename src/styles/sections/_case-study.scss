@@ -196,14 +196,13 @@
     border-bottom: 2px solid $color-ink;
   }
 
-  // Two cells divided by a hairline, matching the design's split sections.
+  // Two cells divided by a hairline, bounded top and bottom by ink rules.
   &__split {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    margin-top: clamp(44px, 7vw, 86px);
+    margin-top: clamp(44px, 7vw, 84px);
     border-top: 2px solid $color-ink;
     border-bottom: 2px solid $color-ink;
-    padding: 0;
 
     > * {
       padding: clamp(26px, 4vw, 50px) $gutter;
@@ -214,6 +213,11 @@
     }
   }
 
+  // Sections that sit between the ruled blocks.
+  &__flow {
+    padding: clamp(44px, 7vw, 84px) $gutter 0;
+  }
+
   &__h2 {
     @include label($color-text-muted, 11.5px);
     letter-spacing: 0.16em;
@@ -222,22 +226,30 @@
     margin-bottom: $space-md;
   }
 
-  // Larger opener used where the design sets a display heading plus a caption.
+  // Section opener: display heading on the left, mono caption on the right,
+  // sharing a baseline.
+  &__opener {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
   &__h2--display {
     font-family: $font-display;
-    font-size: clamp(26px, 3vw, 40px);
+    font-size: clamp(26px, 4vw, 48px);
     font-weight: $weight-bold;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
     line-height: 1;
     text-transform: uppercase;
     color: $color-text;
   }
 
   &__caption {
-    @include label($color-text-subtle, 11px);
+    @include label($color-text-muted, 11.5px);
     letter-spacing: 0.14em;
-    margin-top: $space-2xs;
-    margin-bottom: $space-lg;
   }
 
   // Says plainly where the direction came from, so the items below are read
@@ -302,61 +314,156 @@
     }
   }
 
-  // Key/value rows: tech layers, craft notes.
+  // 04 — the stack. Mono throughout, fixed label column, hairline per row.
   &__rows {
+    display: flex;
+    flex-direction: column;
     border-top: 1px solid $color-rule;
-    margin-top: $space-md;
+    font-family: $font-mono;
+    font-size: 12.5px;
   }
 
   &__row {
     display: grid;
-    grid-template-columns: minmax(120px, 1fr) 2fr;
-    gap: $space-md;
-    padding-block: $space-sm;
+    grid-template-columns: 6rem 1fr;
+    gap: 14px;
+    padding: 14px 0;
     border-bottom: 1px solid $color-rule;
   }
 
   &__row-k {
-    @include label($color-text, 11.5px);
-    letter-spacing: 0.1em;
+    color: $color-accent;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   &__row-v {
-    font-size: 15px;
+    color: $color-grey-900;
+    line-height: 1.55;
+  }
+
+  // 05 — a card grid, not a row list.
+  //
+  // The design draws the hairlines with a 1px gap over a dark ground. That
+  // breaks whenever the last row is only partly filled: the empty tracks show
+  // the dark ground as a block. Each cell carries its own hairline instead, so
+  // empty tracks stay on the page colour however many items there are.
+  &__craft-intro {
+    margin: 0 0 20px;
+    font-size: clamp(15.5px, 1.2vw, 17px);
+    line-height: 1.72;
+    color: $color-grey-900;
+    max-width: 50ch;
+  }
+
+  &__craft {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: $color-surface;
+  }
+
+  &__craft-item {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 20px;
+    background: $color-surface;
+    // Sits in the 1px gap, so neighbouring cells share one hairline.
+    box-shadow: 0 0 0 1px $color-rule-strong;
+  }
+
+  &__craft-k {
+    @include label($color-accent, 10.5px);
+    letter-spacing: 0.13em;
+  }
+
+  &__craft-v {
+    font-size: 14.5px;
     line-height: 1.6;
     color: $color-grey-900;
   }
 
   // --- Decisions -----------------------------------------------------------
+  // Each decision is a row that inverts on hover and shifts right, matching
+  // the work index on the home page.
   &__decision {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: clamp($space-lg, 3vw, $space-2xl);
-    padding-block: clamp($space-lg, 3vw, $space-2xl);
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: clamp(18px, 3vw, 48px);
+    padding: clamp(22px, 3vw, 34px) 0;
+    border-top: 1px solid $color-rule-strong;
+    transition: background 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
 
-    + .cs__decision {
-      border-top: 1px solid $color-rule;
+    &:hover,
+    &:focus-within {
+      background: $color-surface-inverse;
+      color: $color-text-inverse;
+      padding-left: 18px;
+
+      .cs__decision-tags {
+        color: rgba($color-cream, 0.7);
+      }
+
+      .cs__tradeoff {
+        border-top-color: rgba($color-cream, 0.28);
+      }
     }
   }
 
   &__decision-n {
-    @include label($color-accent, 12px);
-    letter-spacing: $tracking-normal;
+    @include label($color-accent, 11.5px);
+    letter-spacing: 0.12em;
   }
 
   &__decision-title {
     font-family: $font-display;
-    font-size: clamp(22px, 2.4vw, 32px);
+    font-size: clamp(21px, 2.6vw, 32px);
     font-weight: $weight-bold;
     letter-spacing: -0.03em;
-    line-height: 1.05;
-    margin-block: $space-2xs;
+    line-height: 1.02;
+    text-transform: uppercase;
+    max-width: 20ch;
+    margin: 10px 0 0;
   }
 
   &__decision-tags {
-    @include label($color-text-muted, 11.5px);
-    letter-spacing: $tracking-normal;
-    text-transform: none;
+    @include label($color-text-muted, 11px);
+    letter-spacing: 0.1em;
+    margin-top: 14px;
+    transition: color 0.3s ease;
+  }
+
+  &__decision-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    p {
+      font-size: clamp(15px, 1.15vw, 16.5px);
+      line-height: 1.75;
+    }
+  }
+
+  // Label and text side by side under a rule — not a boxed callout.
+  &__tradeoff {
+    display: grid;
+    grid-template-columns: 5.6rem 1fr;
+    gap: 14px;
+    padding-top: 14px;
+    border-top: 1px solid $color-rule-strong;
+    transition: border-color 0.3s ease;
+  }
+
+  &__tradeoff-k {
+    @include label($color-accent, 10.5px);
+    letter-spacing: 0.12em;
+  }
+
+  &__tradeoff-v {
+    font-size: 14.5px;
+    line-height: 1.65;
+    opacity: 0.8;
   }
 
   // --- Results (placeholders until real figures exist) ---------------------
