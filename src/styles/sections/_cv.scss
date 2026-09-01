@@ -12,6 +12,9 @@
 .cv {
   margin: 0;
   padding: 0 0 4mm;
+  // Fills the viewport on screen so the cream body colour does not show
+  // beneath the sheet. Print ignores it.
+  min-height: 100vh;
   background: #fff;
   color: $color-ink;
   font-size: 10pt;
@@ -41,9 +44,21 @@
     letter-spacing: 0.14em;
   }
 
+  // Opening statement, same line the site leads with.
+  &__lead {
+    max-width: 74ch;
+    padding-top: 8px;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: $color-grey-900;
+  }
+
   &__contact {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    // 210px, not 150: the email is wider than 150 and a grid item will not
+    // shrink below its content, so narrower columns let it run into its
+    // neighbour.
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 4px $space-md;
     padding: 8px 0;
     border-bottom: 1px solid $color-rule-strong;
@@ -55,6 +70,7 @@
 
     dd {
       font-size: 10pt;
+      overflow-wrap: anywhere;
     }
   }
 
