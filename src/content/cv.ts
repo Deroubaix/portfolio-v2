@@ -11,7 +11,7 @@ export const cv = {
       "Front-end development on the company platform, building accessible interfaces for two audiences: parents and clinicians.",
       "Ship full-stack features end to end: NestJS endpoints, Prisma schema changes, GraphQL and data migrations against live records.",
       "Fixed sign-ins that failed on capitalisation, across the lookup, the write path and the existing rows.",
-      "Diagnosed a silent font failure caused by Turbopack stripping CSS @import, and fixed it across all three applications.",
+      "Unified the parent and professional signup flows behind one generic checkout hook, removing roughly 350 lines of divergent code from a payment path and recovering the case where an existing email would otherwise have to start over.",
       "Corrected subscription access so a cancelled plan stays valid until the paid period ends, and centralised the entitlement check so two services could not disagree about who has access.",
     ],
     "Delância": [
