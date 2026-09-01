@@ -467,30 +467,53 @@
   }
 
 
-  // --- Foot of the study ---------------------------------------------------
-  &__end {
+  // --- Closing split: what's next on the left, where to go on the right ---
+  // No margin or top rule: the preceding block's bottom rule is the divider.
+  // The design has a gap here because the outcomes section sat between them.
+  &__final {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: $space-lg;
-    align-items: end;
-    margin-top: $space-xl;
-    padding-top: $space-lg;
-    border-top: 1px solid $color-rule;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  &__final-prose {
+    padding: clamp(26px, 4vw, 50px) $gutter;
+    border-right: 1px solid $color-rule;
+
+    p {
+      font-size: clamp(15.5px, 1.2vw, 17.5px);
+      line-height: 1.72;
+      color: $color-grey-900;
+      max-width: 52ch;
+
+      + p {
+        margin-top: 14px;
+      }
+    }
+  }
+
+  &__final-cta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 26px;
+    padding: clamp(26px, 4vw, 50px) $gutter;
   }
 
   &__next-label {
-    @include label($color-text-subtle, 11px);
+    @include label($color-text-muted, 11.5px);
     letter-spacing: 0.14em;
-    margin-bottom: $space-3xs;
   }
 
   &__next-link {
+    display: inline-block;
+    margin-top: 10px;
     font-family: $font-display;
-    font-size: clamp(24px, 3vw, 38px);
-    font-weight: $weight-bold;
-    letter-spacing: -0.03em;
+    font-size: clamp(30px, 5vw, 62px);
+    font-weight: $weight-black;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
     text-transform: uppercase;
-    line-height: 1;
+    transition: color 0.25s ease;
 
     &:hover,
     &:focus-visible {
@@ -501,18 +524,7 @@
   &__end-links {
     display: flex;
     flex-wrap: wrap;
-    gap: $space-md;
-
-    a {
-      @include label($color-text, $text-sm);
-      border-bottom: 1px solid currentColor;
-      transition: color 0.2s ease, border-color 0.2s ease;
-
-      &:hover,
-      &:focus-visible {
-        color: $color-accent;
-        border-bottom-color: $color-accent;
-      }
-    }
+    gap: 12px;
   }
+
 }

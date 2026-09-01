@@ -177,31 +177,35 @@ export default function CaseStudyPage({ params }: Params) {
         </div>
       </section>
 
-      <section className="cs__block">
-        <div className="cs__split">
-          <div>
-            <h2 className="cs__h2">06 — What I&rsquo;d do next</h2>
-            <div className="cs__prose">
-              {study.next.map((n) => (
-                <p key={n.slice(0, 24)}>{n}</p>
-              ))}
-            </div>
-          </div>
+      <section className="cs__final">
+        <div className="cs__final-prose">
+          <h2 className="cs__h2">06 — What I&rsquo;d do next</h2>
+          {study.next.map((n) => (
+            <p key={n.slice(0, 24)}>{n}</p>
+          ))}
         </div>
 
-        <div className="cs__end">
+        <div className="cs__final-cta">
           <div>
             <p className="cs__next-label">Next case study</p>
             <Link className="cs__next-link" href={`/case-studies/${next.id}`}>
               {next.name} →
             </Link>
           </div>
-          <p className="cs__end-links">
-            <a href={study.link} target="_blank" rel="noopener noreferrer">
+
+          <div className="cs__end-links">
+            <a
+              className="button button--solid"
+              href={study.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Visit {study.name} ↗
             </a>
-            <Link href="/">All work</Link>
-          </p>
+            <Link className="button" href="/">
+              All work
+            </Link>
+          </div>
         </div>
       </section>
 
