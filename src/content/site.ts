@@ -70,7 +70,7 @@ export const about = {
     "It began in 2017 with Swift, took a hard turn into the web, and became a career at a bootcamp in Lisbon.",
   paragraphs: [
     "Today I work across the whole stack at a start-up: interfaces and design systems on the front, Prisma, NestJS and GraphQL behind them. I like the unglamorous work: accessibility, performance, and code the next person can actually read.",
-    "Outside of work I break things on purpose. Small games, API toys, anything that teaches me something new by Friday.",
+    "Outside of work I am building The Sommelier Ledger, a blind tasting app that walks through the systematic approach from sight to final conclusion and keeps a record of what you have tasted. It is not live yet, since mobile and testing come first, but it is the one where every decision is mine.",
   ],
   portrait: "/images/marisha-photo.jpeg",
 } as const;
