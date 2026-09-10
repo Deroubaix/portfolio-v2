@@ -54,6 +54,16 @@ export const work = [
     slug: "delancia",
     note: "A custom storefront on Shopify's GraphQL API, with real-time product data and motion-led browsing. Shipped solo, end to end.",
   },
+  {
+    n: "04",
+    title: "Marc Bonaventure",
+    year: "2026",
+    stack: "Next.js · Prisma · PostgreSQL · Mantine",
+    link: "https://www.marcbonaventure.com/",
+    img: "/images/marc-bonaventure.webp",
+    slug: "marc-bonaventure",
+    note: "A site for a French poet living in Belém: his trilogy, an agenda of readings, a gallery. Behind a password, a small CMS so he posts photographs and events himself, without a developer.",
+  },
 ] as const;
 
 export const about = {
@@ -62,7 +72,7 @@ export const about = {
     "It began in 2017, teaching myself Swift, then took a hard turn into the web and became a career at a bootcamp in Lisbon.",
   paragraphs: [
     "Today I work across the whole stack at a start-up: interfaces and design systems on the front, Prisma, NestJS and GraphQL behind them. I like the unglamorous work: accessibility, performance, and code the next person can actually read.",
-    "Outside of work I am building The Sommelier Ledger, a blind tasting app that walks through the systematic approach from sight to final conclusion and keeps a record of what you have tasted. It is not live yet, since mobile and testing come first, but it is the one where every decision is mine.",
+    "Outside of work I am building The Sommelier's Ledger, a blind tasting app that walks through the systematic approach from sight to final conclusion and keeps a record of what you have tasted. It is not live yet, since mobile and testing come first, but it is the one where every decision is mine.",
   ],
   portrait: "/images/marisha-photo.jpeg",
 } as const;
@@ -87,6 +97,16 @@ export const jobs = [
       "Designed and built a fully responsive site tailored to the client's brand.",
       "Integrated dynamic Shopify-driven features across devices.",
       "Ran the project solo, from scoping to launch and client comms.",
+    ],
+  },
+  {
+    name: "Marc Bonaventure",
+    role: "Freelance Developer",
+    period: "Sep 2026",
+    duties: [
+      "Built a Portuguese-language author site with a password-protected CMS, so the poet posts his own readings and photographs.",
+      "Modelled events, media and site copy in Prisma and PostgreSQL, with server actions in place of a separate API.",
+      "Put uploads behind a storage interface, moving from local disk to Cloudinary and R2 without touching the upload path.",
     ],
   },
   {

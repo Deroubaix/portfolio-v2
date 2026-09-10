@@ -265,4 +265,80 @@ export const caseStudies: readonly CaseStudy[] = [
           "I'd also add basic analytics instrumentation on the browse-to-cart path, so design changes can be argued from data rather than taste.",
         ],
       },
+      {
+        id: "marc-bonaventure", n: "04", name: "Marc Bonaventure", link: "https://www.marcbonaventure.com/", img: "/images/marc-bonaventure.webp",
+        kicker: "Author site · CMS · freelance, solo build", timeline: "Sep 2026 — ongoing",
+        h1a: "A site the poet", h1b: "keeps himself.",
+        intro: "Marc Bonaventure is a French poet who has lived in Pará, in the Brazilian north, since 2001, and writes about it in Portuguese. He had three books, a growing agenda of readings and nowhere to send anyone. The site is in Portuguese, and the whole point of it is that it stays current without me: behind a password there is a small admin where he posts photographs, video and the dates of his next readings.",
+        summary:
+          "A Portuguese-language site for a poet in Belém, with a password-protected CMS so he posts his own readings and photographs without a developer.",
+        meta: [
+          { k: "Client", v: "Marc Bonaventure" },
+          { k: "My role", v: "Freelance developer, solo" },
+          { k: "Team", v: "Just me, with the author" },
+          { k: "Timeline", v: "Sep 2026 — ongoing" },
+        ],
+        problem: [
+          "A reader after the trilogy, the next reading or photographs from a launch had to dig through Instagram posts and a publisher's catalogue page. There was no single address to give a journalist, a bookshop or a festival.",
+          "A site he could not update himself would have been worse than none at all. Readings are booked and moved with a few days' notice, and he has no developer on retainer; anything that needed me in the loop would have gone stale inside a month.",
+        ],
+        constraint: "The person maintaining this site is a poet, not a developer, and usually on a phone. If posting a photograph from last night's reading takes more than a couple of minutes, it will not happen.",
+        roleIntro: "Everything: schema, back end, front end, the admin, deployment, and the conversations about what he would actually use. A solo freelance build, in his language rather than mine.",
+        owned: [
+          "Data model, Prisma schema and migrations",
+          "Public site in Brazilian Portuguese: books, agenda, gallery, press, contact",
+          "Password-protected admin for events, media and site copy",
+          "Image and video pipeline, and the storage drivers behind it",
+          "Deployment, structured data and SEO",
+        ],
+        decisionsTitle: "Decisions & trade-offs",
+        decisionsCaption: "04 — what I chose, what I gave up",
+        decisions: [
+          {
+            n: "01", title: "One app, run twice", tags: "Next.js · APP_ROLE",
+            body: "The public site and the admin are two instances of the same application, with one environment variable deciding which routes each answers: the public instance 404s /admin, the admin instance sends everything else back to the login. Same code, same database, same uploads.",
+            tradeoff: "A genuinely separate admin would have needed an API built for it first, since the admin is server-rendered and talks to Postgres through Prisma directly. Two roles buy the same separation of addresses for the price of a config flag, though what they separate is routes, not processes.",
+          },
+          {
+            n: "02", title: "Books in code, events in the database", tags: "Content modelling",
+            body: "The admin started with a section for poems and books, and it came back out. A book has an edition history, a photographer, a preface writer and an imprint, none of which the schema had room for, and a new one arrives every year or two. The books are authored in the codebase; the database holds only what actually changes: events, images and a few pieces of copy.",
+            tradeoff: "A new book means a deploy. That is roughly once a year, weighed against an admin form nobody would remember how to fill in.",
+          },
+          {
+            n: "03", title: "Storage behind one interface", tags: "Cloudinary · R2 · sharp",
+            body: "Every upload goes through a single storage interface, which is why the driver behind it could change twice without the upload path changing: local disk while building, then Cloudinary once it was hosted somewhere with no persistent volume. Video goes straight from the browser to R2, because a serverless function will not take a body over 4.5MB and a phone clip passes that ten times over.",
+            tradeoff: "An abstraction over something a single file write would have done on day one. It paid for itself the first time the host changed.",
+          },
+          {
+            n: "04", title: "Time is Belém's, not the server's", tags: "Timezones · agenda",
+            body: "Every date is formatted through one module that pins the timezone to Belém, and the admin's date fields go through matching parse and format helpers. Constructing a date directly uses whatever timezone the process happens to run in, which quietly turns a 19h reading into a 22h one on a UTC host.",
+            tradeoff: "Two helpers to remember instead of the standard library. The alternative is a reader turning up three hours late to an empty room.",
+          },
+        ],
+        layers: [
+          { layer: "Front end", detail: "Next.js 16 · React 19 · TypeScript · hand-written CSS" },
+          { layer: "Admin", detail: "Mantine 9, server actions, one password" },
+          { layer: "Data", detail: "Prisma 7 · PostgreSQL" },
+          { layer: "Media", detail: "sharp for images, ffmpeg for video, swappable storage driver" },
+          { layer: "Delivery", detail: "Solo build, scoping to launch" },
+        ],
+        craftTitle: "Building for one non-technical owner",
+        craftIntro: "The stack was not the hard part. Deciding what Marc should be able to change, and making the rest impossible to break, was.",
+        craft: [
+          { k: "One door", v: "One author, one password, a hash and a signed cookie. No user table, no roles, no invitations, because there will never be a second user." },
+          { k: "Fails politely", v: "Where video encoding is unavailable, an upload explains itself and asks him to tell whoever maintains the site. Photographs carry on working." },
+          { k: "Whitespace is content", v: "Verse is rendered so that indents and stanza breaks survive exactly as typed. Trimming a poem's whitespace is a bug, and the README says so in as many words." },
+          { k: "In his language", v: "The site, the admin and its error messages are all in Brazilian Portuguese, including the parts only he will ever see." },
+        ],
+        results: [
+          "e.g. events and photographs posted without a developer since launch",
+          "e.g. referrals from publisher and press listings",
+          "e.g. enquiries through the contact page",
+        ],
+        next: [
+          "Real content. The gallery still has placeholder slots and the agenda is empty until the next reading is booked. The site is live and waiting on Marc rather than on me.",
+          "An iCal feed for the agenda and an RSS feed for the site, so a bookshop or a festival can subscribe instead of checking.",
+          "The poem and collection tables are still in the schema with nothing writing to them. They should either earn their place in a proper data-model pass, or come out.",
+        ],
+      },
     ] as const;

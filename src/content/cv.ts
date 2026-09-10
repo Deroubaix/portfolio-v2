@@ -18,6 +18,10 @@ export const cv = {
       "Designed and built a custom Shopify storefront on the GraphQL Storefront API, with real-time product data.",
       "Ran the project solo: scoping, build, launch and client communication.",
     ],
+    "Marc Bonaventure": [
+      "Built an author's site and its Portuguese-language CMS solo, so a non-technical client posts his own readings, photographs and video without a developer.",
+      "Modelled events and media in Prisma and PostgreSQL, with server actions in place of a separate API, and put uploads behind a storage interface that moved from local disk to Cloudinary and R2 untouched.",
+    ],
   } as Record<string, readonly string[]>,
 
   education: [
