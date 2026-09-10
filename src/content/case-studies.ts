@@ -14,6 +14,8 @@ export type CaseStudy = {
   h1a: string;
   h1b: string;
   intro: string;
+  /** Short form of `intro`, kept under 160 characters for search and share cards. */
+  summary: string;
   meta: ReadonlyArray<{ k: string; v: string }>;
   problem: readonly string[];
   constraint: string;
@@ -45,6 +47,8 @@ export const caseStudies: readonly CaseStudy[] = [
         kicker: "Health platform · consolidation", timeline: "Aug 2023 — ongoing",
         h1a: "Several sites,", h1b: "one platform.",
         intro: "Possums helps exhausted parents and the clinicians who support them. The knowledge was excellent; finding it was not. Marketing made the call to bring several separate sites under one domain, for SEO and a single brand; the team rebuilt them as one platform serving both audiences. I have worked on the front end throughout, and I am building the professional side now as NDC Institute moves across.",
+        summary:
+          "Several separate sites for parents and clinicians brought into one platform. Front end throughout, with NestJS, Prisma and GraphQL behind it.",
         meta: [
           { k: "Client", v: "Possums" },
           { k: "My role", v: "Fullstack developer" },
@@ -120,6 +124,8 @@ export const caseStudies: readonly CaseStudy[] = [
         kicker: "Online education · course delivery", timeline: "2024",
         h1a: "Clinical training,", h1b: "delivered online.",
         intro: "NDC Institute teaches Neuroprotective Developmental Care to health professionals and educators: breastfeeding, sleep, infant development and perinatal mental health. The task was turning a serious clinical curriculum into a course platform busy practitioners could actually get through.",
+        summary:
+          "Online education in Neuroprotective Developmental Care: courses on breastfeeding, sleep, infant development and perinatal mental health.",
         meta: [
           { k: "Client", v: "NDC Institute" },
           { k: "My role", v: "Fullstack developer" },
@@ -195,6 +201,8 @@ export const caseStudies: readonly CaseStudy[] = [
         kicker: "eCommerce · freelance, solo build", timeline: "Dec 2024 — ongoing",
         h1a: "Headless store,", h1b: "built solo.",
         intro: "A freelance build for a brand that needed a storefront matching its own identity rather than a themed template. I built a fully custom front end on Shopify's GraphQL API, with real product data and motion-led browsing, and ran the project end to end myself.",
+        summary:
+          "A custom Shopify storefront built solo on the GraphQL Storefront API, with real product data and motion-led browsing. Scoping to launch.",
         meta: [
           { k: "Client", v: "Delância" },
           { k: "My role", v: "Freelance developer, solo" },

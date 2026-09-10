@@ -16,9 +16,20 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: Params): Metadata {
   const study = caseStudies.find((s) => s.id === params.slug);
   if (!study) return {};
+  const url = `/case-studies/${study.id}`;
+  const title = `${study.name} — case study · Marisha Deroubaix`;
+
   return {
-    title: `${study.name} — case study · Marisha Deroubaix`,
-    description: study.intro,
+    title,
+    description: study.summary,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description: study.summary,
+      url,
+      type: "article",
+      images: [{ url: study.img, width: 2876, height: 1470, alt: `${study.name} — screenshot` }],
+    },
   };
 }
 
