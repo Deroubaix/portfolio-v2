@@ -10,7 +10,7 @@ CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 [ -x "$CHROME" ] || { echo "Chrome not found at $CHROME"; exit 1; }
 
-npx next dev -p "$PORT" >/tmp/cv-server.log 2>&1 &
+NEXT_DIST_DIR=.next-cv npx next dev -p "$PORT" >/tmp/cv-server.log 2>&1 &
 SERVER=$!
 trap 'kill $SERVER 2>/dev/null || true' EXIT
 
