@@ -3,6 +3,7 @@ import React, { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import ScrollProgress from "../components/layout/ScrollProgress";
+import { baseUrl } from "../lib/base-url";
 
 // Self-hosted at build time by next/font, so no runtime request to Google.
 const archivo = Archivo({
@@ -13,6 +14,7 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl()),
   title: "Marisha Deroubaix — Full Stack Developer",
   description:
     "Full stack developer in Lisbon. I build accessible, fast websites end to end, currently building platforms for parents and clinicians at Possums.",
@@ -20,6 +22,7 @@ export const metadata: Metadata = {
     title: "Marisha Deroubaix — Full Stack Developer",
     description:
       "Full stack developer in Lisbon. I build accessible, fast websites end to end.",
+    siteName: "Marisha Deroubaix",
     type: "website",
   },
 };

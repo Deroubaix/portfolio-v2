@@ -3,7 +3,7 @@
 
 export const cv = {
   address: "Lisbon, Portugal",
-  portfolio: "marishaderoubaix.vercel.app",
+  portfolio: "marishaderoubaix.com",
 
   /** Achievements per role, drawn from real commits. */
   achievements: {
