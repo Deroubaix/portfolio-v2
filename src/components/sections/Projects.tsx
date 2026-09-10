@@ -16,9 +16,13 @@ export default function Projects() {
             <p className="projects__blurb">{p.blurb}</p>
             <p className="projects__stack">{p.stack}</p>
             <p className="projects__links">
-              <a href={p.live} target="_blank" rel="noopener noreferrer">
-                Live ↗
-              </a>
+              {p.live ? (
+                <a href={p.live} target="_blank" rel="noopener noreferrer">
+                  Live ↗
+                </a>
+              ) : (
+                <span className="projects__unbuilt">Not deployed yet</span>
+              )}
               <a href={p.code} target="_blank" rel="noopener noreferrer">
                 Code
               </a>

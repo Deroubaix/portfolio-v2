@@ -122,15 +122,24 @@ export const jobs = [
 ] as const;
 
 /** Side projects. Labelled "Projects" in the UI, not "lab". */
-export const projects = [
+export type Project = {
+  kind: string;
+  title: string;
+  stack: string;
+  blurb: string;
+  /** Absent while there is nothing deployed to link to. */
+  live?: string;
+  code: string;
+};
+
+export const projects: readonly Project[] = [
   {
-    kind: "Web app",
-    title: "Clicked",
-    stack: "React · Node · MongoDB",
+    kind: "Exam practice · in progress",
+    title: "The Sommelier's Ledger",
+    stack: "Next.js · Prisma · PostgreSQL",
     blurb:
-      "Connects people on what they have in common, not looks. Answer a questionnaire, meet everyone you clicked with.",
-    live: "https://yourclicks.netlify.app/",
-    code: "https://github.com/Deroubaix/clicked-client/",
+      "Practice for the Court of Master Sommeliers deductive tasting grid: five phases against the exam clock, then the sheet is saved so you can see how your calls held up once you knew the answer.",
+    code: "https://github.com/Deroubaix/blind-tasting-app/",
   },
   {
     kind: "Game",
@@ -140,14 +149,5 @@ export const projects = [
       "A canvas side-scroller set on one of Lisbon's busiest streets. Jump the obstacles, or lose a life and live with the side effects.",
     live: "https://escapebaixa.vercel.app/",
     code: "https://github.com/Deroubaix/Project-One/",
-  },
-  {
-    kind: "API toy",
-    title: "Rick & Morty",
-    stack: "React · REST",
-    blurb:
-      "Browse and search every character, episode and cast member from the show, pulled live from the public API.",
-    live: "https://rickandmortyproject-api.netlify.app/",
-    code: "https://github.com/Deroubaix/project-rick/",
   },
 ] as const;
