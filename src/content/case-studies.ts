@@ -46,9 +46,9 @@ export const caseStudies: readonly CaseStudy[] = [
         id: "possums", n: "01", name: "Possums", link: "https://possums.org/", img: "/images/possums-website.webp",
         kicker: "Health platform · consolidation", timeline: "Aug 2023 — ongoing",
         h1a: "Several sites,", h1b: "one platform.",
-        intro: "Possums helps exhausted parents and the clinicians who support them. The knowledge was excellent; finding it was not. Marketing made the call to bring several separate sites under one domain, for SEO and a single brand; the team rebuilt them as one platform serving both audiences. I have worked on the front end throughout, and I am building the professional side now as NDC Institute moves across.",
+        intro: "Possums helps exhausted parents and the clinicians who support them. The knowledge was excellent; finding it was not. possums.org held the parent programs, the marketing that explained them sat on a separate site called Dr Pam, and the professional training on a third, NDC Institute. Marketing made the call to bring everything under one domain, for SEO and a single brand. Dr Pam moved across last year; NDC Institute is next, and that is the part I am building now.",
         summary:
-          "Several separate sites for parents and clinicians brought into one platform. Front end throughout, with NestJS, Prisma and GraphQL behind it.",
+          "Parent programs, marketing and clinician training moving under one domain. Front end throughout, with NestJS, Prisma and GraphQL behind it.",
         meta: [
           { k: "Client", v: "Possums" },
           { k: "My role", v: "Fullstack developer" },
@@ -56,7 +56,7 @@ export const caseStudies: readonly CaseStudy[] = [
           { k: "Timeline", v: "Aug 2023 — ongoing" },
         ],
         problem: [
-          "The content lived across several separate websites, each with its own navigation, styling and login. A parent at 3am looking for help with an unsettled baby had to guess which site held the answer. A clinician looking for training had the same problem in reverse.",
+          "The content lived across separate websites, each with its own navigation, styling and login. A parent who arrived through the marketing site had to cross to a different domain to reach the programs it described, and a parent at 3am with an unsettled baby had to guess which site held the answer. A clinician looking for training had the same problem in reverse.",
           "Two very different audiences were being served by one voice, and neither journey was clear. Maintaining separate codebases also meant every change had to be made, and tested, several times over.",
         ],
         constraint: "The users are sleep-deprived. Every extra click, every ambiguous label, every slow page is a person giving up on help they need.",

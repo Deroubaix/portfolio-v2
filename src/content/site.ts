@@ -32,7 +32,7 @@ export const work = [
     link: "https://possums.org/",
     img: "/images/possums-website.webp",
     slug: "possums",
-    note: "Several separate sites consolidated into one platform: parent programs, free resources and a practitioner directory, built for clinicians and exhausted parents alike.",
+    note: "Separate sites for parents, marketing and clinicians brought under one domain. The marketing site moved across last year; the professional side is next.",
   },
   {
     n: "02",
