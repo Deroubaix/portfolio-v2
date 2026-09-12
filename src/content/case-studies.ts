@@ -1,6 +1,7 @@
 /**
- * `results` is kept but not rendered. The outcomes section shipped as empty
- * "number needed" cards; the prompts stay here for when there is a real figure.
+ * `results` holds real, checkable figures only, and the outcomes section is
+ * rendered only where they exist. A study with nothing measured yet omits the
+ * field rather than shipping empty "number needed" cards.
  */
 
 export type CaseStudy = {
@@ -37,7 +38,9 @@ export type CaseStudy = {
   craftTitle: string;
   craftIntro: string;
   craft: ReadonlyArray<{ k: string; v: string }>;
-  results: readonly string[];
+  results?: ReadonlyArray<{ k: string; v: string }>;
+  /** Attribution, so a project outcome is not read as a personal one. */
+  resultsNote?: string;
   next: readonly string[];
 };
 
@@ -60,11 +63,12 @@ export const caseStudies: readonly CaseStudy[] = [
           "Two very different audiences were being served by one voice, and neither journey was clear. Maintaining separate codebases also meant every change had to be made, and tested, several times over.",
         ],
         constraint: "The users are sleep-deprived. Every extra click, every ambiguous label, every slow page is a person giving up on help they need.",
-        roleIntro: "Fullstack developer, working alongside the design and product teams. Most of my work is on the front end, including the shared component and type packages the other apps depend on, but a fair amount sits behind it: NestJS endpoints, Prisma schema changes, GraphQL, and data migrations against live records.",
+        roleIntro: "Fullstack developer, working alongside the design and product teams. Most of my work is on the front end, including the shared component and type packages the other apps depend on, but a fair amount sits behind it: NestJS endpoints, Prisma schema changes, GraphQL, and data migrations against live records. Most recently I built the front end of a subscription model change, replacing short plans with multi-year ones, which meant keeping every existing subscriber working while the model shifted underneath them.",
         owned: [
           "Front-end architecture and shared components",
           "Full-stack features from API to interface",
           "SQL → PostgreSQL migration and schema design",
+          "Subscription model migration, including legacy plan support",
           "Performance, SEO and accessibility work",
         ],
         decisionsTitle: "Problems I found and fixed",
@@ -110,10 +114,21 @@ export const caseStudies: readonly CaseStudy[] = [
           { k: "One-handed use", v: "Mobile-first layouts and generous tap targets, for the parent holding a baby in the other arm." },
         ],
         results: [
-          "e.g. traffic or sign-ups after consolidation",
-          "e.g. Lighthouse performance / accessibility score",
-          "e.g. time to publish a new page, before → after",
+          {
+            k: "Organic search",
+            v: "Sessions grew 37% year on year, from 14,494 to 19,835, and organic overtook direct to become the largest channel at 47% of all traffic.",
+          },
+          {
+            k: "Not bought",
+            v: "Paid search was reduced to almost nothing across the same period, from 9,444 sessions to 19, so none of that growth came from advertising.",
+          },
+          {
+            k: "Organic social",
+            v: "Up 68%, from 1,247 to 2,100 sessions, almost all of it Instagram and none of it promoted.",
+          },
         ],
+        resultsNote:
+          "Project outcomes rather than personal ones. Bringing the sites together was marketing's call and the domain migration was my lead's work; my own part is the front end described above.",
         next: [
           "Audio is moving onto the site. A lot of Possums is meant to be listened to rather than read, by someone who cannot be looking at a screen, and it currently lives elsewhere. Hosting it ourselves makes the player, the storage and the progress tracking all ours to build.",
           "The other piece is making Possums installable. A progressive web app is the sensible route: one codebase rather than two native builds, and it answers the audio problem at the same time, because a service worker can cache episodes for offline listening. That matters for this audience specifically. A parent settling a baby at 3am is not reliably on wifi.",
@@ -185,11 +200,6 @@ export const caseStudies: readonly CaseStudy[] = [
           { k: "Mixed media", v: "Video, text and downloads presented consistently rather than per-lesson improvisation." },
           { k: "Credibility", v: "Typography and hierarchy that read as professional education, not marketing." },
         ],
-        results: [
-          "e.g. enrolments or course completions",
-          "e.g. completion rate, or drop-off before → after",
-          "e.g. performance / accessibility score",
-        ],
         next: [
           "It is moving. NDC Institute is being folded into possums.org. That was marketing's call, for SEO and a single brand. I am building the professional side of Possums that will host it: the accreditation pathway, course and purchase pages, guest speakers and the professional dashboard. The Education Hub follows after that.",
           "The obvious next step is richer assessment and certification, because practitioners want evidence of completion they can show an employer or professional body.",
@@ -254,11 +264,6 @@ export const caseStudies: readonly CaseStudy[] = [
           { k: "Own reviewer", v: "Reviewing my own work honestly, with checklists standing in for a second pair of eyes." },
           { k: "Scope control", v: "Shipping a strong core rather than a half-finished wishlist." },
           { k: "After launch", v: "Ongoing support and changes, as the site is still evolving with the brand." },
-        ],
-        results: [
-          "e.g. conversion rate, or sales since launch",
-          "e.g. store speed score vs. previous theme",
-          "e.g. client time saved on updates per week",
         ],
         next: [
           "A design pass, before anything else. I made the design decisions on this one myself, and I am a developer who has never taken a design course, so the site works but it is not as strong as it could be. Mobile in particular needs rethinking rather than adjusting.",
@@ -329,11 +334,6 @@ export const caseStudies: readonly CaseStudy[] = [
           { k: "Fails politely", v: "Where video encoding is unavailable, an upload explains itself and asks him to tell whoever maintains the site. Photographs carry on working." },
           { k: "Whitespace is content", v: "Verse is rendered so that indents and stanza breaks survive exactly as typed. Trimming a poem's whitespace is a bug, and the README says so in as many words." },
           { k: "In his language", v: "The site, the admin and its error messages are all in Brazilian Portuguese, including the parts only he will ever see." },
-        ],
-        results: [
-          "e.g. events and photographs posted without a developer since launch",
-          "e.g. referrals from publisher and press listings",
-          "e.g. enquiries through the contact page",
         ],
         next: [
           "Real content. The gallery still has placeholder slots and the agenda is empty until the next reading is booked. The site is live and waiting on Marc rather than on me.",

@@ -487,6 +487,18 @@
   // Closing split: what's next on the left, where to go on the right
   // No margin or top rule: the preceding block's bottom rule is the divider.
   // The design has a gap here because the outcomes section sat between them.
+  // Outcomes. Rendered only where there are real figures, so the section is
+  // absent rather than empty on a study with nothing measured yet.
+  &__outcomes {
+    padding: clamp(26px, 4vw, 50px) $gutter;
+    border-top: 1px solid $color-rule;
+
+    .cs__attribution {
+      margin-bottom: 20px;
+      max-width: 62ch;
+    }
+  }
+
   &__final {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

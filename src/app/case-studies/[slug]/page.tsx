@@ -188,9 +188,28 @@ export default function CaseStudyPage({ params }: Params) {
         </div>
       </section>
 
+      {study.results && (
+        <section className="cs__outcomes">
+          <h2 className="cs__h2">06 — Outcomes</h2>
+          {study.resultsNote && (
+            <p className="cs__attribution">{study.resultsNote}</p>
+          )}
+          <dl className="cs__craft">
+            {study.results.map((r) => (
+              <div key={r.k} className="cs__craft-item">
+                <dt className="cs__craft-k">{r.k}</dt>
+                <dd className="cs__craft-v">{r.v}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )}
+
       <section className="cs__final">
         <div className="cs__final-prose">
-          <h2 className="cs__h2">06 — What I&rsquo;d do next</h2>
+          <h2 className="cs__h2">
+            {study.results ? "07" : "06"} — What I&rsquo;d do next
+          </h2>
           {study.next.map((n) => (
             <p key={n.slice(0, 24)}>{n}</p>
           ))}
