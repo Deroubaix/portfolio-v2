@@ -46,7 +46,7 @@ export const caseStudies: readonly CaseStudy[] = [
         id: "possums", n: "01", name: "Possums", link: "https://possums.org/", img: "/images/possums-website.webp",
         kicker: "Health platform · consolidation", timeline: "Aug 2023 — ongoing",
         h1a: "Several sites,", h1b: "one platform.",
-        intro: "Possums helps exhausted parents and the clinicians who support them. The knowledge was excellent; finding it was not. possums.org held the parent programs, the marketing that explained them sat on a separate site called Dr Pam, and the professional training on a third, NDC Institute. Marketing made the call to bring everything under one domain, for SEO and a single brand. Dr Pam moved across last year; NDC Institute is next, and that is the part I am building now.",
+        intro: "Possums helps exhausted parents and the clinicians who support them. The knowledge was excellent; finding it was not. The parent programs sat on one domain, the marketing that explained them on a second called Dr Pam, and the professional training on a third, NDC Institute. Marketing made the call to bring everything under possums.org, for SEO and a single brand. The domain migration itself was my lead\'s work. Mine is the front end, across the programs app and the shared component and type packages the other apps build on, with a fair amount of the back end behind it. Dr Pam moved across last year; NDC Institute is next, and that is the part I am building now.",
         summary:
           "Parent programs, marketing and clinician training moving under one domain. Front end throughout, with NestJS, Prisma and GraphQL behind it.",
         meta: [
@@ -60,7 +60,7 @@ export const caseStudies: readonly CaseStudy[] = [
           "Two very different audiences were being served by one voice, and neither journey was clear. Maintaining separate codebases also meant every change had to be made, and tested, several times over.",
         ],
         constraint: "The users are sleep-deprived. Every extra click, every ambiguous label, every slow page is a person giving up on help they need.",
-        roleIntro: "Fullstack developer, working alongside the design and product teams. Most of my work is on the front end, but a fair amount sits behind it: NestJS endpoints, Prisma schema changes, GraphQL, and data migrations against live records.",
+        roleIntro: "Fullstack developer, working alongside the design and product teams. Most of my work is on the front end, including the shared component and type packages the other apps depend on, but a fair amount sits behind it: NestJS endpoints, Prisma schema changes, GraphQL, and data migrations against live records.",
         owned: [
           "Front-end architecture and shared components",
           "Full-stack features from API to interface",
