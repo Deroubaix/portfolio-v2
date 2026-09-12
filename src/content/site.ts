@@ -20,6 +20,9 @@ export const site = {
   ],
 
   now: "Currently at Possums, building for parents and clinicians.",
+
+  /** Shown under `now` in the hero. Set to null to drop the line entirely. */
+  available: "Available for freelance projects.",
 } as const;
 
 /** Index of professional work. `img` drives the hover preview. */

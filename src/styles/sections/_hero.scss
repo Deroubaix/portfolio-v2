@@ -78,6 +78,25 @@
     line-height: 2;
   }
 
+  // Sits under `now`, in the accent so it reads as a status rather than more
+  // biography. Same dot as the top bar.
+  &__available {
+    @include label($color-accent, $text-sm);
+    text-transform: none;
+    line-height: 2;
+    display: flex;
+    align-items: center;
+    gap: $space-2xs;
+  }
+
+  &__available-dot {
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $color-accent;
+  }
+
   &__stack {
     div {
       display: flex;

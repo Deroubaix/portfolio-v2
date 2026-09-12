@@ -37,6 +37,12 @@ export default function Hero() {
 
         <div>
           <p className="hero__now">{site.now}</p>
+          {site.available && (
+            <p className="hero__available">
+              <span className="hero__available-dot" aria-hidden="true" />
+              {site.available}
+            </p>
+          )}
           <div className="hero__actions">
             <a className="button button--solid" href={`mailto:${site.email}`}>
               Email me
