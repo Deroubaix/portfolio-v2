@@ -88,7 +88,7 @@ export const jobs = [
     duties: [
       "Built and maintained the company web platform, focused on accessible, user-friendly interfaces.",
       "Shipped full-stack features end to end, integrating APIs and databases.",
-      "Migrated from SQL to PostgreSQL, designing and managing the relational schema.",
+      "Added models, columns and Prisma migrations to the PostgreSQL schema, including data migrations run against live records.",
       "Improved performance and SEO, lifting engagement across the site.",
     ],
   },

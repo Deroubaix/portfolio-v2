@@ -67,7 +67,7 @@ export const caseStudies: readonly CaseStudy[] = [
         owned: [
           "Front-end architecture and shared components",
           "Full-stack features from API to interface",
-          "SQL → PostgreSQL migration and schema design",
+          "Models, migrations and schema changes in Prisma",
           "Subscription model migration, including legacy plan support",
           "Performance, SEO and accessibility work",
         ],
