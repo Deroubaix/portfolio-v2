@@ -10,6 +10,7 @@ export const cv = {
     Possums: [
       "Front-end development on the company platform, building accessible interfaces for two audiences: parents and clinicians.",
       "Ship full-stack features end to end: NestJS endpoints, Prisma schema changes, GraphQL and data migrations against live records.",
+      "Built the professional side of possums.org that absorbed the NDC Institute site in October 2026: sign-up and checkout flows, the NDC Register, and accreditation certificates and licences rendered as locked PDFs with the payment reconciliation behind them.",
       "Fixed sign-ins that failed on capitalisation, across the lookup, the write path and the existing rows.",
       "Unified the parent and professional signup flows behind one generic checkout hook, removing roughly 350 lines of divergent code from a payment path and recovering the case where an existing email would otherwise have to start over.",
       "Corrected subscription access so a cancelled plan stays valid until the paid period ends, and centralised the entitlement check so two services could not disagree about who has access.",

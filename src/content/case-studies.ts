@@ -49,9 +49,9 @@ export const caseStudies: readonly CaseStudy[] = [
         id: "possums", n: "01", name: "Possums", link: "https://possums.org/", img: "/images/possums-website.webp",
         kicker: "Health platform · consolidation", timeline: "Aug 2023 — ongoing",
         h1a: "Several sites,", h1b: "one platform.",
-        intro: "Possums helps exhausted parents and the clinicians who support them. The knowledge was excellent; finding it was not. The parent programs sat on one domain, the marketing that explained them on a second called Dr Pam, and the professional training on a third, NDC Institute. Marketing made the call to bring everything under possums.org, for SEO and a single brand. I have worked across the platform throughout: the programs app, the shared component and type packages the other apps build on, and the API and schema behind them. Dr Pam moved across last year; NDC Institute is next, and that is the part I am building now.",
+        intro: "Possums helps exhausted parents and the clinicians who support them. The knowledge was excellent; finding it was not. The parent programs sat on one domain, the marketing that explained them on a second called Dr Pam, and the professional training on a third, NDC Institute. Marketing made the call to bring everything under possums.org, for SEO and a single brand. I have worked across the platform throughout: the programs app, the shared component and type packages the other apps build on, and the API and schema behind them. Dr Pam moved across in 2025. NDC Institute followed in October 2026, and the professional side of Possums that now hosts it is the part I built.",
         summary:
-          "Parent programs, marketing and clinician training moving under one domain. Front end throughout, with NestJS, Prisma and GraphQL behind it.",
+          "Parent programs, marketing and clinician training brought under one domain. Front end throughout, with NestJS, Prisma and GraphQL behind it.",
         meta: [
           { k: "Client", v: "Possums" },
           { k: "My role", v: "Fullstack developer" },
@@ -63,8 +63,12 @@ export const caseStudies: readonly CaseStudy[] = [
           "Two very different audiences were being served by one voice, and neither journey was clear. Maintaining separate codebases also meant every change had to be made, and tested, several times over.",
         ],
         constraint: "The users are sleep-deprived. Every extra click, every ambiguous label, every slow page is a person giving up on help they need.",
-        roleIntro: "Fullstack developer, working alongside the design and product teams. Most of my work is on the front end, including the shared component and type packages the other apps depend on, but a fair amount sits behind it: NestJS endpoints, Prisma schema changes, GraphQL, and data migrations against live records. Most recently I worked on a subscription model change, replacing short plans with multi-year ones, which meant keeping every existing subscriber working while the model shifted underneath them.",
+        roleIntro: "Fullstack developer, working alongside the design and product teams. Most of my work is on the front end, including the shared component and type packages the other apps depend on, but a fair amount sits behind it: NestJS endpoints, Prisma schema changes, GraphQL, and data migrations against live records. Before that I worked on a subscription model change, replacing short plans with multi-year ones, which meant keeping every existing subscriber working while the model shifted underneath them. Most recently I built the professional side of the site that absorbed NDC Institute.",
         owned: [
+          "The NDC Institute pages on possums.org: the accreditation pathways, course and purchase pages, guest speaker events and calendar, and the professional dashboard",
+          "The professional and provider sign-up and checkout flows, kept separate from the parent checkout, with access decided on the server from course dates and one shared rule",
+          "The NDC Register of accredited practitioners, with search, opt-out, and the backfill of existing members",
+          "NDC certificates and maintenance licences rendered as locked PDFs from database templates, with the licence history and Stripe payment reconciliation behind them",
           "The subscription model migration: legacy product support, upgrade paths, and the entitlement rules that decide who still has access",
           "Access control around the paywall, including module prerequisites enforced on the server and blocking LLM crawlers from reading paid programme content",
           "Editorial tooling: a draft and publish workflow for resources with YAML frontmatter, article and programme tagging, and a custom markdown directive for pull quotes",
@@ -139,8 +143,8 @@ export const caseStudies: readonly CaseStudy[] = [
         ],
       },
       {
-        id: "ndc-institute", n: "02", name: "NDC Institute", link: "https://ndcinstitute.au/", img: "/images/ndc-institute-website.png",
-        kicker: "Online education · course delivery", timeline: "2024",
+        id: "ndc-institute", n: "02", name: "NDC Institute", link: "https://possums.org/ndc-institute", img: "/images/ndc-institute-website.png",
+        kicker: "Online education · now part of possums.org", timeline: "2024 — 2026",
         h1a: "Clinical training,", h1b: "delivered online.",
         intro: "NDC Institute teaches Neuroprotective Developmental Care to health professionals and educators: breastfeeding, sleep, infant development and perinatal mental health. The task was turning a serious clinical curriculum into a course platform busy practitioners could actually get through.",
         summary:
@@ -149,7 +153,7 @@ export const caseStudies: readonly CaseStudy[] = [
           { k: "Client", v: "NDC Institute" },
           { k: "My role", v: "Fullstack developer" },
           { k: "Team", v: "Design, product, engineering" },
-          { k: "Timeline", v: "2024" },
+          { k: "Timeline", v: "2024 — 2026" },
         ],
         problem: [
           "The audience is health professionals studying between shifts, often on a phone and often interrupted. Long-form clinical content has to be broken into pieces that survive being put down mid-lesson and picked up days later.",
@@ -207,7 +211,7 @@ export const caseStudies: readonly CaseStudy[] = [
           { k: "Credibility", v: "Typography and hierarchy that read as professional education, not marketing." },
         ],
         next: [
-          "It is moving. NDC Institute is being folded into possums.org. That was marketing's call, for SEO and a single brand. I am building the professional side of Possums that will host it: the accreditation pathway, course and purchase pages, guest speakers and the professional dashboard. The Education Hub follows after that.",
+          "It has moved. In October 2026 NDC Institute was folded into possums.org, marketing's call for SEO and a single brand, and the old domain now redirects there. I built the professional side of Possums that hosts it: the accreditation pathways, course and purchase pages, the sign-up flows, guest speakers, the professional dashboard, the NDC Register and the certificates. The Education Hub, where the courses themselves are taken, is still its own app and follows next.",
           "The obvious next step is richer assessment and certification, because practitioners want evidence of completion they can show an employer or professional body.",
           "After that, analytics on where learners stall. Completion data tells you which lesson needs rewriting, and right now that's guesswork.",
         ],
