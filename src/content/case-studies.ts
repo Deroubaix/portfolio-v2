@@ -212,7 +212,7 @@ export const caseStudies: readonly CaseStudy[] = [
         ],
         next: [
           "It has moved. In October 2026 NDC Institute was folded into possums.org, marketing's call for SEO and a single brand, and the old domain now redirects there. I built the professional side of Possums that hosts it: the accreditation pathways, course and purchase pages, the sign-up flows, guest speakers, the professional dashboard, the NDC Register and the certificates. The Education Hub, where the courses themselves are taken, is still its own app and follows next.",
-          "The obvious next step is richer assessment and certification, because practitioners want evidence of completion they can show an employer or professional body.",
+          "Certification was the obvious next step, because practitioners want evidence of completion they can show an employer or professional body, and it shipped with the move. Award certificates and maintenance licences are now rendered as locked PDFs, dated from the exam pass and the paid licence period, and downloadable from the professional profile for as long as they were earned.",
           "After that, analytics on where learners stall. Completion data tells you which lesson needs rewriting, and right now that's guesswork.",
         ],
       },
