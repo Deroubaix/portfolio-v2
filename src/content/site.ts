@@ -115,7 +115,7 @@ export const jobs = [
   {
     name: "Ironhack",
     role: "Fullstack Bootcamp — Lisbon",
-    period: "Jan 2023 — Apr 2023",
+    period: "Jan 2023 — Mar 2023",
     duties: [
       "Intensive full-stack bootcamp in modern web technologies.",
       "Built and deployed several full-stack applications, front to back.",

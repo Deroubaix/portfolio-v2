@@ -29,7 +29,7 @@ export const cv = {
     {
       what: "Fullstack Web Development bootcamp",
       where: "Ironhack, Lisbon",
-      when: "Jan 2023 – Apr 2023",
+      when: "Jan 2023 – Mar 2023",
     },
     { what: "iOS development", where: "Udacity", when: "2018" },
     { what: "Swift, then web development", where: "Self-taught", when: "From 2017" },
